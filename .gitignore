@@ -1,2 +1,3 @@
-Koodi/KetteraKvartetti/.nb-gradle/
-
+gradle.properties
+/build/
+/.nb-gradle/
