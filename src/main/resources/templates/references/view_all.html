@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Referenz-o-matic 3000</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1>Listataan kaikki kirjat</h1>
+        <ol>
+            <li th:each="reference : ${references}">¨
+                <span th:text="${reference.title}">book title</span>
+            </li>
+        </ol>
+    </body>
+</html>
