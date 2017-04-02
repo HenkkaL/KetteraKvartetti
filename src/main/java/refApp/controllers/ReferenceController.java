@@ -22,7 +22,9 @@ public class ReferenceController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String add(@RequestParam Map<String, String> params) {
         System.out.println(params.get("author") + ": " + params.get("name") 
-                + "; " + params.get("year"));
+                + "; " + params.get("publisher") + ", " + params.get("year")
+                + ", " + params.get("address") + "; pp. " 
+                + params.get("pages_start") + "-" + params.get("pages_end"));
         return "redirect:/";
     }
 }
