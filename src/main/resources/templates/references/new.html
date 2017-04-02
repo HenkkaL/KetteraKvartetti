@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Referenz-o-matic 3000</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <h1>Add a new reference, some day...</h1>
+        <h1>Lisää uusi kirja</h1>
+        <form th:action="@{/}" method="POST">
+            <table id="form">
+                <tr>
+                    <td><label for="name">Teoksen nimi</label></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                </tr>
+                <tr>
+                    <td><label for="author">Tekijä</label></td>
+                    <td><input type="text" id="author" name="author"/></td>
+                </tr>
+                <tr>
+                    <td><label for="year">Julkaisuvuosi</label></td>
+                    <td><input type="number" id="year" name="year" min="1000"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" id="submit" name="submit" value="Tallenna"/></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
