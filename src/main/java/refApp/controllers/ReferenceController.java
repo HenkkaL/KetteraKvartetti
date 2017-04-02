@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- * A controller to handle requests based on references
- * 
- * @author pqkallio
- */
+
+
 @Controller
 public class ReferenceController {
     @RequestMapping("/")

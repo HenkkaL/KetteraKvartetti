@@ -7,11 +7,11 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'jacoco'
 
-mainClassName = 'refApp.Publication'
+mainClassName = 'refApp.App'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'refApp.Publication'
+        attributes 'Main-Class': 'refApp.App'
     }
 }
 
