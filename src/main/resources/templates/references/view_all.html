@@ -4,13 +4,41 @@
         <title>Referenz-o-matic 3000</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
     </head>
+
     <body>
         <h1>Listataan kaikki kirjat</h1>
-        <ol>
-            <li th:each="reference : ${references}">¨
-                <span th:text="${reference.title}">book title</span>
-            </li>
-        </ol>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Published</th>
+                <th>Publisher</th>
+            </tr>
+            <tr th:each="reference : ${references}">
+                <td th:text="${reference.title}">book title</td>
+                <td th:text="${reference.author.name}">author name</td>
+                <td th:text="${reference.year}">publishing year</td>
+                <td th:text="${reference.publisher}">publisher</td>
+            </tr>
+        </table>
+
     </body>
 </html>

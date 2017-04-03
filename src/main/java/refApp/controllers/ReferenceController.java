@@ -3,6 +3,7 @@ package refApp.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,15 @@ public class ReferenceController {
     //This costructor will be deleted as soon as the database solution is implemented
     public ReferenceController() {
         this.allReferences = new ArrayList();
+    }
+    
+    //This gives some test data. Probably will be removed sooner than later.
+    @PostConstruct
+    public void init() {
+        Book kirja1 = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", 2001, "Kotikatu", formPageNo("1", "100"));
+        this.allReferences.add(kirja1);
+        Book kirja2 = new Book("Toka Kirja", new Author("Jaakko Kirjailija"), "Tammi", 2001, "Merikatu", formPageNo("1", "100"));
+        this.allReferences.add(kirja2);
     }
 
     @RequestMapping("/")
