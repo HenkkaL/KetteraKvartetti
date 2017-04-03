@@ -38,4 +38,11 @@ public abstract class Reference {
         return year;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPages() {
+        return pages;
+    }  
 }
