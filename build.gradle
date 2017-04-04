@@ -17,12 +17,19 @@ jar {
 
 project.ext {
     cucumberVersion = '1.2.5'
+    seleniumVersion = '2.41.0'
     junitVersion = '4.12'
 }
 
-repositories {
+repositories {    
     mavenCentral()
 }
+
+task( browse, dependsOn: jar, type: JavaExec ) {
+    main = 'refApp.Tester'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 
 jacocoTestReport {
     reports {
@@ -35,8 +42,12 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.thymeleaf:thymeleaf-spring4")
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion
 
- testCompile 'info.cukes:cucumber-java:' + cucumberVersion
+    testCompile 'info.cukes:cucumber-java:' + cucumberVersion
     testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
     testCompile 'junit:junit:' + junitVersion
     testCompile("org.springframework.boot:spring-boot-starter-test")
@@ -45,4 +56,5 @@ dependencies {
 test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
+    systemProperties['user.dir'] = workingDir
 }
