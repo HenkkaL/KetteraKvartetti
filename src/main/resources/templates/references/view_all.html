@@ -24,15 +24,18 @@
     </head>
 
     <body>
+        <div th:replace="fragments/navigation_fragment"></div>
         <h1>Listataan kaikki kirjat</h1>
         <table>
             <tr>
+                <th>Viite</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Published</th>
                 <th>Publisher</th>
             </tr>
             <tr th:each="reference : ${references}">
+                <td th:text="${reference.referenceId}">book title</td>
                 <td th:text="${reference.title}">book title</td>
                 <td th:text="${reference.author.name}">author name</td>
                 <td th:text="${reference.year}">publishing year</td>

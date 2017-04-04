@@ -31,7 +31,7 @@ public class BookTest {
     @Before
     public void setUp() {
         author = new Author("Beck");
-        book = new Book("BookTitle", author, "Addison-Wesley", 1999, "pp.25-75", "Oregon");
+        book = new Book("BookTitle", author, "Addison-Wesley", 1999, "pp.25-75", "Oregon", "Beck99");
         book2= new Book("BookTitle2", author, "AW", 2000);
     }
 
@@ -109,5 +109,17 @@ public class BookTest {
     public void secondConstructorSetsPagestoNull() {
         // TODO review the generated test code and remove the default call to fail.
         assertEquals(null, book2.getPages());
+    }
+    
+    @Test
+    public void constructorSetsReferenceIdCorrectly() {
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals("Beck99", book.getReferenceId());
+    }
+    
+     @Test
+    public void secondConstructorSetsReferenceIdtoNull() {
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals(null, book2.getReferenceId());
     }
 }

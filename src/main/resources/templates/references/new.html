@@ -6,9 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <div th:replace="fragments/navigation_fragment"></div>
         <h1>Lisää uusi kirja</h1>
         <form th:action="@{/new}" method="POST">
             <table id="form">
+                <tr>
+                    <td><label for="name">Viitteen tunnus</label></td>
+                    <td><input type="text" id="reference_id" name="reference_id"/></td>
+                </tr>
                 <tr>
                     <td><label for="name">Teoksen nimi</label></td>
                     <td><input type="text" id="name" name="name"/></td>
