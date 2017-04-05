@@ -9,11 +9,12 @@ import org.openqa.selenium.WebElement;
 import static org.junit.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 public class Stepdefs {
 
-    WebDriver driver = new FirefoxDriver();
-    String baseUrl = "localhost:8080";
+    WebDriver driver = new HtmlUnitDriver();
+    String baseUrl = "http//localhost:8080";
 
     @Given("^add new is selected$")
     public void add_new_is_selected() throws Throwable {
