@@ -26,9 +26,9 @@ public class ReferenceController {
     //This gives some test data. Probably will be removed sooner than later.
     @PostConstruct
     public void init() {
-        Book kirja1 = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", 2001, "Kotikatu", formPageNo("1", "100"), "TK01");
+        Book kirja1 = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", 2001, formPageNo("1", "100"), "Kotikatu", "TK01");
         this.allReferences.add(kirja1);
-        Book kirja2 = new Book("Toka Kirja", new Author("Jaakko Kirjailija"), "Tammi", 2001, "Merikatu", formPageNo("1", "100"), "JK01");
+        Book kirja2 = new Book("Toka Kirja", new Author("Jaakko Kirjailija"), "Tammi", 2001, formPageNo("1", "100"), "Merikatu", "JK01");
         this.allReferences.add(kirja2);
     }
 
@@ -40,7 +40,7 @@ public class ReferenceController {
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String add(@RequestParam Map<String, String> params) {
-        Book ref = new Book(params.get("name"), new Author(params.get("author")), params.get("publisher"), Integer.parseInt(params.get("year")), params.get("address"), formPageNo(params.get("pages_start"), params.get("pages_end")), params.get("reference_id"));
+        Book ref = new Book(params.get("name"), new Author(params.get("author")), params.get("publisher"), Integer.parseInt(params.get("year")), formPageNo(params.get("pages_start"), params.get("pages_end")), params.get("address"), params.get("reference_id"));
         this.allReferences.add(ref);
         return "redirect:/list_all";
     }
