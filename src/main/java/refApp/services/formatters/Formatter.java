@@ -22,5 +22,5 @@ public interface Formatter {
      * @param pageEnd the last page
      * @return the formatted string
      */
-    public String formatPageString(int pageStart, int pageEnd);
+    public String formatPageString(String pageStart, String pageEnd);
 }

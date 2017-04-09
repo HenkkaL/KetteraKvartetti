@@ -41,6 +41,6 @@ public class BibTeXFormatterTest {
     
     @Test
     public void pagesNumbersFormattedFine() {
-        assertEquals(formatter.formatPageString(1, 666), "{1--666}");
+        assertEquals(formatter.formatPageString("1", "666"), "{1--666}");
     }
 }

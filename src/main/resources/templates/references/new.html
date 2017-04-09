@@ -7,16 +7,25 @@
     </head>
     <body>
         <div th:replace="fragments/navigation_fragment"></div>
-        <h1>Lisää uusi kirja</h1>
-        <form th:action="@{/new}" method="POST">
-            <table id="form">
+        <h1>Lisää uusi viite</h1>
+        <form th:action="@{/new}" method="POST">      
+            <table id="form"> 
                 <tr>
-                    <td><label for="name">Viitteen tunnus</label></td>
+                    <td><label for="type">Viitteen tyyppi</label></td>
+                    <td><select id="type" name="type">
+                            <option value="book"> Kirja </option>
+                            <option value="article"> Artikkeli </option>
+                            <option value="inproceedings"> Julkaisu </option>
+                        </select>   </td>
+                </tr>
+
+                <tr>
+                    <td><label for="reference_id">Viitteen tunnus</label></td>
                     <td><input type="text" id="reference_id" name="reference_id" required="required" /></td>
                 </tr>
                 <tr>
-                    <td><label for="name">Teoksen nimi</label></td>
-                    <td><input type="text" id="name" name="name" required="required" /></td>
+                    <td><label for="title">Teoksen nimi</label></td>
+                    <td><input type="text" id="title" name="title" required="required" /></td>
                 </tr>
                 <tr>
                     <td><label for="author">Tekijä</label></td>
@@ -27,17 +36,42 @@
                     <td><input type="number" id="year" name="year" min="1000" required="required" /></td>
                 </tr>
                 <tr>
+                    <td><label for="month">Julkaisukuukausi</label></td>
+                    <td><input type="number" id="month" name="month" min="1" max="12" /></td>
+                </tr>
+
+                <tr>
                     <td><label for="publisher">Julkaisija</label></td>
                     <td><input type="text" id="publisher" name="publisher" required="required" /></td>
                 </tr>
+
                 <tr>
-                    <td><label for="pages_start">Sivut</label></td>
-                    <td><input type="number" id="pages_start" name="pages_start" min="0"/> - <input type="number" id="pages_end" name="pages_end" min="0"/></td>
+                    <td><label for="edition">Painos</label></td>
+                    <td><input type="text" id="edition" name="edition"/></td>
                 </tr>
                 <tr>
-                    <td><label for="year">Osoite</label></td>
+                    <td><label for="volume">Osa (jos kirja osa kirjasarjaa)</label></td>
+                    <td><input type="number" id="volume" name="volume"/></td>
+                </tr>
+
+                <tr>
+                    <td><label for="series">Kirjasarjan nimi</label></td>
+                    <td><input type="text" id="series" name="series"/></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Osoite</label></td>
                     <td><input type="text" id="address" name="address"/></td>
                 </tr>
+                <tr>
+                    <td><label for="note">Muita tietoja</label></td>
+                    <td><input type="text" id="note" name="note"/></td>
+                </tr>
+
+                <!--                <tr>
+                    <td><label for="pages_start">Sivut</label></td>
+                    <td><input type="number" id="pages_start" name="pages_start" min="0"/> - <input type="number" id="pages_end" name="pages_end" min="0"/></td>
+                </tr>-->
+
                 <tr>
                     <td></td>
                     <td><input type="submit" id="submit" name="submit" value="Tallenna"/></td>

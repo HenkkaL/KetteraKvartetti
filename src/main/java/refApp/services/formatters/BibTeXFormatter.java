@@ -59,7 +59,7 @@ public class BibTeXFormatter implements Formatter {
      * @return formatted string
      */
     @Override
-    public String formatPageString(int pageStart, int pageEnd) {
+    public String formatPageString(String pageStart, String pageEnd) {
         String pages = pageStart + PAGE_DELIMITER + pageEnd;
         return addDelimiters(pages);
     }

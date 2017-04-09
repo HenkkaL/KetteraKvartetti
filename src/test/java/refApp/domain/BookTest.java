@@ -7,15 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Raine Rantanen
- */
 public class BookTest {
-
     Book book;
-    Book book2;
-    Author author;
 
     public BookTest() {
     }
@@ -30,9 +23,7 @@ public class BookTest {
 
     @Before
     public void setUp() {
-        author = new Author("Beck");
-        book = new Book("BookTitle", author, "Addison-Wesley", 1999, "pp.25-75", "Oregon", "Beck99");
-        book2= new Book("BookTitle2", author, "AW", 2000);
+        book = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "1.painos", "1", "Kirjasarja", "Kotikatu", "Satunnaista", "TK01");      
     }
 
     @After
@@ -42,84 +33,66 @@ public class BookTest {
     @Test
     public void constructorSetsTitleCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("BookTitle", book.getTitle());
+        assertEquals("Eka Kirja", book.getTitle());
     }
     
-     @Test
-    public void secondConstructorSetsTitleCorrectly() {
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals("BookTitle2", book2.getTitle());
-    }
-
     @Test
     public void constructorSetsAuthorCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Beck", book.getAuthor().getName());
-    }
-
-    @Test
-    public void secondConstructorSetsAuthorCorrectly() {
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Beck", book2.getAuthor().getName());
+        assertEquals("Teppo Kirjailija", book.getAuthor().getName());
     }
     
     @Test
     public void constructorSetsPublisherCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Addison-Wesley", book.getPublisher());
+        assertEquals("Tammi", book.getPublisher());
     }
     
-    @Test
-    public void secondConstructorSetsPublisherCorrectly() {
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals("AW", book2.getPublisher());
-    }
-
     @Test
     public void constructorSetsYearCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals(1999, book.getYear());
+        assertEquals("2001", book.getYear());
     }
     
-     @Test
-    public void secondConstructorSetsYearCorrectly() {
+    @Test
+    public void constructorSetsMonthCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals(2000, book2.getYear());
+        assertEquals("12", book.getMonth());
+    }
+    
+    @Test
+    public void constructorSetsEditionCorrectly() {
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals("1.painos", book.getEdition());
+    }
+    
+    @Test
+    public void constructorSetsVolumeCorrectly() {
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals("1", book.getVolume());
+    }
+    
+    @Test
+    public void constructorSetsSeriesCorrectly() {
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals("Kirjasarja", book.getSeries());
     }
 
     @Test
     public void constructorSetsAddressCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Oregon", book.getAddress());
-    }
-    
-    @Test
-    public void secondConstructorSetsAddressToNull() {
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals(null, book2.getAddress());
-    }
-
-    @Test
-    public void constructorSetsPagesCorrectly() {
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals("pp.25-75", book.getPages());
+        assertEquals("Kotikatu", book.getAddress());
     }
     
      @Test
-    public void secondConstructorSetsPagestoNull() {
+    public void constructorSetsNoteCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals(null, book2.getPages());
+        assertEquals("Satunnaista", book.getNote());
     }
     
     @Test
     public void constructorSetsReferenceIdCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Beck99", book.getReferenceId());
-    }
-    
-     @Test
-    public void secondConstructorSetsReferenceIdtoNull() {
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals(null, book2.getReferenceId());
+        assertEquals("TK01", book.getReferenceId());
     }
 }

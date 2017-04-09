@@ -15,7 +15,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import refApp.domain.Author;
 
 /**
  *
@@ -65,6 +64,7 @@ public class ReferenceControllerTest {
     @Test
     public void addStatusOk() throws Exception {
         mockMvc.perform(post("/new")
+                .param("type", "book")
                 .param("name", "Random book")
                 .param("author", "Beck")
                 .param("year", "1999")
