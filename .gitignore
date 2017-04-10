@@ -2,3 +2,5 @@ gradle.properties
 /build/
 /.nb-gradle/
 .gradle/
+/Testeri/build/
+/Testeri/.nb-gradle/
