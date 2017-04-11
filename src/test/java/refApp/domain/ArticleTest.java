@@ -71,7 +71,7 @@ public class ArticleTest {
 
     @Test
     public void constructorSetsCorrectNumber() {
-        assertEquals("3", art.getNumber());
+        assertEquals("3", art.getNumbergit ());
     }
 
     @Test
