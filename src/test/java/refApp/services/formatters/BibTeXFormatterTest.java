@@ -30,17 +30,7 @@ public class BibTeXFormatterTest {
     }
     
     @Test
-    public void onlyDelimitersForEmptyString() {
-        assertEquals(formatter.formatString(""), "{}");
-    }
-    
-    @Test
-    public void delimitedString() {
-        assertEquals(formatter.formatString("aZ1 .+"), "{aZ1 .+}");
-    }
-    
-    @Test
     public void pagesNumbersFormattedFine() {
-        assertEquals(formatter.formatPageString("1", "666"), "{1--666}");
+        assertEquals(formatter.formatPageString("1", "666"), "1--666");
     }
 }

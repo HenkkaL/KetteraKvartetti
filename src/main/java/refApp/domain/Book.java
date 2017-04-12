@@ -25,4 +25,13 @@ public class Book extends Reference {
     public Book(String title, Author author, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId) {
         super(title, author, publisher, year, month, edition, volume, series, address, note, referenceId);
     }
+
+    //method now covers the required fields, but it will be expanded later to add the optional data
+    @Override
+    public String toString() {
+        String ret = "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}\n}\n";
+        // if (getPages != null) {lisää tieto sivuista} ret += ....
+
+        return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
+    }
 }

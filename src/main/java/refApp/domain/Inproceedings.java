@@ -26,4 +26,10 @@ public class Inproceedings extends Reference {
     public Inproceedings(String title, Author author, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId) {
         super(title, author, bookTitle, year, month, editor, volume, series, pages, organization, publisher, address, note, referenceId);
     }
+
+    @Override
+    public String toString() {
+        return "@Inproceedings{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
+    }
+
 }
