@@ -29,7 +29,7 @@ public class Inproceedings extends Reference {
 
     @Override
     public String toString() {
-        return "@Inproceedings{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}\n}\n";
+        return "@Inproceedings{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
     }
 
 }
