@@ -35,9 +35,8 @@ public class ReferenceService {
                 break;
         }
     }
-    
+
     private String formPageNo(String start, String end) {
         return "pp. " + start + "-" + end;
     }
 }
-

@@ -1,10 +1,17 @@
 package refApp.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +23,7 @@ import refApp.domain.Book;
 import refApp.domain.Inproceedings;
 import refApp.domain.Reference;
 import refApp.services.ReferenceService;
+import refApp.services.formatters.BibTeXFormatter;
 
 @Controller
 public class ReferenceController {
@@ -25,10 +33,9 @@ public class ReferenceController {
     @Autowired
     private ReferenceService referenceService;
 
-
     //This costructor will be deleted as soon as the database solution is implemented
     public ReferenceController() {
-        this.allReferences = new ArrayList();     
+        this.allReferences = new ArrayList();
     }
 
     //This gives some test data. Probably will be removed sooner than later.
@@ -67,5 +74,20 @@ public class ReferenceController {
     public String listAll(Model model) {
         model.addAttribute("references", this.allReferences);
         return "references/view_all";
+    }
+
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> downloadFile() throws IOException {
+        new BibTeXFormatter().writeReferencesToFile(allReferences);
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("text/bib"));
+        headers.add("Content-Disposition", "attachment; filename= sigproc.bib");
+
+        return new ResponseEntity<>(convertToBytes(), headers, HttpStatus.CREATED);
+    }
+
+    private byte[] convertToBytes() throws IOException {
+        return Files.readAllBytes(Paths.get("src/main/resources/downloadables/sigproc.bib"));
+
     }
 }
