@@ -14,14 +14,14 @@ $(document).ready(function() {
         
         if (selectedType === "article" || selectedType === "inproceedings") {
             pagesOk = checkPages(selectedType);
-            console.log(pagesOk);
+            console.log("häröhärö");
             if (!pagesOk) {
-                $("#" + selectedType + "_pages_start")[0].setCustomValidity("Tarkista sivunumerot.");
-                $("#" + selectedType + "_pages_end")[0].setCustomValidity("Tarkista sivunumerot.");
+                $("#pages_start")[0].setCustomValidity("Tarkista sivunumerot.");
+                $("#pages_end")[0].setCustomValidity("Tarkista sivunumerot.");
                 event.preventDefault();
             } else {
-                $("#" + selectedType + "_pages_start")[0].setCustomValidity("");
-                $("#" + selectedType + "_pages_end")[0].setCustomValidity("");
+                $("#pages_start")[0].setCustomValidity("");
+                $("#pages_end")[0].setCustomValidity("");
             }
         }
     });
@@ -32,26 +32,30 @@ function setVisibleAttributes() {
     
     switch(selectedType) {
         case "book":
-            showHideHide("#book_attributes", "#article_attributes", "#inproceedings_attributes");
+            showHideHide(".book_attr", ".article_attr", ".inproc_attr");
+            setRequiredAttrs(".book_req", ".article_req", ".inproc_req");
             break;
         case "inproceedings":
-            showHideHide("#inproceedings_attributes", "#article_attributes", "#book_attributes");
+            showHideHide(".inproc_attr", ".article_attr", ".book_attr");
+            setRequiredAttrs(".inproc_req", ".article_req", ".book_req");
             break;
         case "article":
-            showHideHide("#article_attributes", "#inproceedings_attributes", "#book_attributes");
+            showHideHide(".article_attr", ".inproc_attr", ".book_attr");
+            setRequiredAttrs(".article_req", ".inproc_req", ".book_req");
             break;
     }
 };
 
 function showHideHide(showThis, hideThis, hideThisAsWell) {
-    $(showThis).show();
-    $(hideThis).hide();
-    $(hideThisAsWell).hide();
-    setRequiredFields($(showThis).find("input.required_input"), true);
-    setRequiredFields($(hideThis).find("input.required_input"), false);
-    setRequiredFields($(hideThisAsWell).find("input.required_input"), false);
-    emptyFields($(hideThis).find("input"));
-    emptyFields($(hideThisAsWell).find("input"));
+    $(hideThis).each(function() {
+        $(this).hide();
+    });
+    $(hideThisAsWell).each(function() {
+        $(this).hide();
+    });
+    $(showThis).each(function() {
+        $(this).show();
+    });
 };
 
 function setRequiredFields(fields, isRequired) {
@@ -60,15 +64,38 @@ function setRequiredFields(fields, isRequired) {
     });
 };
 
-function emptyFields(fields) {
-    $.each(fields, function(key, val) {
-        val.value = "";
+function setRequiredAttrs(req, notReq, notReqEither) {
+    setInputs(req, notReq, notReqEither);
+    setLabels(req, notReq, notReqEither);
+};
+
+function setInputs(req, notReq, notReqEither) {
+    $("input" + notReq).each(function() {
+        $(this).prop('required', false);
+    });
+    $("input" + notReqEither).each(function() {
+        $(this).prop('required', false);
+    });
+    $("input" + req).each(function() {
+        $(this).prop('required', true);
     });
 };
 
-function checkPages(referenceType) {
-    var pagesStart = $("#" + referenceType + "_pages_start").val();
-    var pagesEnd = $("#" + referenceType + "_pages_end").val();
+function setLabels(req, notReq, notReqEither) {
+    $("label" + notReq).each(function() {
+        $(this).css('font-weight', 'normal');
+    });
+    $("label" + notReqEither).each(function() {
+        $(this).css('font-weight', 'normal');
+    });
+    $("label" + req).each(function() {
+        $(this).css('font-weight', 'bold');
+    });
+};
+
+function checkPages() {
+    var pagesStart = $("#pages_start").val();
+    var pagesEnd = $("#pages_end").val();
     var check = true;
     if (pagesStart.length > 0 && pagesEnd.length === 0) {
         check = false;

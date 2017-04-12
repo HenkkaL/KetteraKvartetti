@@ -4,14 +4,6 @@
     Author     : pqkallio
 */
 
-#book_attributes {
-    display:block;
-}
-
-#inproceedings_attributes {
-    display:block;
-}
-
-#article_attributes {
-    display:block;
+.page_input {
+    width: 5em;
 }
