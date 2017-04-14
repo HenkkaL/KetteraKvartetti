@@ -5,24 +5,31 @@ package refApp.domain;
  */
 public abstract class Reference {
 
-    private String title;
-    private Author author;
-    private String publisher;
-    private String year;
-    private String month;
-    private String journal;
-    private String volume;
-    private String number;
-    private String series;
-    private String edition;
-    private String editor;
-    private String inproceedingsBookTitle;
-    private String organization;
-    private String pages;
-    private String address;
-    private String note;
-    private String referenceId;
+    protected String title;
+    protected Author author;
+    protected String publisher;
+    protected String year;
+    protected String month;
+    protected String journal;
+    protected String volume;
+    protected String number;
+    protected String series;
+    protected String edition;
+    protected String editor;
+    protected String inproceedingsBookTitle;
+    protected String organization;
+    protected String pages;
+    protected String address;
+    protected String note;
+    protected String referenceId;
 
+    /**
+     * Get a printable "pretty" string of the references attributes.
+     * 
+     * @return the String
+     */
+    public abstract String getPrettyString();
+    
     /**
      * Constructor model with all possible fields used in references.
      */
@@ -175,4 +182,23 @@ public abstract class Reference {
         return volume;
     }
 
+    protected boolean isSet(String parameter) {
+        return (parameter != null & parameter.length() > 0);
+    }
+    
+    protected String getAuthorAndTitle() {
+        return this.author + ". " + this.title + ". ";
+    }
+    
+    protected String getAttributeWithComma(String parameter) {
+        return getAttributeWithCharacter(parameter, ',');
+    }
+
+    protected String getAttributeWithPeriod(String parameter) {
+        return getAttributeWithCharacter(parameter, '.');
+    }
+    
+    protected String getAttributeWithCharacter(String parameter, char character) {
+        return parameter + character + " ";
+    }
 }

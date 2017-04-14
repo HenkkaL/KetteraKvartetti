@@ -34,4 +34,15 @@ public class Book extends Reference {
 
         return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
     }
+
+    @Override
+    public String getPrettyString() {
+        StringBuilder builder = new StringBuilder(super.getAuthorAndTitle());
+        builder.append(super.getAttributeWithComma(super.publisher));
+        if (isSet(super.address)) {
+            builder.append(super.getAttributeWithComma(super.address));
+        }
+        builder.append(super.getAttributeWithPeriod(super.year));
+        return builder.toString();
+    }
 }

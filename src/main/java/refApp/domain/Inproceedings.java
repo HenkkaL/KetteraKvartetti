@@ -32,4 +32,22 @@ public class Inproceedings extends Reference {
         return "@Inproceedings{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
     }
 
+    @Override
+    public String getPrettyString() {
+        StringBuilder builder = new StringBuilder(super.getAuthorAndTitle());
+        builder.append("In ");
+        builder.append(super.inproceedingsBookTitle);
+        if (isSet(super.pages)) {
+            builder.append(", pages ");
+            builder.append(super.pages);
+        }
+        builder.append(". ");
+        if (isSet(super.publisher)) {
+            builder.append(super.getAttributeWithComma(super.publisher));
+        }
+        builder.append(super.getAttributeWithPeriod(super.year));
+        
+        return builder.toString();
+    }
+
 }

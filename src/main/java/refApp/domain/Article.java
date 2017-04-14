@@ -49,4 +49,27 @@ public class Article extends Reference {
     public String toString() {
         return "@article{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
     }
+
+    @Override
+    public String getPrettyString() {
+        StringBuilder builder = new StringBuilder(super.getAuthorAndTitle());
+        builder.append(super.getAttributeWithComma(super.journal));
+        appendVolumeNumberAndPages(builder);
+        builder.append(super.getAttributeWithPeriod(super.year));
+        return builder.toString();
+    }
+
+    private void appendVolumeNumberAndPages(StringBuilder builder) {
+        if (isSet(this.getVolume())) {
+            builder.append(this.getVolume());
+            if (isSet(this.getNumber())) {
+                String numberStr = "(" + this.getNumber() + ")";
+                builder.append(numberStr);
+            }
+            if (isSet(this.getPages())) {
+                String pagesStr = ":" + this.getPages()+ ", ";
+                builder.append(pagesStr);
+            }
+        }
+    }
 }

@@ -28,24 +28,20 @@
         <h1>Listataan kaikki viitteet</h1>
         <table>
             <tr>
+                <th>Tunnus</th>
+                <th>Tyyppi</th>
                 <th>Viite</th>
-                <th>Nimi</th>
-                <th>Tekijä</th>
-                <th>Julkaisuvuosi</th>
-                <th>Julkaisija</th>
-                <th>Sivut</th>
-                <th>Osoite</th>
             </tr>
             <tr th:each="reference : ${references}">
                 <td th:text="${reference.referenceId}">reference id</td>
-                <td th:text="${reference.title}">book title</td>
-                <td th:text="${reference.author.name}">author name</td>
-                <td th:text="${reference.year}">publishing year</td>
-                <td th:text="${reference.publisher}">publisher</td>
-                <td th:text="${reference.pages}"></td>
-                <td th:text="${reference.address}"></td>
+                <td th:switch="${reference.class.toString()}">
+                    <span th:case="'class refApp.domain.Book'">Kirja</span>
+                    <span th:case="'class refApp.domain.Article'">Artikkeli</span>
+                    <span th:case="'class refApp.domain.Inproceedings'">Julkaisu</span>
+                    <span th:case="*">Ei määritetty</span>
+                </td>
+                <td th:text="${reference.getPrettyString()}">string</td>
             </tr>
         </table>
-
     </body>
 </html>
