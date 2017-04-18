@@ -60,16 +60,17 @@ public class Article extends Reference {
     }
 
     private void appendVolumeNumberAndPages(StringBuilder builder) {
-        if (isSet(this.getVolume())) {
-            builder.append(this.getVolume());
-            if (isSet(this.getNumber())) {
-                String numberStr = "(" + this.getNumber() + ")";
+        if (isSet(super.volume)) {
+            builder.append(super.volume);
+            if (isSet(super.number)) {
+                String numberStr = "(" + super.number + ")";
                 builder.append(numberStr);
             }
-            if (isSet(this.getPages())) {
-                String pagesStr = ":" + this.getPages()+ ", ";
+            if (isSet(super.pages)) {
+                String pagesStr = ":" + super.pages;
                 builder.append(pagesStr);
             }
+            builder.append(", ");
         }
     }
 }
