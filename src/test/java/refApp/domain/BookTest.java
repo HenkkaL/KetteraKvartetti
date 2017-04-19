@@ -95,4 +95,22 @@ public class BookTest {
         // TODO review the generated test code and remove the default call to fail.
         assertEquals("TK01", book.getReferenceId());
     }
+    
+    @Test
+    public void toStringReturnsCorrectly() {
+        String expected = "@book{TK01,\n"
+                + "author = {Teppo Kirjailija},\n"
+                + "title = {Eka Kirja},\n"
+                + "year = {2001},\n"
+                + "publisher = {Tammi},\n"
+                + "}\n"
+                + "";
+        assertEquals(expected, book.toString());
+    }
+    
+    @Test
+    public void testGetPrettyString() {
+        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Kotikatu, 2001. ";
+        assertEquals(expected, book.getPrettyString());
+    }
 }
