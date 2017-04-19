@@ -45,6 +45,10 @@ public class ReferenceController {
         this.allReferences.add(kirja1);
         Book kirja2 = new Book("Toka Kirja", new Author("Jaakko Kirjailija"), "Tammi", "2001", "", "", "", "", "Merikatu", "", "BA04");
         this.allReferences.add(kirja2);
+        Book kirja3 = new Book("3. Kirja", new Author("Martin Fowler"), "Tammi", "1999", "", "1.painos", "", "", "Kotikatu", "", "Martin09");
+        this.allReferences.add(kirja3);
+        Book kirja4 = new Book("4. Kirja", new Author("Scrum Master"), "Tammi", "2001", "", "", "", "", "Merikatu", "", "scrum");
+        this.allReferences.add(kirja4);
 
         Article article1 = new Article("eka artikkeli", new Author("Taina Tieteilijä"), "Tiedejulkaisu", "2011", "4", "1", "", "1-5", "Muistiinpanoja", "TT01");
         this.allReferences.add(article1);
