@@ -32,7 +32,7 @@ public class InproceedingsTest {
     
     @Before
     public void setUp() {
-        inpro = new Inproceedings("Innpro Title", new Author ("Author Surname"), "Book Title", "2017", "03", 
+        inpro = new Inproceedings("Inpro Title", new Author ("Author Surname"), "Book Title", "2017", "03", 
                 "Editor et. al", "vol.1", "series", "1-5", "Organization", "Publisher", "Address", "Note", "ReferenceId");
     }
     
@@ -42,7 +42,7 @@ public class InproceedingsTest {
 
     @Test
     public void constructorSetsCorrectTitle() {
-        assertEquals("Innpro Title", inpro.getTitle());
+        assertEquals("Inpro Title", inpro.getTitle());
     }
 
     @Test
@@ -108,6 +108,24 @@ public class InproceedingsTest {
     @Test
     public void constructorSetsCorrectReferenceId() {
         assertEquals("ReferenceId", inpro.getReferenceId());
+    }
+    
+    @Test
+    public void testInproToString() {
+        String expected = "@Inproceedings{ReferenceId,\n"
+                        + "author = {Author Surname},\n"
+                        + "title = {Inpro Title},\n"
+                        + "year = {2017},\n"
+                        + "publisher = {Publisher},\n"
+                        + "}\n"
+                        + "";
+        assertEquals(expected, inpro.toString());
+    }
+    
+    @Test
+    public void testInproGetPrettyString() {
+        String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017. ";
+        assertEquals(expected, inpro.getPrettyString());
     }
        
 }

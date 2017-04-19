@@ -97,7 +97,7 @@ public class BookTest {
     }
     
     @Test
-    public void toStringReturnsCorrectly() {
+    public void testBookToString() {
         String expected = "@book{TK01,\n"
                 + "author = {Teppo Kirjailija},\n"
                 + "title = {Eka Kirja},\n"
@@ -109,7 +109,7 @@ public class BookTest {
     }
     
     @Test
-    public void testGetPrettyString() {
+    public void testBookGetPrettyString() {
         String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Kotikatu, 2001. ";
         assertEquals(expected, book.getPrettyString());
     }

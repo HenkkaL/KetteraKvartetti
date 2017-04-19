@@ -88,6 +88,24 @@ public class ArticleTest {
     public void constructorSetsCorrectReferenceId() {
         assertEquals("ReferenceId", art.getReferenceId());
     }
+
+    @Test
+    public void testArticleToString() {
+        String expected = "@article{ReferenceId,\n"
+                        + "author = {Author Surname},\n"
+                        + "title = {Article Title},\n"
+                        + "year = {2017},\n"
+                        + "publisher = {null},\n"
+                        + "}\n"
+                        + "";
+        assertEquals(expected, art.toString());
+    }
+    
+    @Test
+    public void testArticleGetPrettyString() {
+        String expected = "Author Surname. Article Title. Journal, 5(3):2-3, 2017. ";
+        assertEquals(expected, art.getPrettyString());
+    }
        
     
 }
