@@ -40,5 +40,17 @@ public class AuthorTest {
         // TODO review the generated test code and remove the default call to fail.
         assertEquals("Kent Beck", author.getName());
     }
+    
+    @Test
+    public void testAuthorSetName() {
+        String expected = "Test Name"; 
+        author.setName(expected);
+        assertEquals(expected, author.getName());
+    }
+    
+    @Test
+    public void testAuthorToString() {
+        assertEquals("Kent Beck", author.toString());
+    }
 
 }
