@@ -33,4 +33,12 @@ public class BibTeXFormatterTest {
     public void pagesNumbersFormattedFine() {
         assertEquals(formatter.formatPageString("1", "666"), "1--666");
     }
+    
+    @Test
+    public void stringIsFormattedCorrectly() {
+        String string = "123abcXYZ _,. äÖå";
+        String expected = "123abcXYZ _,. {\\\"a}{\\\"O}{\\aa}";
+        String output = formatter.formatString(string);
+        assertEquals(expected, output);
+    }
 }
