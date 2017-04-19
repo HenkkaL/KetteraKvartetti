@@ -107,9 +107,19 @@ public class Stepdefs {
     public void correct_organisation_is_given(String organisation) {
         this.addVolumeNumber(organisation);
     }    
+
+    @When("^correct journal \"([^\"]*)\" is given")
+    public void correct_journal_is_given(String journal) {
+        this.addJournal(journal);
+    }
+
+    @When("^correct number \"([^\"]*)\" is given")
+    public void correct_number_is_given(String number) {
+        this.addNumber(number);
+    }
     
-    @When("^correct pages start \"([^\"]*)\" and end \"([^\"]*)\" is given")
-    public void correct_organisation_is_given(String start, String end) {
+    @When("^correct pages start \"([^\"]*)\" and end \"([^\"]*)\" are given")
+    public void correct_pages_are_given(String start, String end) {
         this.addPages(start, end);
     }      
     
@@ -118,19 +128,13 @@ public class Stepdefs {
         //this.makeSubmit();
         WebElement element = driver.findElement(By.name("submit"));
         element.click();
-    }               
-
+    }    
+    
     @Then("^page has content \"([^\"]*)\"")
-    public void list_of_references_is_displayed(String content) throws Throwable {
+    public void find_page_content_displayed(String content) throws Throwable {
         pageHasContent(content);
     }
     
-    @Then("^form is submitted and missing metadata alert is displayed$")
-    public void form_is_submitted_and_metadata_alert_is_displayed() throws Throwable {
-       //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        pageHasContent("Lisää uusi viite");
-    }    
-
     @After
     public void tearDown() {
         driver.quit();
@@ -140,7 +144,7 @@ public class Stepdefs {
     private void pageHasContent(String content) {
         assertTrue(driver.getPageSource().contains(content));
     }
-
+   
     private void chooseRefType(String refType) {
         Select dropdown = new Select(driver.findElement(By.id("type")));
         dropdown.selectByValue(refType);
@@ -220,6 +224,16 @@ public class Stepdefs {
         WebElement element = driver.findElement(By.name("organisation"));
         element.sendKeys(organisation);
     }    
+    
+    private void addJournal(String journal) {
+        WebElement element = driver.findElement(By.name("journal"));
+        element.sendKeys(journal);
+    }        
+    
+    private void addNumber(String number) {
+        WebElement element = driver.findElement(By.name("number"));
+        element.sendKeys(number);
+    }        
     
     private void addPages(String pagesStart, String pagesEnd) {
         WebElement element = driver.findElement(By.name("pages_start"));
