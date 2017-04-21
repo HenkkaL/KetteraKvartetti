@@ -1,4 +1,10 @@
 language: java
-
 after_success:
 - gradle jacocoTestReport coveralls
+deploy:
+  provider: heroku
+  api_key:
+    secure: BGD/DK+Xq9P62ZxMAP8patIWP01YYNI6Q+VQiqJ5OzY+OYNowdzkPKaP+uuw7Uo9ZFtn/ZuvyhyaKuXTy02gfmTOvIR5PhsVmlHYyCTTGD2jb8OUMgcIHitrlQrgjx5eyK8Pr4gbirklJMrJ8l7YdRe3putvPJaVnV9zSQUIpw3/ZTsUf7KA68+f7slR2c/kJmM96ZGbY0ozKgEMaC/yTo4dZJkLYRkT3V4TEKqqJQVYnoJfvEnH6w022KcvTqJBAT/k0MObpe5vdc6mxK6ULXiskOke8vd0sCgRKxPWdJL/dIKqxg+T3kY/nulgrzBQHYka9YZ6Ug2mHuIACj8qG+Hy8jP3hCp+2fqCY5O45yN6cyC4PbzSWRD+L4MtMxKgmFSY9E/xauO70A2UlMxyZ4aAAs74/CPk7BYeKWIkz06uRTQjeADzXoRQGqq2RnZeEvabxt61Bxx+xiOFSEEquAU2OR9lcMbZ4/eWdMlyS54gA3xchSj2qw/pwuj1AKvQ9jHq1A99KqmI0DRexPa9vbTVeYUvI6DQB8YeLWj2x9Ge0MNxPci+g72iCygJWyJLpyotM2o/zsmvvjQpSDXNTjZv5kxistPs1dPX6/08wnxbBqez77GB1DcoRZyZBolQDYmmD0Rbwt8hmMW6gtRWB4ZcT88lUflTksoy2IilhkA=
+  app: kettera-kvartetti
+  on:
+    repo: HenkkaL/KetteraKvartetti
