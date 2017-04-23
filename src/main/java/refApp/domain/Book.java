@@ -1,8 +1,16 @@
 package refApp.domain;
 
+//import javax.persistence.Entity;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 /**
  * A class for book reference.
  */
+
+@Entity
+@DiscriminatorValue(value = "book")
 public class Book extends Reference {
 
     /**
@@ -26,10 +34,12 @@ public class Book extends Reference {
         super(title, author, publisher, year, month, edition, volume, series, address, note, referenceId);
     }
 
+    Book() {
+    }
     //method now covers the required fields, but it will be expanded later to add the optional data
     @Override
     public String toString() {
-        String ret = "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}\n}\n";
+//        String ret = "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}\n}\n";
         // if (getPages != null) {lisää tieto sivuista} ret += ....
 
         return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";

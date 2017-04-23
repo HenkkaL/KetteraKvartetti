@@ -3,9 +3,28 @@ package refApp.domain;
 /**
  * An abstract class for references.
  */
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "reference_type")
 public abstract class Reference {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
     protected String title;
+    @ManyToOne
     protected Author author;
     protected String publisher;
     protected String year;
@@ -25,14 +44,18 @@ public abstract class Reference {
 
     /**
      * Get a printable "pretty" string of the references attributes.
-     * 
+     *
      * @return the String
      */
     public abstract String getPrettyString();
-    
+
     /**
      * Constructor model with all possible fields used in references.
      */
+    
+    Reference() {
+    }
+    
     public Reference(String title, Author author, String publisher, String year, String month, String journal, String volume, String number, String series, String edition, String editor, String inproceedingsBookTitle, String organization, String pages, String address, String note, String referenceId) {
         this.title = title;
         this.author = author;
@@ -185,11 +208,11 @@ public abstract class Reference {
     protected boolean isSet(String parameter) {
         return (parameter != null & parameter.length() > 0);
     }
-    
+
     protected String getAuthorAndTitle() {
         return this.author + ". " + this.title + ". ";
     }
-    
+
     protected String getAttributeWithComma(String parameter) {
         return getAttributeWithCharacter(parameter, ',');
     }
@@ -197,7 +220,7 @@ public abstract class Reference {
     protected String getAttributeWithPeriod(String parameter) {
         return getAttributeWithCharacter(parameter, '.');
     }
-    
+
     protected String getAttributeWithCharacter(String parameter, char character) {
         return parameter + character + " ";
     }

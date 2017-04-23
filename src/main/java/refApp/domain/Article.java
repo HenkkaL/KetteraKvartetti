@@ -1,8 +1,13 @@
 package refApp.domain;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 /**
  * A class for article reference.
  */
+@Entity
+@DiscriminatorValue(value = "article")
 public class Article extends Reference {
 
     /**
@@ -24,6 +29,8 @@ public class Article extends Reference {
         super(title, author, journal, year, month, volume, number, pages, note, referenceId);
     }
 
+    Article() {
+    }
 //    private String hasVolume() {
 //        String ret = "";
 //        

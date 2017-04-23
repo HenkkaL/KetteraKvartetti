@@ -2,18 +2,27 @@ package refApp.services;
 
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import refApp.domain.Article;
 import refApp.domain.Author;
 import refApp.domain.Book;
 import refApp.domain.Inproceedings;
 import refApp.domain.Reference;
+import refApp.repositories.AuthorRepository;
+import refApp.repositories.ReferenceRepository;
 
 /**
  * Service class for references
  */
 @Service
 public class ReferenceService {
+
+    @Autowired
+    private ReferenceRepository referenceRepository;
+
+    @Autowired
+    private AuthorRepository authorRepository;
 
     /**
      * Method for adding a reference
@@ -34,6 +43,14 @@ public class ReferenceService {
                 allReferences.add(new Inproceedings(params.get("title"), new Author(params.get("author")), params.get("book_title"), params.get("year"), params.get("month"), params.get("editor"), params.get("volume"), params.get("series"), params.get("pages_start").length() > 0 ? formPageNo(params.get("pages_start"), params.get("pages_end")) : "", params.get("organization"), params.get("publisher"), params.get("address"), params.get("note"), params.get("reference_id")));
                 break;
         }
+    }
+
+    public void saveReference(Reference ref) {
+        Author a = ref.getAuthor();
+//        if(authorRepository.findByName(a.getName()) == null) {
+            authorRepository.save(a);
+//        }
+        this.referenceRepository.save(ref);
     }
 
     private String formPageNo(String start, String end) {
