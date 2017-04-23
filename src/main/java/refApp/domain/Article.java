@@ -29,6 +29,9 @@ public class Article extends Reference {
         super(title, author, journal, year, month, volume, number, pages, note, referenceId);
     }
 
+    /**
+     * A constructor needed by the database.
+     */
     Article() {
     }
 //    private String hasVolume() {

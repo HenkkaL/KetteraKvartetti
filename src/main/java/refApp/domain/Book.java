@@ -34,6 +34,9 @@ public class Book extends Reference {
         super(title, author, publisher, year, month, edition, volume, series, address, note, referenceId);
     }
 
+    /**
+     * A constructor needed by the database.
+     */
     Book() {
     }
     //method now covers the required fields, but it will be expanded later to add the optional data

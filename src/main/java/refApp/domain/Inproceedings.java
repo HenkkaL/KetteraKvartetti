@@ -7,7 +7,7 @@ import javax.persistence.Entity;
  * A class for Inproceedings reference.
  */
 @Entity
-@DiscriminatorValue(value = "improceedings")
+@DiscriminatorValue(value = "inproceedings")
 public class Inproceedings extends Reference {
 
     /**
@@ -31,7 +31,10 @@ public class Inproceedings extends Reference {
     public Inproceedings(String title, Author author, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId) {
         super(title, author, bookTitle, year, month, editor, volume, series, pages, organization, publisher, address, note, referenceId);
     }
-    
+
+    /**
+     * A constructor needed by the database.
+     */
     Inproceedings() {
     }
 
@@ -54,7 +57,7 @@ public class Inproceedings extends Reference {
             builder.append(super.getAttributeWithComma(super.publisher));
         }
         builder.append(super.getAttributeWithPeriod(super.year));
-        
+
         return builder.toString();
     }
 

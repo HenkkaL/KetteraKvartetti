@@ -18,6 +18,9 @@ public class Author {
         this.name = authorName;
     }
 
+    /**
+     * A constructor needed by the database.
+     */
     Author() {
     }
 
