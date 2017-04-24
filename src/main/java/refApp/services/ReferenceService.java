@@ -11,6 +11,7 @@ import refApp.domain.Inproceedings;
 import refApp.domain.Reference;
 import refApp.repositories.AuthorRepository;
 import refApp.repositories.ReferenceRepository;
+import refApp.services.formatters.BibTeXFormatter;
 
 /**
  * Service class for references
@@ -32,15 +33,18 @@ public class ReferenceService {
      * @param params user given values for a reference
      */
     public void addReference(List<Reference> allReferences, Map<String, String> params) {
+        BibTeXFormatter formatter = new BibTeXFormatter();
+        String id=formatter.generateId(params, referenceRepository);
+        
         switch (params.get("type")) {
             case "article":
-                saveReference(new Article(params.get("title"), new Author(params.get("author")), params.get("journal"), params.get("year"), params.get("month"), params.get("volume"), params.get("number"), params.get("pages_start").length() > 0 ? formPageNo(params.get("pages_start"), params.get("pages_end")) : "", params.get("note"), params.get("reference_id")));
+                saveReference(new Article(params.get("title"), new Author(params.get("author")), params.get("journal"), params.get("year"), params.get("month"), params.get("volume"), params.get("number"), params.get("pages_start").length() > 0 ? formPageNo(params.get("pages_start"), params.get("pages_end")) : "", params.get("note"), id));
                 break;
             case "book":
-                saveReference(new Book(params.get("title"), new Author(params.get("author")), params.get("publisher"), params.get("year"), params.get("month"), params.get("edition"), params.get("volume"), params.get("series"), params.get("address"), params.get("note"), params.get("reference_id")));
+                saveReference(new Book(params.get("title"), new Author(params.get("author")), params.get("publisher"), params.get("year"), params.get("month"), params.get("edition"), params.get("volume"), params.get("series"), params.get("address"), params.get("note"), id));
                 break;
             case "inproceedings":
-                saveReference(new Inproceedings(params.get("title"), new Author(params.get("author")), params.get("book_title"), params.get("year"), params.get("month"), params.get("editor"), params.get("volume"), params.get("series"), params.get("pages_start").length() > 0 ? formPageNo(params.get("pages_start"), params.get("pages_end")) : "", params.get("organization"), params.get("publisher"), params.get("address"), params.get("note"), params.get("reference_id")));
+                saveReference(new Inproceedings(params.get("title"), new Author(params.get("author")), params.get("book_title"), params.get("year"), params.get("month"), params.get("editor"), params.get("volume"), params.get("series"), params.get("pages_start").length() > 0 ? formPageNo(params.get("pages_start"), params.get("pages_end")) : "", params.get("organization"), params.get("publisher"), params.get("address"), params.get("note"), id));
                 break;
         }
     }

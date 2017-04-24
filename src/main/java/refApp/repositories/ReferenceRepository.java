@@ -15,4 +15,5 @@ import refApp.domain.Reference;
  */
 public interface ReferenceRepository extends JpaRepository<Reference, Long>{
     List<Reference> findByTitle(String title);
+    Reference findByReferenceId(String id);
 }

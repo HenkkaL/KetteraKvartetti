@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import refApp.domain.Reference;
+import refApp.repositories.ReferenceRepository;
 
 /**
  * Includes helper methods to format input to BibTeX form.
@@ -80,5 +82,37 @@ public class BibTeXFormatter implements Formatter {
             fw.write("\n");
         }
         fw.close();
+    }
+
+    /**
+     * Generates id for reference
+     *
+     * @param params Reference parameters
+     * @param referenceRepository Repository for references
+     * @return unique id
+     */
+    public String generateId(Map<String, String> params, ReferenceRepository referenceRepository) {
+        String name = formAuthorName(params.get("author"));
+        String tempId = name + params.get("year");
+        String id = tempId;
+        char idChar = 'a';
+
+        while (idReserved(id, referenceRepository)) {
+            id = tempId + idChar;
+            idChar++;
+        }
+        return id;
+    }
+
+    private String formAuthorName(String name) {
+        String[] nameArray = name.split(" ");
+        char firstLetterOfFirstName = nameArray[0].charAt(0);
+        String lastName = nameArray[nameArray.length - 1];
+
+        return firstLetterOfFirstName + "." + lastName;
+    }
+
+    private boolean idReserved(String id, ReferenceRepository referenceRepository) {
+        return referenceRepository.findByReferenceId(id) != null;
     }
 }
