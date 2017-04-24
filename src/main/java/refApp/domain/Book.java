@@ -39,13 +39,22 @@ public class Book extends Reference {
      */
     Book() {
     }
+    
+    public String printEdition() {
+        String ret = "";
+        
+        if(super.isSet(this.getEdition())) {
+            ret = ",\nedition = {" + this.getEdition() + "}";
+        }
+        return ret;
+    }
     //method now covers the required fields, but it will be expanded later to add the optional data
     @Override
     public String toString() {
 //        String ret = "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}\n}\n";
         // if (getPages != null) {lisää tieto sivuista} ret += ....
 
-        return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
+        return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}" + this.printEdition() + ",\n}\n";
     }
 
     @Override

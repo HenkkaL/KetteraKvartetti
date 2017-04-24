@@ -47,10 +47,14 @@ public class ReferenceService {
 
     public void saveReference(Reference ref) {
         Author a = ref.getAuthor();
-//        if(authorRepository.findByName(a.getName()) == null) {
-            authorRepository.save(a);
+//        if(!authorRepository.findAll().isEmpty() && authorRepository.findByName(a.getName()) == null) {
+        authorRepository.save(a);
 //        }
         this.referenceRepository.save(ref);
+    }
+
+    public ReferenceRepository getReferenceRepo() {
+        return this.referenceRepository;
     }
 
     private String formPageNo(String start, String end) {

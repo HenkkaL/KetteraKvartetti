@@ -103,6 +103,7 @@ public class BookTest {
                 + "title = {Eka Kirja},\n"
                 + "year = {2001},\n"
                 + "publisher = {Tammi},\n"
+                + "edition = {1.painos},\n"
                 + "}\n"
                 + "";
         assertEquals(expected, book.toString());
