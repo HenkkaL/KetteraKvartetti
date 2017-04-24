@@ -1,3 +1,6 @@
+var AUTHOR_ID = 1;
+var TAG_ID = 0;
+
 $(document).ready(function() {
     setVisibleAttributes();
 
@@ -9,12 +12,22 @@ $(document).ready(function() {
         this.setCustomValidity("");
     });
     
+    $("#input_tag").on('input', function() {
+        console.log("change");
+        console.log($(this).val());
+        var inputLen = $(this).val().length;
+        if (inputLen > 0) {
+            $("#add_tag_button").prop("disabled", false);
+        } else {
+            $("#add_tag_button").prop("disabled", true);
+        }
+    });
+    
     $("form").submit(function(event) {
         var selectedType = $("#type").val();
         
         if (selectedType === "article" || selectedType === "inproceedings") {
-            pagesOk = checkPages(selectedType);
-            console.log("häröhärö");
+            var pagesOk = checkPages(selectedType);
             if (!pagesOk) {
                 $("#pages_start")[0].setCustomValidity("Tarkista sivunumerot.");
                 $("#pages_end")[0].setCustomValidity("Tarkista sivunumerot.");
@@ -26,6 +39,48 @@ $(document).ready(function() {
         }
     });
 });
+
+function addTag() {
+    TAG_ID++;
+    var tagId = "tag" + TAG_ID;
+    var li = createElement("li").text($("#input_tag").val());
+    var input = createElement("input");
+    input.attr("value", $("#input_tag").val());
+    input.attr("id", tagId);
+    $("#tag_list").append(li);
+    $("#tag_inputs").append(input);
+    $("#input_tag").val("");
+    $("#add_tag_button").prop("disabled", true);
+}
+
+function addAuthorField() {
+    var authorTable = $("#author_table");
+    var newAuthorRow = createNewAuthorRow();
+    authorTable.append(newAuthorRow);
+};
+
+function createNewAuthorRow() {
+    AUTHOR_ID++;
+    var inputId = "author" + AUTHOR_ID;
+    var tr = createElement("tr");
+    var labelTd = createElement("td");
+    var label = createElement("label").text("Tekijä " + AUTHOR_ID);
+    label.attr("for", inputId);
+    var inputTd = createElement("td");
+    var input = createElement("input");
+    input.attr("id", inputId);
+    input.attr("name", inputId);
+    input.attr("type", "text");
+    inputTd.append(input);
+    labelTd.append(label);
+    tr.append(labelTd);
+    tr.append(inputTd);
+    return tr;
+}
+
+function createElement(elementType) {
+    return $("<" + elementType + "></" + elementType + ">");
+}
 
 function setVisibleAttributes() {
     var selectedType = $("#type").val();

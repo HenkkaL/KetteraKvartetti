@@ -15,6 +15,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import refApp.domain.Article;
 import refApp.domain.Author;
 import refApp.domain.Book;
@@ -25,7 +29,10 @@ import refApp.domain.Reference;
  *
  * @author mlyra
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ReferenceServiceTest {
+    @Autowired
     ReferenceService refServ;
     ArrayList<Reference> allRef;
     Map<String, String> params;
@@ -43,7 +50,7 @@ public class ReferenceServiceTest {
     
     @Before
     public void setUp() {
-        refServ = new ReferenceService();
+//        refServ = new ReferenceService();
         allRef = new ArrayList();
         params = new HashMap<String, String>();
     }
@@ -70,7 +77,7 @@ public class ReferenceServiceTest {
         params.put("note", "Some note");
         params.put("reference_id", "RefId");
         refServ.addReference(allRef, params);
-        Article art = (Article) allRef.get(0);
+        Article art = (Article) refServ.getReferenceRepo().findByTitle("Article Title").get(0);
         assertEquals("Article Title", art.getTitle());
     }
     
@@ -88,7 +95,7 @@ public class ReferenceServiceTest {
         params.put("address", "Book Address");        
         params.put("reference_id", "RefId");
         refServ.addReference(allRef, params);
-        Book book = (Book) allRef.get(0);
+        Book book = (Book) refServ.getReferenceRepo().findByTitle("Book Title").get(0);
         assertEquals("Book Title", book.getTitle());
     }    
     
@@ -112,7 +119,7 @@ public class ReferenceServiceTest {
         params.put("note", "Some note");
         params.put("reference_id", "RefId");
         refServ.addReference(allRef, params);
-        Inproceedings inpro = (Inproceedings) allRef.get(0);
+        Inproceedings inpro = (Inproceedings) refServ.getReferenceRepo().findByTitle("Inproceedings Title").get(0);
         assertEquals("Inproceedings Title", inpro.getTitle());
     } 
     
