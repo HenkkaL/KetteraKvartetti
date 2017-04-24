@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import refApp.services.ReferenceService;
 
 /**
  *
@@ -27,6 +28,9 @@ public class ReferenceControllerTest {
     @Autowired
     private WebApplicationContext webAppContext;
 
+    @Autowired
+    ReferenceService refServ;
+    
     private MockMvc mockMvc;
 
     public ReferenceControllerTest() {
