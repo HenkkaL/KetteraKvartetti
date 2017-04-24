@@ -19,7 +19,7 @@ public class Stepdefs {
 
     WebDriver driver = new HtmlUnitDriver();
 //    WebDriver driver = new ChromeDriver();
-    String baseUrl = "http://localhost:8080";
+    String baseUrl = "http://kettera-kvartetti-test.herokuapp.com";
 
     @Before
     public void alustus() {
