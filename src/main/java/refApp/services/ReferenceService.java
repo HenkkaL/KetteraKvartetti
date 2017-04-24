@@ -1,6 +1,5 @@
 package refApp.services;
 
-import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,11 +27,9 @@ public class ReferenceService {
     /**
      * Method for adding a reference
      *
-     * @param allReferences list where the references are added // HUOM! Tämä
-     * muutettava kun tietokantaan tallennus toiminnassa
      * @param params user given values for a reference
      */
-    public void addReference(List<Reference> allReferences, Map<String, String> params) {
+    public void addReference(Map<String, String> params) {
         BibTeXFormatter formatter = new BibTeXFormatter();
         String id=formatter.generateId(params, referenceRepository);
         

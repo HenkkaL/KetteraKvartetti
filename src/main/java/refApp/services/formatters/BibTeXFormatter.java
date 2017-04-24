@@ -104,6 +104,7 @@ public class BibTeXFormatter implements Formatter {
         return id;
     }
 
+    // Forms author name for generateId
     private String formAuthorName(String name) {
         String[] nameArray = name.split(" ");
         char firstLetterOfFirstName = nameArray[0].charAt(0);
@@ -112,6 +113,7 @@ public class BibTeXFormatter implements Formatter {
         return firstLetterOfFirstName + "." + lastName;
     }
 
+    // Checks if reference id is already reserved for generateId
     private boolean idReserved(String id, ReferenceRepository referenceRepository) {
         return referenceRepository.findByReferenceId(id) != null;
     }

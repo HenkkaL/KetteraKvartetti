@@ -6,10 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Class for author
+ * Class for tagging references
  */
 @Entity
-public class Author {
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,40 +17,40 @@ public class Author {
     private String name;
 
     /**
-     * Constructs author with name
-     * @param authorName 
+     * Constructs tag with tag name
+     * @param name 
      */
-    public Author(String authorName) {
-        this.name = authorName;
+    public Tag(String name) {
+        this.name = name;
     }
 
     /**
      * A constructor needed by the database.
      */
-    Author() {
+    public Tag() {
     }
 
     /**
      * 
-     * @return Name of the author
+     * @return tag name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the name for author
-     * @param n Name 
+     * Sets tag name
+     * @param name 
      */
-    public void setName(String n) {
-        this.name = n;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
      * 
-     * @return Author in String format
+     * @return tag name in string format
      */
-    @Override
+     @Override
     public String toString() {
         return this.getName();
     }

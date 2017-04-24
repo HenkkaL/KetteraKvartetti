@@ -3,7 +3,6 @@ package refApp.controllers;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,7 @@ public class ReferenceController {
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String add(@RequestParam Map<String, String> params) {
-        this.referenceService.addReference(this.referenceService.getReferenceRepo().findAll(), params);
+        this.referenceService.addReference(params);
         return "redirect:/list_all";
     }
 

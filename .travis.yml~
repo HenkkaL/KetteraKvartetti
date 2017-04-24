@@ -9,5 +9,4 @@ deploy:
   on:
     repo: HenkkaL/KetteraKvartetti
 
-services:
-  - memcached
+
