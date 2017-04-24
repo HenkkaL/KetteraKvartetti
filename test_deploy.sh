@@ -20,7 +20,7 @@ echo "Running Cucumber tests..."
 cd Testeri
 echo "Changed working directory to $(pwd)."
 
-gradle test
+gradle cleanTest test
 
 echo
 echo "Done."
