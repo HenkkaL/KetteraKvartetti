@@ -23,7 +23,7 @@ public class BookTest {
 
     @Before
     public void setUp() {
-        book = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "1.painos", "1", "Kirjasarja", "Kotikatu", "Satunnaista", "TK01");      
+        book = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "Edition", "1", "Series", "Address", "Satunnaista", "TK01");      
     }
 
     @After
@@ -63,7 +63,7 @@ public class BookTest {
     @Test
     public void constructorSetsEditionCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("1.painos", book.getEdition());
+        assertEquals("Edition", book.getEdition());
     }
     
     @Test
@@ -75,13 +75,13 @@ public class BookTest {
     @Test
     public void constructorSetsSeriesCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Kirjasarja", book.getSeries());
+        assertEquals("Series", book.getSeries());
     }
 
     @Test
     public void constructorSetsAddressCorrectly() {
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Kotikatu", book.getAddress());
+        assertEquals("Address", book.getAddress());
     }
     
      @Test
@@ -102,8 +102,12 @@ public class BookTest {
                 + "author = {Teppo Kirjailija},\n"
                 + "title = {Eka Kirja},\n"
                 + "year = {2001},\n"
+                + "month = {12},\n" 
                 + "publisher = {Tammi},\n"
-                + "edition = {1.painos},\n"
+                + "volume = {1},\n"
+                + "series = {Series},\n"
+                + "address = {Address},\n"
+                + "edition = {Edition},\n"
                 + "}\n"
                 + "";
         assertEquals(expected, book.toString());
@@ -111,7 +115,7 @@ public class BookTest {
     
     @Test
     public void testBookGetPrettyString() {
-        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Kotikatu, 2001.";
+        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Address, 2001.";
         assertEquals(expected, book.getPrettyString());
     }
 }

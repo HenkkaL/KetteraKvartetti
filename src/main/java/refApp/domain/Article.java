@@ -54,10 +54,25 @@ public class Article extends Reference {
 // publisher = {ACM},
 // address = {New York, NY, USA}
 // }
+    
+    private String printJournal() {
+        String ret = "";
+        
+        if(super.isSet(this.getJournal())) {
+            ret = "\njournal = {" + this.getJournal() + "},";
+        }
+        return ret;
+    }    
 
+    /**
+     * Method for generating article-type reference metadata into bibtex syntax
+     */       
     @Override
     public String toString() {
-        return "@article{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
+        return "@article{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() 
+                + "},\ntitle = {" + this.getTitle() + "}," + this.printJournal() + this.printVolume() 
+                + this.printNumber() +  "\nyear = {" + this.getYear() + "}," + this.printMonth() + this.printPages()
+                + this.printNote() + "\n}\n";
     }
 
     @Override

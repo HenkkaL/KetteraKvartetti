@@ -44,17 +44,20 @@ public class Book extends Reference {
         String ret = "";
         
         if(super.isSet(this.getEdition())) {
-            ret = ",\nedition = {" + this.getEdition() + "}";
+            ret = "\nedition = {" + this.getEdition() + "},";
         }
         return ret;
     }
-    //method now covers the required fields, but it will be expanded later to add the optional data
+    
+    /**
+     * Method for generating book-type reference metadata into bibtex syntax
+     */    
     @Override
     public String toString() {
-//        String ret = "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}\n}\n";
-        // if (getPages != null) {lisää tieto sivuista} ret += ....
-
-        return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "}" + this.printEdition() + ",\n}\n";
+        return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},"
+                + "\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "}," + this.printMonth() 
+                + "\npublisher = {" + this.getPublisher() + "}," + this.printVolume()
+                + this.printSeries() + this.printAddress() + this.printEdition() + "\n}\n";
     }
 
     @Override

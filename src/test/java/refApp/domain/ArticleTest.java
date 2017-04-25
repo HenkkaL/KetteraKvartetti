@@ -94,8 +94,13 @@ public class ArticleTest {
         String expected = "@article{ReferenceId,\n"
                         + "author = {Author Surname},\n"
                         + "title = {Article Title},\n"
+                        + "journal = {Journal},\n"
+                        + "volume = {5},\n"
+                        + "number = {3},\n"
                         + "year = {2017},\n"
-                        + "publisher = {null},\n"
+                        + "month = {03},\n"
+                        + "pages = {2-3},\n"
+                        + "note = {Note},\n"
                         + "}\n"
                         + "";
         assertEquals(expected, art.toString());
