@@ -222,7 +222,6 @@ public abstract class Reference {
     protected String getAttributeWithCharacter(String parameter, char character) {
         return parameter + character + " ";
     }
-
     
     protected String printAddress() {
         String ret = "";
@@ -231,6 +230,14 @@ public abstract class Reference {
         }
         return ret;
     }
+    
+    protected String printAuthor() {
+        String ret = "";
+        if (this.isSet(this.getAuthor().getName())) {
+            ret = "\nauthor = {" + this.getAuthor().getName() + "},";
+        }
+        return ret;
+    }    
     
     protected String printMonth() {
         String ret = "";
@@ -255,12 +262,43 @@ public abstract class Reference {
         }
         return ret;
     }
+ 
+    protected String printPages() {
+        String ret = "";
+        if (this.isSet(this.getPages())) {
+            ret = "\npages = {" + this.getPages() + "},";
+        }
+        return ret;
+    }   
     
+    protected String printPublisher() {
+        String ret = "";
+        if (this.isSet(this.getPublisher())) {
+            ret = "\npublisher = {" + this.getPublisher() + "},";
+        }
+        return ret;
+    }    
+
+    protected String printReferenceId() {
+        String ret = "";
+        if (this.isSet(this.getReferenceId())) {
+            ret = "{" + this.getReferenceId()+ ",";
+        }
+        return ret;
+    }         
 
     protected String printSeries() {
         String ret = "";
         if (this.isSet(this.getSeries())) {
             ret = "\nseries = {" + this.getSeries() + "},";
+        }
+        return ret;
+    }    
+    
+    protected String printTitle() {
+        String ret = "";
+        if (this.isSet(this.getTitle())) {
+            ret = "\ntitle = {" + this.getTitle() + "},";
         }
         return ret;
     }    
@@ -273,11 +311,13 @@ public abstract class Reference {
         return ret;
     }   
     
-    protected String printPages() {
+    protected String printYear() {
         String ret = "";
-        if (this.isSet(this.getPages())) {
-            ret = "\npages = {" + this.getPages() + "},";
+        if (this.isSet(this.getYear())) {
+            ret = "\nyear = {" + this.getYear() + "},";
         }
         return ret;
-    }     
+    }    
+    
+
 }

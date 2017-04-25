@@ -69,10 +69,17 @@ public class Article extends Reference {
      */       
     @Override
     public String toString() {
-        return "@article{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() 
-                + "},\ntitle = {" + this.getTitle() + "}," + this.printJournal() + this.printVolume() 
-                + this.printNumber() +  "\nyear = {" + this.getYear() + "}," + this.printMonth() + this.printPages()
-                + this.printNote() + "\n}\n";
+        return "@article" + this.printReferenceId() 
+                + this.printAuthor() 
+                + this.printTitle()
+                + this.printJournal()
+                + this.printVolume() 
+                + this.printNumber()
+                + this.printYear()
+                + this.printMonth()
+                + this.printPages()
+                + this.printNote()
+                + "\n}\n";
     }
 
     @Override

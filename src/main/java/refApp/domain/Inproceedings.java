@@ -68,9 +68,9 @@ public class Inproceedings extends Reference {
      */       
     @Override
     public String toString() {
-        return "@Inproceedings{" + this.getReferenceId() + ","
-                + "\nauthor = {" + this.getAuthor().toString() + "},"
-                + "\ntitle = {" + this.getTitle() + "},"
+        return "@Inproceedings" + this.printReferenceId() 
+                + this.printAuthor()
+                + this.printTitle()
                 + this.printInproceedingsBookTitle() 
                 + this.printEditor() 
                 + this.printVolume() 
@@ -78,8 +78,8 @@ public class Inproceedings extends Reference {
                 + this.printPages()
                 + this.printAddress()
                 + this.printOrganization()
-                + "\npublisher = {" + this.getPublisher() + "},"
-                + "\nyear = {" + this.getYear() + "},"
+                + this.printPublisher()
+                + this.printYear()
                 + this.printMonth()
                 + this.printNote()
                 + "\n}\n";

@@ -54,10 +54,17 @@ public class Book extends Reference {
      */    
     @Override
     public String toString() {
-        return "@book{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},"
-                + "\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "}," + this.printMonth() 
-                + "\npublisher = {" + this.getPublisher() + "}," + this.printVolume()
-                + this.printSeries() + this.printAddress() + this.printEdition() + "\n}\n";
+        return "@book"+ this.printReferenceId()
+                + this.printAuthor()
+                + this.printTitle()
+                + this.printYear()
+                + this.printMonth() 
+                + this.printPublisher()
+                + this.printVolume()
+                + this.printSeries()
+                + this.printAddress()
+                + this.printEdition()
+                + "\n}\n";
     }
 
     @Override

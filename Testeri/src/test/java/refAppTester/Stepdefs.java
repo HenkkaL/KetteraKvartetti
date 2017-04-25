@@ -5,6 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.concurrent.TimeUnit;
+import junit.framework.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import static org.junit.Assert.*;
@@ -20,7 +21,7 @@ public class Stepdefs {
 
     WebDriver driver = new HtmlUnitDriver();
 //    WebDriver driver = new ChromeDriver();
-    String baseUrl = "http://kettera-kvartetti-test.herokuapp.com";
+  String baseUrl = "http://kettera-kvartetti-test.herokuapp.com";
 //  String baseUrl = "http://localhost:8080";
 
     @Before
@@ -28,6 +29,11 @@ public class Stepdefs {
         driver.get(baseUrl);
     }
 
+    @Given("^frontpage is selected$")
+    public void fronpage_is_selected() throws Throwable {
+        driver.get(baseUrl);
+    }    
+    
     @Given("^add new \"([^\\\"]*)\" is selected$")
     public void add_new_is_selected(String refType) throws Throwable {
         driver.get(baseUrl);
@@ -38,6 +44,13 @@ public class Stepdefs {
     //   public void correct_referenceId_is_given(String referenceId) {
     //       this.addReferenceId(referenceId);
     //   }
+    
+    @When("^user selects the download link$")
+    public void select_download() {
+        driver.findElement(By.partialLinkText("Lataa")).click();
+        
+    }
+    
     @When("^correct title \"([^\"]*)\" is given")
     public void correct_title_is_given(String title) {
         this.addTitle(title);
@@ -131,6 +144,10 @@ public class Stepdefs {
     @Then("^page has content \"([^\"]*)\"")
     public void find_page_content_displayed(String content) throws Throwable {
         pageHasContent(content);
+    }
+    
+    @Then ("bibtex file is downloaded")
+    public void check_downloaded_file() {
     }
 
     @After
