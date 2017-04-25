@@ -345,4 +345,12 @@ public abstract class Reference {
         return ret;
     }
 
+    public String getTagsForHtml() {
+        StringBuilder builder = new StringBuilder();
+        for (Tag tag : tags) {
+            builder.append(tag);
+            builder.append(" ");
+        }
+        return builder.toString().trim();
+    }
 }

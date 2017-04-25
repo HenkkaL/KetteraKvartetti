@@ -13,8 +13,6 @@ $(document).ready(function() {
     });
     
     $("#input_tag").on('input', function() {
-        console.log("change");
-        console.log($(this).val());
         var inputLen = $(this).val().length;
         if (inputLen > 0) {
             $("#add_tag_button").prop("disabled", false);
