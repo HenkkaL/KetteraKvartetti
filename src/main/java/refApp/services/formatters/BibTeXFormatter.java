@@ -129,9 +129,14 @@ public class BibTeXFormatter implements Formatter {
     public List<Tag> addTags(Map<String, String> params) {
         List<Tag> tags = new ArrayList();
 
-        params.entrySet().stream().filter((param) -> (param.getKey().startsWith("tag"))).forEach((param) -> {
+        for (Map.Entry<String, String> param : params.entrySet()) {
+            if(param.getKey().startsWith("tag")){
             tags.add(new Tag(param.getValue()));
-        });
+            }
+        }
+//        params.entrySet().stream().filter((param) -> (param.getKey().startsWith("tag"))).forEach((param) -> {
+//            tags.add(new Tag(param.getValue()));
+//        });
 
         return tags;
     }
