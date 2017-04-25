@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import refApp.domain.Article;
 import refApp.domain.Author;
 import refApp.domain.Book;
@@ -40,7 +39,7 @@ public class ReferenceService {
     public void addReference(Map<String, String> params) {
         BibTeXFormatter formatter = new BibTeXFormatter();
         String id = formatter.generateId(params, referenceRepository);
-        List<Tag> tags=new ArrayList<>();
+        List<Tag> tags;
         tags = formatter.addTags(params);
 
         switch (params.get("type")) {
@@ -61,7 +60,6 @@ public class ReferenceService {
         saveTags(ref.getTags());
 
         this.referenceRepository.save(ref);
-
     }
 
     public void saveAuthor(Author a) {
