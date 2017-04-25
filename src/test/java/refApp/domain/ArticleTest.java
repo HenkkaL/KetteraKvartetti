@@ -103,7 +103,7 @@ public class ArticleTest {
     
     @Test
     public void testArticleGetPrettyString() {
-        String expected = "Author Surname. Article Title. Journal, 5(3):2-3, 2017. ";
+        String expected = "Author Surname. Article Title. Journal, 5(3):2-3, 2017.";
         assertEquals(expected, art.getPrettyString());
     }
        

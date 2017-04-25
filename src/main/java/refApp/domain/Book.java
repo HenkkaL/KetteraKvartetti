@@ -65,6 +65,6 @@ public class Book extends Reference {
             builder.append(super.getAttributeWithComma(super.address));
         }
         builder.append(super.getAttributeWithPeriod(super.year));
-        return builder.toString();
+        return builder.toString().trim();
     }
 }

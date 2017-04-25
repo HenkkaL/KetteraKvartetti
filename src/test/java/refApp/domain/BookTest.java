@@ -111,7 +111,7 @@ public class BookTest {
     
     @Test
     public void testBookGetPrettyString() {
-        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Kotikatu, 2001. ";
+        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Kotikatu, 2001.";
         assertEquals(expected, book.getPrettyString());
     }
 }

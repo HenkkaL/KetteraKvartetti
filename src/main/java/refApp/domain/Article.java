@@ -66,7 +66,7 @@ public class Article extends Reference {
         builder.append(super.getAttributeWithComma(super.journal));
         appendVolumeNumberAndPages(builder);
         builder.append(super.getAttributeWithPeriod(super.year));
-        return builder.toString();
+        return builder.toString().trim();
     }
 
     private void appendVolumeNumberAndPages(StringBuilder builder) {

@@ -58,7 +58,7 @@ public class Inproceedings extends Reference {
         }
         builder.append(super.getAttributeWithPeriod(super.year));
 
-        return builder.toString();
+        return builder.toString().trim();
     }
 
 }

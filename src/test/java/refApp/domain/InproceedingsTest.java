@@ -124,7 +124,7 @@ public class InproceedingsTest {
     
     @Test
     public void testInproGetPrettyString() {
-        String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017. ";
+        String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017.";
         assertEquals(expected, inpro.getPrettyString());
     }
        
