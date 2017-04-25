@@ -1,5 +1,7 @@
 package refApp.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,7 +25,14 @@ public class BookTest {
 
     @Before
     public void setUp() {
-        book = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "Edition", "1", "Series", "Address", "Satunnaista", "TK01");      
+
+        List<Tag> tags = new ArrayList<>();
+        tags.add(new Tag("Eka tagi"));
+        tags.add(new Tag("Toka tagi"));
+        tags.add(new Tag("Kolmas tagi"));
+        
+        book = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "Edition", "1", "Series", "Address", "Satunnaista", "TK01",tags);      
+
     }
 
     @After

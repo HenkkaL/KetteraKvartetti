@@ -5,6 +5,8 @@
  */
 package refApp.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,29 +19,34 @@ import static org.junit.Assert.*;
  * @author mlyra
  */
 public class ArticleTest {
+
     Article art;
-    
+
     public ArticleTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        art = new Article("Article Title", new Author("Author Surname"), "Journal", "2017", "03", "5", "3", "2-3", "Note", "ReferenceId");
+        List<Tag> tags = new ArrayList<>();
+        tags.add(new Tag("Eka tagi"));
+        tags.add(new Tag("Toka tagi"));
+        tags.add(new Tag("Kolmas tagi"));
+        art = new Article("Article Title", new Author("Author Surname"), "Journal", "2017", "03", "5", "3", "2-3", "Note", "ReferenceId", tags);
     }
-    
+
     @After
     public void tearDown() {
     }
 
- @Test
+    @Test
     public void constructorSetsCorrectTitle() {
         assertEquals("Article Title", art.getTitle());
     }
@@ -82,7 +89,7 @@ public class ArticleTest {
     @Test
     public void constructorSetsCorrectNote() {
         assertEquals("Note", art.getNote());
-    }   
+    }
 
     @Test
     public void constructorSetsCorrectReferenceId() {
@@ -105,12 +112,11 @@ public class ArticleTest {
                         + "";
         assertEquals(expected, art.toString());
     }
-    
+
     @Test
     public void testArticleGetPrettyString() {
         String expected = "Author Surname. Article Title. Journal, 5(3):2-3, 2017.";
         assertEquals(expected, art.getPrettyString());
     }
-       
-    
+
 }
