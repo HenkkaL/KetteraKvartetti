@@ -2,6 +2,7 @@ package refApp.domain;
 
 //import javax.persistence.Entity;
 
+import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -29,9 +30,10 @@ public class Book extends Reference {
      * full address for lesser-known publishers)
      * @param note Miscellaneous extra information
      * @param referenceId Reference id for the book
+     * @param tags Tags for reference
      */
-    public Book(String title, Author author, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId) {
-        super(title, author, publisher, year, month, edition, volume, series, address, note, referenceId);
+    public Book(String title, Author author, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId, List<Tag> tags) {
+        super(title, author, publisher, year, month, edition, volume, series, address, note, referenceId, tags);
     }
 
     /**

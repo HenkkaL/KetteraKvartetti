@@ -1,5 +1,6 @@
 package refApp.domain;
 
+import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -27,9 +28,10 @@ public class Inproceedings extends Reference {
      * @param address Publisher's address
      * @param note Miscellaneous extra information
      * @param referenceId Reference id for the publication
+     * @param tags Tags for reference
      */
-    public Inproceedings(String title, Author author, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId) {
-        super(title, author, bookTitle, year, month, editor, volume, series, pages, organization, publisher, address, note, referenceId);
+    public Inproceedings(String title, Author author, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
+        super(title, author, bookTitle, year, month, editor, volume, series, pages, organization, publisher, address, note, referenceId, tags);
     }
 
     /**

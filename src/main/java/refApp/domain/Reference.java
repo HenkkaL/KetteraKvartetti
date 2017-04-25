@@ -3,6 +3,8 @@ package refApp.domain;
 /**
  * An abstract class for references.
  */
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -11,8 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -41,6 +43,8 @@ public abstract class Reference {
     protected String address;
     protected String note;
     protected String referenceId;
+    @ManyToMany
+    protected List<Tag> tags;
 
     /**
      * Get a printable "pretty" string of the references attributes.
@@ -52,11 +56,11 @@ public abstract class Reference {
     /**
      * Constructor model with all possible fields used in references.
      */
-    
     Reference() {
+        
     }
-    
-    public Reference(String title, Author author, String publisher, String year, String month, String journal, String volume, String number, String series, String edition, String editor, String inproceedingsBookTitle, String organization, String pages, String address, String note, String referenceId) {
+
+    public Reference(String title, Author author, String publisher, String year, String month, String journal, String volume, String number, String series, String edition, String editor, String inproceedingsBookTitle, String organization, String pages, String address, String note, String referenceId, List<Tag> tags) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -74,6 +78,7 @@ public abstract class Reference {
         this.address = address;
         this.note = note;
         this.referenceId = referenceId;
+        this.tags = tags;
     }
 
     /**
@@ -90,9 +95,10 @@ public abstract class Reference {
      * @param address Publisher's address
      * @param note Miscellaneous extra information
      * @param referenceId Reference id for the publication
+     * @param tags Tags for reference
      */
-    public Reference(String title, Author author, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId) {
-        this(title, author, publisher, year, month, null, volume, null, series, edition, null, null, null, null, address, note, referenceId);
+    public Reference(String title, Author author, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId, List<Tag> tags) {
+        this(title, author, publisher, year, month, null, volume, null, series, edition, null, null, null, null, address, note, referenceId, tags);
     }
 
     /**
@@ -109,9 +115,10 @@ public abstract class Reference {
      * @param pages Page numbers
      * @param note Miscellaneous extra information
      * @param referenceId Reference id for the article
+     * @param tags Tags for reference
      */
-    public Reference(String title, Author author, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId) {
-        this(title, author, null, year, month, journal, volume, number, null, null, null, null, null, pages, null, note, referenceId);
+    public Reference(String title, Author author, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId, List<Tag> tags) {
+        this(title, author, null, year, month, journal, volume, number, null, null, null, null, null, pages, null, note, referenceId, tags);
     }
 
     /**
@@ -132,9 +139,10 @@ public abstract class Reference {
      * @param address Publisher's address
      * @param note Miscellaneous extra information
      * @param referenceId Reference id for the publication
+     * @param tags Reference tags
      */
-    public Reference(String title, Author author, String inproceedingsBookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId) {
-        this(title, author, publisher, year, month, null, volume, null, series, null, editor, inproceedingsBookTitle, organization, pages, address, note, referenceId);
+    public Reference(String title, Author author, String inproceedingsBookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
+        this(title, author, publisher, year, month, null, volume, null, series, null, editor, inproceedingsBookTitle, organization, pages, address, note, referenceId, tags);
     }
 
     public Author getAuthor() {
@@ -203,6 +211,17 @@ public abstract class Reference {
 
     public String getVolume() {
         return volume;
+    }
+
+    public List<Tag> getTags() {
+        if (tags == null) {
+            tags = new ArrayList<>();
+        }
+        return tags;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     protected boolean isSet(String parameter) {

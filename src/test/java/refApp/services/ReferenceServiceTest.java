@@ -5,7 +5,6 @@
  */
 package refApp.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.After;
@@ -21,7 +20,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import refApp.domain.Article;
 import refApp.domain.Book;
 import refApp.domain.Inproceedings;
-import refApp.domain.Reference;
 
 /**
  *
@@ -72,6 +70,7 @@ public class ReferenceServiceTest {
         params.put("pages_end", "2");
         params.put("note", "Some note");
         params.put("reference_id", "RefId");
+        params.put("tag1", "eka tagi");
         refServ.addReference(params);
         Article art = (Article) refServ.getReferenceRepo().findByTitle("Article Title").get(0);
         assertEquals("Article Title", art.getTitle());
@@ -90,6 +89,7 @@ public class ReferenceServiceTest {
         params.put("series", "Series");
         params.put("address", "Book Address");        
         params.put("reference_id", "RefId");
+        params.put("tag1", "eka tagi");
         refServ.addReference(params);
         Book book = (Book) refServ.getReferenceRepo().findByTitle("Book Title").get(0);
         assertEquals("Book Title", book.getTitle());
@@ -114,6 +114,7 @@ public class ReferenceServiceTest {
         params.put("address", "Addr");
         params.put("note", "Some note");
         params.put("reference_id", "RefId");
+        params.put("tag1", "eka tagi");
         refServ.addReference(params);
         Inproceedings inpro = (Inproceedings) refServ.getReferenceRepo().findByTitle("Inproceedings Title").get(0);
         assertEquals("Inproceedings Title", inpro.getTitle());

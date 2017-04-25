@@ -1,5 +1,6 @@
 package refApp.domain;
 
+import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -24,9 +25,10 @@ public class Article extends Reference {
      * @param pages Page numbers
      * @param note Miscellaneous extra information
      * @param referenceId Reference id for the article
+     * @param tags Tags for reference
      */
-    public Article(String title, Author author, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId) {
-        super(title, author, journal, year, month, volume, number, pages, note, referenceId);
+    public Article(String title, Author author, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId, List<Tag> tags) {
+        super(title, author, journal, year, month, volume, number, pages, note, referenceId, tags);
     }
 
     /**

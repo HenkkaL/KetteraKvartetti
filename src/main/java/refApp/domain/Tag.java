@@ -1,24 +1,30 @@
 package refApp.domain;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
  * Class for tagging references
  */
 @Entity
-public class Tag {
-
+public class Tag extends AbstractPersistable<Long> {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @ManyToMany(mappedBy = "tags")
+    private List<Reference> references;
 
     /**
      * Constructs tag with tag name
-     * @param name 
+     *
+     * @param name
      */
     public Tag(String name) {
         this.name = name;
@@ -28,10 +34,11 @@ public class Tag {
      * A constructor needed by the database.
      */
     public Tag() {
+        
     }
 
     /**
-     * 
+     *
      * @return tag name
      */
     public String getName() {
@@ -40,17 +47,26 @@ public class Tag {
 
     /**
      * Sets tag name
-     * @param name 
+     *
+     * @param name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * 
+     * @return References for tag
+     */
+    public List<Reference> getReferences() {
+        return references;
+    }
+
+    
+    /**
+     *
      * @return tag name in string format
      */
-     @Override
+    @Override
     public String toString() {
         return this.getName();
     }

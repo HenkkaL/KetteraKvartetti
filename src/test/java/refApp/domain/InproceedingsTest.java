@@ -5,6 +5,8 @@
  */
 package refApp.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,25 +19,31 @@ import static org.junit.Assert.*;
  * @author mlyra
  */
 public class InproceedingsTest {
+
     Inproceedings inpro;
-    
+
     public InproceedingsTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        inpro = new Inproceedings("Inpro Title", new Author ("Author Surname"), "Book Title", "2017", "03", 
-                "Editor et. al", "vol.1", "series", "1-5", "Organization", "Publisher", "Address", "Note", "ReferenceId");
+        List<Tag> tags = new ArrayList<>();
+        tags.add(new Tag("Eka tagi"));
+        tags.add(new Tag("Toka tagi"));
+        tags.add(new Tag("Kolmas tagi"));
+
+        inpro = new Inproceedings("Inpro Title", new Author("Author Surname"), "Book Title", "2017", "03",
+                "Editor et. al", "vol.1", "series", "1-5", "Organization", "Publisher", "Address", "Note", "ReferenceId", tags);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -109,23 +117,23 @@ public class InproceedingsTest {
     public void constructorSetsCorrectReferenceId() {
         assertEquals("ReferenceId", inpro.getReferenceId());
     }
-    
+
     @Test
     public void testInproToString() {
         String expected = "@Inproceedings{ReferenceId,\n"
-                        + "author = {Author Surname},\n"
-                        + "title = {Inpro Title},\n"
-                        + "year = {2017},\n"
-                        + "publisher = {Publisher},\n"
-                        + "}\n"
-                        + "";
+                + "author = {Author Surname},\n"
+                + "title = {Inpro Title},\n"
+                + "year = {2017},\n"
+                + "publisher = {Publisher},\n"
+                + "}\n"
+                + "";
         assertEquals(expected, inpro.toString());
     }
-    
+
     @Test
     public void testInproGetPrettyString() {
         String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017. ";
         assertEquals(expected, inpro.getPrettyString());
     }
-       
+
 }
