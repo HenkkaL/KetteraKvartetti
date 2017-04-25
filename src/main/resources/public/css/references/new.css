@@ -7,3 +7,7 @@
 .page_input {
     width: 5em;
 }
+
+tr td:first-child {
+    width: 10em;
+}
