@@ -2,7 +2,6 @@ Feature: As a user i want to add an inproceedins easily so that the reference is
 
 Scenario: user can add a new inproceedings reference with minimum metadata
     Given add new "inproceedings" is selected
-    When correct referencId "testi" is given
     And correct title "Test inpro" is given
     And correct author "Tero Test" is given
     And correct year "1234" is given
@@ -12,7 +11,6 @@ Scenario: user can add a new inproceedings reference with minimum metadata
 
 Scenario: user can add a new inproceedings reference with maximum metadata
     Given add new "inproceedings" is selected
-    When correct referencId "testi" is given
     And correct title "Test inpro" is given
     And correct author "Tero Test" is given
     And correct year "1234" is given

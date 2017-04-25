@@ -99,18 +99,23 @@ public class ArticleTest {
     @Test
     public void testArticleToString() {
         String expected = "@article{ReferenceId,\n"
-                + "author = {Author Surname},\n"
-                + "title = {Article Title},\n"
-                + "year = {2017},\n"
-                + "publisher = {null},\n"
-                + "}\n"
-                + "";
+                        + "author = {Author Surname},\n"
+                        + "title = {Article Title},\n"
+                        + "journal = {Journal},\n"
+                        + "volume = {5},\n"
+                        + "number = {3},\n"
+                        + "year = {2017},\n"
+                        + "month = {03},\n"
+                        + "pages = {2-3},\n"
+                        + "note = {Note},\n"
+                        + "}\n"
+                        + "";
         assertEquals(expected, art.toString());
     }
 
     @Test
     public void testArticleGetPrettyString() {
-        String expected = "Author Surname. Article Title. Journal, 5(3):2-3, 2017. ";
+        String expected = "Author Surname. Article Title. Journal, 5(3):2-3, 2017.";
         assertEquals(expected, art.getPrettyString());
     }
 

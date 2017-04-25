@@ -17,10 +17,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import refApp.services.ReferenceService;
 
-/**
- *
- * @author Raine Rantanen
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ReferenceControllerTest {

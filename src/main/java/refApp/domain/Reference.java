@@ -8,11 +8,13 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -27,6 +29,7 @@ public abstract class Reference {
     private Long id;
     protected String title;
     @ManyToOne
+    @JoinColumn
     protected Author author;
     protected String publisher;
     protected String year;
@@ -43,7 +46,7 @@ public abstract class Reference {
     protected String address;
     protected String note;
     protected String referenceId;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     protected List<Tag> tags;
 
     /**
@@ -57,10 +60,11 @@ public abstract class Reference {
      * Constructor model with all possible fields used in references.
      */
     Reference() {
-        
+
     }
 
     public Reference(String title, Author author, String publisher, String year, String month, String journal, String volume, String number, String series, String edition, String editor, String inproceedingsBookTitle, String organization, String pages, String address, String note, String referenceId, List<Tag> tags) {
+
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -215,7 +219,7 @@ public abstract class Reference {
 
     public List<Tag> getTags() {
         if (tags == null) {
-            tags = new ArrayList<>();
+            tags = new ArrayList<Tag>();
         }
         return tags;
     }
@@ -242,5 +246,61 @@ public abstract class Reference {
 
     protected String getAttributeWithCharacter(String parameter, char character) {
         return parameter + character + " ";
+    }
+
+    protected String printAddress() {
+        String ret = "";
+        if (this.isSet(this.getAddress())) {
+            ret = "\naddress = {" + this.getAddress() + "},";
+        }
+        return ret;
+    }
+
+    protected String printMonth() {
+        String ret = "";
+        if (this.isSet(this.getMonth())) {
+            ret = "\nmonth = {" + this.getMonth() + "},";
+        }
+        return ret;
+    }
+
+    protected String printNote() {
+        String ret = "";
+        if (this.isSet(this.getNote())) {
+            ret = "\nnote = {" + this.getNote() + "},";
+        }
+        return ret;
+    }
+
+    protected String printNumber() {
+        String ret = "";
+        if (this.isSet(this.getNumber())) {
+            ret = "\nnumber = {" + this.getNumber() + "},";
+        }
+        return ret;
+    }
+
+    protected String printSeries() {
+        String ret = "";
+        if (this.isSet(this.getSeries())) {
+            ret = "\nseries = {" + this.getSeries() + "},";
+        }
+        return ret;
+    }
+
+    protected String printVolume() {
+        String ret = "";
+        if (this.isSet(this.getVolume())) {
+            ret = "\nvolume = {" + this.getVolume() + "},";
+        }
+        return ret;
+    }
+
+    protected String printPages() {
+        String ret = "";
+        if (this.isSet(this.getPages())) {
+            ret = "\npages = {" + this.getPages() + "},";
+        }
+        return ret;
     }
 }

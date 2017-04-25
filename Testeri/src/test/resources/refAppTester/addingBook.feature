@@ -2,7 +2,6 @@ Feature: As a user i want to add a book easily so that the reference is saved
 
 Scenario: user can add a new book reference with minimum metadata
     Given add new "book" is selected
-    When correct referencId "testi" is given
     And correct author "Tero Test" is given
     And correct title "Testikirja" is given
     And correct year "1234" is given
@@ -12,7 +11,6 @@ Scenario: user can add a new book reference with minimum metadata
 
 Scenario: user can add a new book reference with maximum metadata
     Given add new "book" is selected     
-    When correct referencId "testi" is given
     And correct author "Tero Test" is given
     And correct title "Testikirja" is given
     And correct year "1234" is given    
@@ -26,21 +24,11 @@ Scenario: user can add a new book reference with maximum metadata
     And correct pages start "12" and end "123" are given
     And form is submitted
     Then page has content "Listataan kaikki viitteet"
-
-Scenario: user fails to give book referenceId 
-#    Given add new "book" is selected
-#    When correct title "Testikirja" is given
-#    And correct author "Tero Test" is given
-#    And correct year "1234" is given
-#    And correct publisher "Pub" is given
-#    And form is submitted
-#    Then field "referenceId" is needed
     
 
 #Scenario: user fails to give book title
 #    Given add new "book" is selected
-#    When correct referencId "testi" is given
-#    And correct author "Tero Test" is given
+#    When correct author "Missing book tittle" is given
 #    And correct year "1234" is given
 #    And correct publisher "Pub" is given
 #    And form is submitted

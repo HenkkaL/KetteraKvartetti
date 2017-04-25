@@ -5,7 +5,9 @@
  */
 package refApp.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import refApp.domain.Article;
 import refApp.domain.Book;
 import refApp.domain.Inproceedings;
+import refApp.domain.Tag;
 
 /**
  *
@@ -118,6 +121,15 @@ public class ReferenceServiceTest {
         refServ.addReference(params);
         Inproceedings inpro = (Inproceedings) refServ.getReferenceRepo().findByTitle("Inproceedings Title").get(0);
         assertEquals("Inproceedings Title", inpro.getTitle());
-    } 
+    }      
     
+    @Test
+    public void testAddTags() {   
+        List<Tag> tags = new ArrayList<>();      
+        tags.add(new Tag("eka tagi")); 
+        tags.add(new Tag("toka tagi"));
+        refServ.saveTags(tags);
+        Tag tag = refServ.getTagRepository().findByName("eka tagi").get(0);
+        assertEquals(tag.getName(),"eka tagi");
+    }   
 }

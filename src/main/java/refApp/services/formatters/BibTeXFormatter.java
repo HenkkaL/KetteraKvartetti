@@ -119,19 +119,20 @@ public class BibTeXFormatter implements Formatter {
     private boolean idReserved(String id, ReferenceRepository referenceRepository) {
         return referenceRepository.findByReferenceId(id) != null;
     }
-    
+
     /**
      * Adds tags for reference
+     *
      * @param params Reference parameters
      * @return List of tags
      */
-    public List<Tag> addTags (Map<String, String> params){
-     List<Tag> tags = new ArrayList();
-        
+    public List<Tag> addTags(Map<String, String> params) {
+        List<Tag> tags = new ArrayList();
+
         params.entrySet().stream().filter((param) -> (param.getKey().startsWith("tag"))).forEach((param) -> {
             tags.add(new Tag(param.getValue()));
         });
-        
+
         return tags;
     }
 }

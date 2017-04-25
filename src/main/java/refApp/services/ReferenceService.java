@@ -1,9 +1,11 @@
 package refApp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import refApp.domain.Article;
 import refApp.domain.Author;
 import refApp.domain.Book;
@@ -38,7 +40,8 @@ public class ReferenceService {
     public void addReference(Map<String, String> params) {
         BibTeXFormatter formatter = new BibTeXFormatter();
         String id = formatter.generateId(params, referenceRepository);
-        List<Tag> tags = formatter.addTags(params);
+        List<Tag> tags=new ArrayList<>();
+        tags = formatter.addTags(params);
 
         switch (params.get("type")) {
             case "article":
@@ -52,22 +55,33 @@ public class ReferenceService {
                 break;
         }
     }
-   
-    
+
     public void saveReference(Reference ref) {
-        Author a = ref.getAuthor();
-//        if(!authorRepository.findAll().isEmpty() && authorRepository.findByName(a.getName()) == null) {
-        authorRepository.save(a);
-//        }       
-        this.tagRepository.save(ref.getTags());
+        saveAuthor(ref.getAuthor());
+        saveTags(ref.getTags());
 
         this.referenceRepository.save(ref);
-        
-        
+
+    }
+
+    public void saveAuthor(Author a) {
+        authorRepository.save(a);
+    }
+
+    public void saveTags(List<Tag> tags) {
+        tagRepository.save(tags);
     }
 
     public ReferenceRepository getReferenceRepo() {
         return this.referenceRepository;
+    }
+
+    public AuthorRepository getAuthorRepository() {
+        return authorRepository;
+    }
+
+    public TagRepository getTagRepository() {
+        return tagRepository;
     }
 
     private String formPageNo(String start, String end) {

@@ -41,7 +41,7 @@ public class InproceedingsTest {
         tags.add(new Tag("Kolmas tagi"));
 
         inpro = new Inproceedings("Inpro Title", new Author("Author Surname"), "Book Title", "2017", "03",
-                "Editor et. al", "vol.1", "series", "1-5", "Organization", "Publisher", "Address", "Note", "ReferenceId", tags);
+                "Editor", "vol.1", "series", "1-5", "Organization", "Publisher", "Address", "Note", "ReferenceId", tags);
     }
 
     @After
@@ -75,7 +75,7 @@ public class InproceedingsTest {
 
     @Test
     public void constructorSetsCorrectEditor() {
-        assertEquals("Editor et. al", inpro.getEditor());
+        assertEquals("Editor", inpro.getEditor());
     }
 
     @Test
@@ -123,8 +123,17 @@ public class InproceedingsTest {
         String expected = "@Inproceedings{ReferenceId,\n"
                 + "author = {Author Surname},\n"
                 + "title = {Inpro Title},\n"
-                + "year = {2017},\n"
+                + "booktitle = {Book Title},\n"
+                + "editor = {Editor},\n"
+                + "volume = {vol.1},\n"
+                + "series = {series},\n"
+                + "pages = {1-5},\n"
+                + "address = {Address},\n"
+                + "organization = {Organization},\n"
                 + "publisher = {Publisher},\n"
+                + "year = {2017},\n"
+                + "month = {03},\n"
+                + "note = {Note},\n"
                 + "}\n"
                 + "";
         assertEquals(expected, inpro.toString());
@@ -132,7 +141,7 @@ public class InproceedingsTest {
 
     @Test
     public void testInproGetPrettyString() {
-        String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017. ";
+        String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017.";
         assertEquals(expected, inpro.getPrettyString());
     }
 

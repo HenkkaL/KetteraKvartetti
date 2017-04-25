@@ -40,9 +40,51 @@ public class Inproceedings extends Reference {
     Inproceedings() {
     }
 
+    private String printEditor() {
+        String ret = "";
+        if (this.isSet(this.getEditor())) {
+            ret = "\neditor = {" + this.getEditor()+ "},";
+        }
+        return ret;
+    }
+    
+
+    private String printInproceedingsBookTitle() {
+        String ret = "";
+        if (this.isSet(this.getInproceedingsBookTitle())) {
+            ret = "\nbooktitle = {" + this.getInproceedingsBookTitle() + "},";
+        }
+        return ret;
+    }    
+    
+    private String printOrganization() {
+        String ret = "";
+        if (this.isSet(this.getOrganization())) {
+            ret = "\norganization = {" + this.getOrganization()+ "},";
+        }
+        return ret;
+    }       
+
+    /**
+     * Method for generating inproceedings-type reference metadata into bibtex syntax
+     */       
     @Override
     public String toString() {
-        return "@Inproceedings{" + this.getReferenceId() + ",\nauthor = {" + this.getAuthor().toString() + "},\ntitle = {" + this.getTitle() + "},\nyear = {" + this.getYear() + "},\npublisher = {" + this.getPublisher() + "},\n}\n";
+        return "@Inproceedings{" + this.getReferenceId() + ","
+                + "\nauthor = {" + this.getAuthor().toString() + "},"
+                + "\ntitle = {" + this.getTitle() + "},"
+                + this.printInproceedingsBookTitle() 
+                + this.printEditor() 
+                + this.printVolume() 
+                + this.printSeries() 
+                + this.printPages()
+                + this.printAddress()
+                + this.printOrganization()
+                + "\npublisher = {" + this.getPublisher() + "},"
+                + "\nyear = {" + this.getYear() + "},"
+                + this.printMonth()
+                + this.printNote()
+                + "\n}\n";
     }
 
     @Override
@@ -60,7 +102,7 @@ public class Inproceedings extends Reference {
         }
         builder.append(super.getAttributeWithPeriod(super.year));
 
-        return builder.toString();
+        return builder.toString().trim();
     }
 
 }
