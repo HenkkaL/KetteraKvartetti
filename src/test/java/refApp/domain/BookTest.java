@@ -117,14 +117,27 @@ public class BookTest {
                 + "series = {Series},\n"
                 + "address = {Address},\n"
                 + "edition = {Edition},\n"
-                + "}\n"
-                + "";
+                + "}\n";
         assertEquals(expected, book.toString());
     }
+    
+    @Test
+    public void testToPrintWithNothing() {
+        Book test = new Book("", new Author(""), "", "", "", "", "", "", "", "", "", null);      
+        String expected = "@book{\n}\n";
+        assertEquals(expected, test.toString());
+    }    
     
     @Test
     public void testBookGetPrettyString() {
         String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Address, 2001.";
         assertEquals(expected, book.getPrettyString());
     }
+    
+    @Test
+    public void testBookGetPrettyStringWithNoAddress() {
+        Book test = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", null);      
+        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, 2001.";
+        assertEquals(expected, test.getPrettyString());
+    }    
 }

@@ -117,7 +117,7 @@ public class InproceedingsTest {
     public void constructorSetsCorrectReferenceId() {
         assertEquals("ReferenceId", inpro.getReferenceId());
     }
-
+    
     @Test
     public void testInproToString() {
         String expected = "@Inproceedings{ReferenceId,\n"
@@ -134,9 +134,20 @@ public class InproceedingsTest {
                 + "year = {2017},\n"
                 + "month = {03},\n"
                 + "note = {Note},\n"
+                + "}\n";
+        assertEquals(expected, inpro.toString());
+    }
+    
+        @Test
+    public void testInproPrintMethodsWithEmptyString() {
+        Inproceedings test = new Inproceedings("Title", new Author("Author"), "", "2017", "", "", "", "", "", "", "", "", "", "ReferenceId", null);
+        String expected = "@Inproceedings{ReferenceId,\n"
+                + "author = {Author},\n"
+                + "title = {Title},\n"
+                + "year = {2017},\n"
                 + "}\n"
                 + "";
-        assertEquals(expected, inpro.toString());
+        assertEquals(expected, test.toString());
     }
 
     @Test
@@ -144,5 +155,13 @@ public class InproceedingsTest {
         String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017.";
         assertEquals(expected, inpro.getPrettyString());
     }
+    
+    @Test
+    public void testInproGetPrettyStringNoPagesNoPublisher() {
+        inpro = new Inproceedings("Inpro Title", new Author("Author Surname"), "Book Title", "2017", "03",
+                "Editor", "vol.1", "series", "", "Organization", "", "Address", "Note", "ReferenceId", null);
+        String expected = "Author Surname. Inpro Title. In Book Title. 2017.";
+        assertEquals(expected, inpro.getPrettyString());
+    }    
 
 }
