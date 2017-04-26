@@ -71,7 +71,7 @@ public class Article extends Reference {
      */       
     @Override
     public String toString() {
-        return "@article" + this.printReferenceId() 
+        return "@article{" + this.printReferenceId() 
                 + this.printAuthor() 
                 + this.printTitle()
                 + this.printJournal()

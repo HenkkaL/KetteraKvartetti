@@ -94,7 +94,7 @@ public class ArticleTest {
     @Test
     public void constructorSetsCorrectReferenceId() {
         assertEquals("ReferenceId", art.getReferenceId());
-    }
+    }  
 
     @Test
     public void testArticleToString() {
@@ -108,10 +108,16 @@ public class ArticleTest {
                         + "month = {03},\n"
                         + "pages = {2-3},\n"
                         + "note = {Note},\n"
-                        + "}\n"
-                        + "";
+                        + "}\n";
         assertEquals(expected, art.toString());
     }
+    
+    @Test
+    public void testArticleWithNothing() {
+        Article test = new Article("", new Author(""), "", "", "", "", "", "", "", "", null);
+        String expected = "@article{\n}\n";
+        assertEquals(expected, test.toString());
+    }    
 
     @Test
     public void testArticleGetPrettyString() {
@@ -119,4 +125,25 @@ public class ArticleTest {
         assertEquals(expected, art.getPrettyString());
     }
 
+    @Test
+    public void testArticleGetPrettyStringWithNoNumber() {
+        Article test = new Article("Article Title", new Author("Author Surname"), "Journal", "2017", "03", "5", "", "2-3", "Note", "ReferenceId", null);
+        String expected = "Author Surname. Article Title. Journal, 5:2-3, 2017.";
+        assertEquals(expected, test.getPrettyString());
+    } 
+
+    @Test
+    public void testArticleGetPrettyStringWithNoNumberNoPages() {
+        Article test = new Article("Article Title", new Author("Author Surname"), "Journal", "2017", "03", "5", "", "", "Note", "ReferenceId", null);
+        String expected = "Author Surname. Article Title. Journal, 5, 2017.";
+        assertEquals(expected, test.getPrettyString());
+    }       
+    
+    @Test
+    public void testArticleGetPrettyStringWithNoVolumeNoPages() {
+        Article test = new Article("Article Title", new Author("Author Surname"), "Journal", "2017", "03", "", "", "", "Note", "ReferenceId", null);
+        String expected = "Author Surname. Article Title. Journal, 2017.";
+        assertEquals(expected, test.getPrettyString());
+    }     
+  
 }

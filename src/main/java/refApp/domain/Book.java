@@ -56,7 +56,7 @@ public class Book extends Reference {
      */    
     @Override
     public String toString() {
-        return "@book"+ this.printReferenceId()
+        return "@book{"+ this.printReferenceId()
                 + this.printAuthor()
                 + this.printTitle()
                 + this.printYear()
