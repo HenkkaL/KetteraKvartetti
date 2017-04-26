@@ -1,6 +1,6 @@
 language: java
 after_success:
-- gradle jacocoTestReport coveralls
+- ./gradlew jacocoTestReport coveralls
 deploy:
   provider: heroku
   api_key:
@@ -14,3 +14,6 @@ services:
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+
+script:
+  - ./gradlew build -x test
