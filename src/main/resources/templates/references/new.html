@@ -16,17 +16,13 @@
             <div>
                 <table>
                     <tr>
-                        <td class="label_col"><label for="type">Viitteen tyyppi</label></td>
-                        <td class="input_col"><select id="type" name="type">
+                        <td><label for="type">Viitteen tyyppi</label></td>
+                        <td><select id="type" name="type">
                                 <option value="book"> Kirja </option>
                                 <option value="article"> Artikkeli </option>
                                 <option value="inproceedings"> Julkaisu </option>
                             </select>   </td>
                     </tr>
-<!--                    <tr class="book_attr inproc_attr article_attr book_req inproc_req article_req">
-                        <td><label class="book_req inproc_req article_req" for="reference_id">Viitteen tunnus</label></td>
-                        <td><input type="text" class="book_req inproc_req article_req" id="reference_id" name="reference_id" required="required" /></td>
-                    </tr>-->
                     <tr class="book_attr inproc_attr article_attr book_req inproc_req article_req">
                         <td><label class="book_req inproc_req article_req" for="title">Nimi</label></td>
                         <td><input type="text" class="book_req inproc_req article_req" id="title" name="title" required="required" /></td>
@@ -34,8 +30,8 @@
                 </table>
                 <table id="author_table">
                     <tr class="book_attr inproc_attr article_attr">
-                        <td class="label_col"><label class="book_req inproc_req article_req" for="author">Tekijä</label></td>
-                        <td class="input_col"><input type="text" class="book_req inproc_req article_req" id="author" name="author" required="required" /></td>
+                        <td><label class="book_req inproc_req article_req" for="author">Tekijä</label></td>
+                        <td><input type="text" class="book_req inproc_req article_req" id="author" name="author" required="required" /></td>
                     </tr>
                 </table>
                 <table>
@@ -46,8 +42,8 @@
                 </table>
                 <table>
                     <tr class="book_attr inproc_attr article_attr">
-                        <td class="label_col"><label class="book_req inproc_req article_req" for="year">Julkaisuvuosi</label></td>
-                        <td class="input_col"><input type="number" class="book_req inproc_req article_req" id="year" name="year" min="1000" required="required" /></td>
+                        <td><label class="book_req inproc_req article_req" for="year">Julkaisuvuosi</label></td>
+                        <td><input type="number" class="book_req inproc_req article_req" id="year" name="year" min="1000" required="required" /></td>
                     </tr>
                     <tr class="book_attr article_attr inproc_attr">
                         <td><label for="month">Julkaisukuukausi</label></td>
@@ -119,8 +115,8 @@
                 <div id="tag_inputs" style="display: none;"></div>
                 <table>
                     <tr>
-                        <td class="label_col"></td>
-                        <td class="input_col"><input type="submit" id="submit" name="submit" value="Tallenna"/></td>
+                        <td></td>
+                        <td><input type="submit" id="submit" name="submit" value="Tallenna"/></td>
                     </tr>
                 </table>
             </div>

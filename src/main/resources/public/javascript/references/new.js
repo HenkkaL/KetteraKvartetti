@@ -45,6 +45,8 @@ function addTag() {
     var input = createElement("input");
     input.attr("value", $("#input_tag").val());
     input.attr("id", tagId);
+    input.attr("name", tagId);
+    input.attr("type", "hidden");
     $("#tag_list").append(li);
     $("#tag_inputs").append(input);
     $("#input_tag").val("");
