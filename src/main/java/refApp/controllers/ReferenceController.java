@@ -33,10 +33,7 @@ public class ReferenceController {
 
 //    @Autowired
 //    private ReferenceRepository referenceRepository;
-    
-    //This costructor will be deleted as soon as the database solution is implemented
     public ReferenceController() {
-       
     }
 
     //This gives some test data. Probably will be removed sooner than later.
@@ -57,7 +54,6 @@ public class ReferenceController {
 //        this.referenceService.saveReference(new Inproceedings("Kirjoitus2", new Author("Minna Tohtori"), "Kirjoitukset", "2005", "12", "Eino Editori", "1", "Kootut julkaisut", "pp. 10-15", "IBM", "Addison-Wesley", "London", "", "Begel_2008", tags));
 //        
 //    }
-
     @RequestMapping("/")
     public String home(Model model) {
         model.addAttribute("references", this.referenceService.getReferenceRepo().findAll());
