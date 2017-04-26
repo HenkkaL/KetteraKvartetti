@@ -1,6 +1,11 @@
 
 package refApp.services.formatters;
 
+import java.util.List;
+import java.util.Map;
+import refApp.domain.Tag;
+import refApp.repositories.ReferenceRepository;
+
 /**
  * An interface designed to format strings from given parameters.
  * 
@@ -23,4 +28,19 @@ public interface Formatter {
      * @return the formatted string
      */
     public String formatPageString(String pageStart, String pageEnd);
+    
+    /**
+     * Generates id for reference
+     * @param params Reference parameters
+     * @param referenceRepository Reference repository
+     * @return id
+     */
+    public String generateId(Map<String, String> params, ReferenceRepository referenceRepository);
+    
+    /**
+     * Adds tags for reference
+     * @param paramsReference parameters
+     * @return tags as a list
+     */
+     public List<Tag> addTags(Map<String, String> params);
 }

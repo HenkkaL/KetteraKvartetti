@@ -5,9 +5,13 @@
  */
 package refApp.services.formatters;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import refApp.domain.Tag;
 
 /**
  *
@@ -40,5 +44,13 @@ public class BibTeXFormatterTest {
         String expected = "123abcXYZ _,. {\\\"a}{\\\"O}{\\aa}";
         String output = formatter.formatString(string);
         assertEquals(expected, output);
+    }
+    
+    @Test
+    public void addTagsReturnsCorrectly(){
+    Map<String, String> params= new HashMap();
+    params.put("tag1", "eka tagi");
+    List<Tag> tags =formatter.addTags(params);
+    assertEquals(tags.get(0).toString(),"eka tagi");
     }
 }

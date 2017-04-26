@@ -39,8 +39,7 @@ public class ReferenceService {
     public void addReference(Map<String, String> params) {
         BibTeXFormatter formatter = new BibTeXFormatter();
         String id = formatter.generateId(params, referenceRepository);
-        List<Tag> tags;
-        tags = formatter.addTags(params);
+        List<Tag> tags = formatter.addTags(params);
 
         switch (params.get("type")) {
             case "article":
