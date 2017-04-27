@@ -42,30 +42,21 @@ public class Book extends Reference {
     Book() {
     }
     
-    public String printEdition() {
-        String ret = "";
-        
-        if(super.isSet(this.getEdition())) {
-            ret = "\nedition = {" + this.getEdition() + "},";
-        }
-        return ret;
-    }
-    
     /**
      * Method for generating book-type reference metadata into bibtex syntax
      */    
     @Override
     public String toString() {
-        return "@book{"+ this.printReferenceId()
-                + this.printAuthor()
-                + this.printTitle()
-                + this.printYear()
-                + this.printMonth() 
-                + this.printPublisher()
-                + this.printVolume()
-                + this.printSeries()
-                + this.printAddress()
-                + this.printEdition()
+        return "@book{"+ this.printReferenceId() 
+                + this.printValue("author", this.getAuthor().getName()) 
+                + this.printValue("title", this.getTitle())
+                + this.printValue("year", this.getYear())
+                + this.printValue("month", this.getMonth())
+                + this.printValue("publisher", this.getPublisher())
+                + this.printValue("volume", this.getVolume())
+                + this.printValue("series", this.getSeries())
+                + this.printValue("address", this.getAddress())
+                + this.printValue("edition", this.getEdition())
                 + "\n}\n";
     }
 

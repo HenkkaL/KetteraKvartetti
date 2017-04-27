@@ -139,5 +139,12 @@ public class BookTest {
         Book test = new Book("Eka Kirja", new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", null);      
         String expected = "Teppo Kirjailija. Eka Kirja. Tammi, 2001.";
         assertEquals(expected, test.getPrettyString());
-    }    
+    }  
+    
+    @Test
+    public void testIssetWithNull() {
+        Book test = new Book(null, new Author("Teppo Kirjailija"), "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", null);      
+        String noText = "";
+        assertEquals(false, test.isSet(noText));
+    }      
 }

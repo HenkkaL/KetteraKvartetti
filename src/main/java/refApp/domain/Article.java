@@ -36,35 +36,7 @@ public class Article extends Reference {
      */
     Article() {
     }
-//    private String hasVolume() {
-//        String ret = "";
-//        
-//        if (this.getVolume() != null) {
-//            ret = "{volume = " + this.getVolume() + "},\n";
-//        }
-//        return ret;
-//    }
-//    @article{fox,
-// author = {Fox, Armando and Patterson, David},
-// title = {Crossing the software education chasm},
-// journal = {Communications of ACM},
-// volume = {55},
-// number = {5},
-// month = may,
-// year = {2012},
-// pages = {44--49},
-// publisher = {ACM},
-// address = {New York, NY, USA}
-// }
-    
-    private String printJournal() {
-        String ret = "";
-        
-        if(super.isSet(this.getJournal())) {
-            ret = "\njournal = {" + this.getJournal() + "},";
-        }
-        return ret;
-    }    
+
 
     /**
      * Method for generating article-type reference metadata into bibtex syntax
@@ -72,15 +44,15 @@ public class Article extends Reference {
     @Override
     public String toString() {
         return "@article{" + this.printReferenceId() 
-                + this.printAuthor() 
-                + this.printTitle()
-                + this.printJournal()
-                + this.printVolume() 
-                + this.printNumber()
-                + this.printYear()
-                + this.printMonth()
-                + this.printPages()
-                + this.printNote()
+                + this.printValue("author", this.getAuthor().getName()) 
+                + this.printValue("title", this.getTitle())
+                + this.printValue("journal", this.getJournal())
+                + this.printValue("volume", this.getVolume())
+                + this.printValue("number", this.getNumber())
+                + this.printValue("year", this.getYear())
+                + this.printValue("month", this.getMonth())
+                + this.printValue("pages", this.getPages())
+                + this.printValue("note", this.getNote())
                 + "\n}\n";
     }
 

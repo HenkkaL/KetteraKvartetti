@@ -247,63 +247,15 @@ public abstract class Reference {
     protected String getAttributeWithCharacter(String parameter, char character) {
         return parameter + character + " ";
     }
-
-    protected String printAddress() {
-        String ret = "";
-        if (this.isSet(this.getAddress())) {
-            ret = "\naddress = {" + this.getAddress() + "},";
-        }
-        return ret;
-    }
     
-    protected String printAuthor() {
+    protected String printValue(String attribute, String value) {
         String ret = "";
-        if (this.isSet(this.getAuthor().getName())) {
-            ret = "\nauthor = {" + this.getAuthor().getName() + "},";
-        }
-        return ret;
-    }    
-
-    protected String printMonth() {
-        String ret = "";
-        if (this.isSet(this.getMonth())) {
-            ret = "\nmonth = {" + this.getMonth() + "},";
+        if (this.isSet(value)) {
+            ret = "\n" + attribute + " = {" + value + "},";
         }
         return ret;
     }
-
-    protected String printNote() {
-        String ret = "";
-        if (this.isSet(this.getNote())) {
-            ret = "\nnote = {" + this.getNote() + "},";
-        }
-        return ret;
-    }
-
-    protected String printNumber() {
-        String ret = "";
-        if (this.isSet(this.getNumber())) {
-            ret = "\nnumber = {" + this.getNumber() + "},";
-        }
-        return ret;
-    }
- 
-    protected String printPages() {
-        String ret = "";
-        if (this.isSet(this.getPages())) {
-            ret = "\npages = {" + this.getPages() + "},";
-        }
-        return ret;
-    }   
-    
-    protected String printPublisher() {
-        String ret = "";
-        if (this.isSet(this.getPublisher())) {
-            ret = "\npublisher = {" + this.getPublisher() + "},";
-        }
-        return ret;
-    }    
-
+   
     protected String printReferenceId() {
         String ret = "";
         if (this.isSet(this.getReferenceId())) {
@@ -311,39 +263,6 @@ public abstract class Reference {
         }
         return ret;
     }         
-
-
-    protected String printSeries() {
-        String ret = "";
-        if (this.isSet(this.getSeries())) {
-            ret = "\nseries = {" + this.getSeries() + "},";
-        }
-        return ret;
-    }    
-    
-    protected String printTitle() {
-        String ret = "";
-        if (this.isSet(this.getTitle())) {
-            ret = "\ntitle = {" + this.getTitle() + "},";
-        }
-        return ret;
-    }    
-
-    protected String printVolume() {
-        String ret = "";
-        if (this.isSet(this.getVolume())) {
-            ret = "\nvolume = {" + this.getVolume() + "},";
-        }
-        return ret;
-    }   
-    
-    protected String printYear() {
-        String ret = "";
-        if (this.isSet(this.getYear())) {
-            ret = "\nyear = {" + this.getYear() + "},";
-        }
-        return ret;
-    }
 
     public String getTagsForHtml() {
         StringBuilder builder = new StringBuilder();
