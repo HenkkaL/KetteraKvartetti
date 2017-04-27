@@ -19,7 +19,7 @@ jar {
 }
 
 project.ext {
-    cucumberVersion = '1.2.5'
+//    cucumberVersion = '1.2.5'
     seleniumVersion = '2.41.0'
     junitVersion = '4.12'
 }
@@ -40,21 +40,23 @@ jacocoTestReport {
 }
 
 dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.5.2.RELEASE'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.0.0'
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.thymeleaf:thymeleaf-spring4")
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     compile group: 'org.seleniumhq.selenium', name: 'selenium-htmlunit-driver',version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
+//    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
+//    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version:seleniumVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion
     compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
     compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("com.h2database:h2")
-    testCompile 'info.cukes:cucumber-java:' + cucumberVersion
-    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
+    compile group: 'com.h2database', name: 'h2', version: '1.4.194'
+//    compile("com.h2database:h2")
+//    testCompile 'info.cukes:cucumber-java:' + cucumberVersion
+//    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
     testCompile 'junit:junit:' + junitVersion
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }

@@ -10,8 +10,13 @@ deploy:
     repo: HenkkaL/KetteraKvartetti
 
 services:
+  - memcached
   - postgresql
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
+script:
+  - echo $DATABASE_URL
+  - echo $JDBC_DATABASE_URL
+  - ./gradlew build

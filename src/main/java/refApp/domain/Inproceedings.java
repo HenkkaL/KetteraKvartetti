@@ -38,32 +38,7 @@ public class Inproceedings extends Reference {
      * A constructor needed by the database.
      */
     Inproceedings() {
-    }
-
-    private String printEditor() {
-        String ret = "";
-        if (this.isSet(this.getEditor())) {
-            ret = "\neditor = {" + this.getEditor()+ "},";
-        }
-        return ret;
-    }
-    
-
-    private String printInproceedingsBookTitle() {
-        String ret = "";
-        if (this.isSet(this.getInproceedingsBookTitle())) {
-            ret = "\nbooktitle = {" + this.getInproceedingsBookTitle() + "},";
-        }
-        return ret;
-    }    
-    
-    private String printOrganization() {
-        String ret = "";
-        if (this.isSet(this.getOrganization())) {
-            ret = "\norganization = {" + this.getOrganization()+ "},";
-        }
-        return ret;
-    }       
+    }        
 
     /**
      * Method for generating inproceedings-type reference metadata into bibtex syntax
@@ -71,19 +46,19 @@ public class Inproceedings extends Reference {
     @Override
     public String toString() {
         return "@Inproceedings{" + this.printReferenceId() 
-                + this.printAuthor()
-                + this.printTitle()
-                + this.printInproceedingsBookTitle() 
-                + this.printEditor() 
-                + this.printVolume() 
-                + this.printSeries() 
-                + this.printPages()
-                + this.printAddress()
-                + this.printOrganization()
-                + this.printPublisher()
-                + this.printYear()
-                + this.printMonth()
-                + this.printNote()
+                + this.printValue("author", this.getAuthor().getName()) 
+                + this.printValue("title", this.getTitle())
+                + this.printValue("booktitle", this.getInproceedingsBookTitle())
+                + this.printValue("editor", this.getEditor())
+                + this.printValue("volume", this.getVolume()) 
+                + this.printValue("series", this.getSeries())
+                + this.printValue("pages", this.getPages())
+                + this.printValue("address", this.getAddress())
+                + this.printValue("organization", this.getOrganization())
+                + this.printValue("publisher", this.getPublisher())
+                + this.printValue("year", this.getYear())
+                + this.printValue("month", this.getMonth())
+                + this.printValue("note", this.getNote())
                 + "\n}\n";
     }
 
