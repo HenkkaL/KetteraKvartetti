@@ -70,7 +70,7 @@ public class Inproceedings extends Reference {
      */       
     @Override
     public String toString() {
-        return "@Inproceedings" + this.printReferenceId() 
+        return "@Inproceedings{" + this.printReferenceId() 
                 + this.printAuthor()
                 + this.printTitle()
                 + this.printInproceedingsBookTitle() 

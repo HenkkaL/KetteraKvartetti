@@ -307,7 +307,7 @@ public abstract class Reference {
     protected String printReferenceId() {
         String ret = "";
         if (this.isSet(this.getReferenceId())) {
-            ret = "{" + this.getReferenceId()+ ",";
+            ret = this.getReferenceId()+ ",";
         }
         return ret;
     }         
