@@ -15,5 +15,3 @@ services:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
-script:
-  - ./gradlew build -x test
