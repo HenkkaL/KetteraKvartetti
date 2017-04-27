@@ -10,6 +10,7 @@ deploy:
     repo: HenkkaL/KetteraKvartetti
 
 services:
+  - memcached
   - postgresql
 
 before_script:
