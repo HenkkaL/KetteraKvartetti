@@ -30,7 +30,7 @@ public class Tag extends AbstractPersistable<Long> {
      * @param name
      */
     public Tag(String name) {
-        this.name = name;
+        this.name = name.trim();
     }
 
     /**
@@ -54,7 +54,7 @@ public class Tag extends AbstractPersistable<Long> {
      * @param name
      */
     public void setName(String name) {
-        this.name = name;
+        this.name = name.trim();
     }
 
     /**

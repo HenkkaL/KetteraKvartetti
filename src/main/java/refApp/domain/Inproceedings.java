@@ -38,32 +38,7 @@ public class Inproceedings extends Reference {
      * A constructor needed by the database.
      */
     Inproceedings() {
-    }
-
-    private String printEditor() {
-        String ret = "";
-        if (this.isSet(this.getEditor())) {
-            ret = "\neditor = {" + this.getEditor()+ "},";
-        }
-        return ret;
-    }
-    
-
-    private String printInproceedingsBookTitle() {
-        String ret = "";
-        if (this.isSet(this.getInproceedingsBookTitle())) {
-            ret = "\nbooktitle = {" + this.getInproceedingsBookTitle() + "},";
-        }
-        return ret;
-    }    
-    
-    private String printOrganization() {
-        String ret = "";
-        if (this.isSet(this.getOrganization())) {
-            ret = "\norganization = {" + this.getOrganization()+ "},";
-        }
-        return ret;
-    }       
+    }        
 
     /**
      * Method for generating inproceedings-type reference metadata into bibtex syntax
