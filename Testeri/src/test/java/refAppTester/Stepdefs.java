@@ -4,6 +4,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import junit.framework.Assert;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +31,7 @@ public class Stepdefs {
     }
 
     @Given("^frontpage is selected$")
-    public void fronpage_is_selected() throws Throwable {
+    public void frontpage_is_selected() throws Throwable {
         driver.get(baseUrl);
     }    
     
@@ -47,8 +48,17 @@ public class Stepdefs {
     
     @When("^user selects the download link$")
     public void select_download() {
-        driver.findElement(By.partialLinkText("Lataa")).click();
+        WebElement element = driver.findElement(By.partialLinkText("Lataa"));
+        System.out.println("Testitulostus: " + element.toString());
+        element.click();
         
+    }
+    
+    
+    //Testimetodien testimetodi
+    @When("^title field is checked")
+    public void testitesti() {
+        WebElement element = driver.findElement(By.name("title"));
     }
     
     @When("^correct title \"([^\"]*)\" is given")
@@ -136,11 +146,21 @@ public class Stepdefs {
         this.addPages(start, end);
     }
 
-    @When("^form is submitted")
-    public void submit() {
-        this.makeSubmit();
+    @When("^book reference form is submitted")
+    public void submitBook() {
+        this.makeBookSubmit();
     }
 
+    @When("^inproceedings reference form is submitted")
+    public void submitInproc() {
+        this.makeInprocSubmit();
+    }    
+    
+    @When("^article reference form is submitted")
+    public void submitArticle() {
+        this.makeArticleSubmit();
+    }    
+    
     @Then("^page has content \"([^\"]*)\"")
     public void find_page_content_displayed(String content) throws Throwable {
         pageHasContent(content);
@@ -257,23 +277,29 @@ public class Stepdefs {
         element.sendKeys(pagesEnd);
     }
 
-    private void makeSubmit() {
-
-        if (checkValidation()) {
-            WebElement element = driver.findElement(By.name("submit"));
-            element.submit();
-        }
-
+    private void makeBookSubmit() {       
+        List<WebElement> elements = driver.findElements(By.cssSelector("input.book_req"));
+        checkAndSubmit(elements);
     }
+    
+    private void makeInprocSubmit() {       
+        List<WebElement> elements = driver.findElements(By.cssSelector("input.inproc_req"));
+        checkAndSubmit(elements);
+    }
+    
+    private void makeArticleSubmit() {       
+        List<WebElement> elements = driver.findElements(By.cssSelector("input.article_req"));
+        checkAndSubmit(elements);
+    }    
 
-    private boolean checkValidation() {
-        WebElement element;
-        try {
-            element = driver.findElement(By.cssSelector("required=required"));
-        } catch (NoSuchElementException e) {
-            return true;
-        }
-        return false;
-
+    private void checkAndSubmit(List<WebElement> elements) {
+        
+        for (WebElement element : elements) {
+            if (element.getAttribute("value").length() == 0) {
+                    return;
+                }
+            }
+        WebElement element = driver.findElement(By.name("submit"));
+        element.submit();
     }
 }

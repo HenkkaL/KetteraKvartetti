@@ -150,6 +150,10 @@ public abstract class Reference {
         this(title, authors, publisher, year, month, null, volume, null, series, null, editor, inproceedingsBookTitle, organization, pages, address, note, referenceId, tags);
     }
 
+    /**
+     * Returns authors.
+     * @return List of authors
+     */
     public List<Author> getAuthors() {
         if (authors == null) {
             authors = new ArrayList<Author>();
@@ -157,70 +161,138 @@ public abstract class Reference {
         return authors;
     }
 
+    /**
+     * Returns title of Reference.
+     * @return Title as String
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Returns Publisher of reference.
+     * @return Publisher as string
+     */
     public String getPublisher() {
         return publisher;
     }
 
+    /**
+     * Returns publication year of reference.
+     * @return Year as string
+     */
     public String getYear() {
         return year;
     }
 
+    /**
+     * Returns publishers address. 
+     * @return Address as string
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Returns pages referenced.
+     * @return Pages as string
+     */
     public String getPages() {
         return pages;
     }
 
+    /**
+     * Returns reference id of reference.
+     * @return Id as string
+     */
     public String getReferenceId() {
         return referenceId;
     }
 
+    /**
+     * Returns publication month of reference.
+     * @return Month as string
+     */
     public String getMonth() {
         return month;
     }
 
+    /** 
+     * Returns edition of reference.
+     * @return Edition as string
+     */
     public String getEdition() {
         return edition;
     }
 
+    /**
+     * Returns editor of reference.
+     * @return Editor as string
+     */
     public String getEditor() {
         return editor;
     }
 
+    /**
+     * Returns inproceedings book title of reference (only in inproceedings).
+     * @return Inproceedings book title as string
+     */
     public String getInproceedingsBookTitle() {
         return inproceedingsBookTitle;
     }
 
+    /**
+     * Returns journal where the reference is published.
+     * @return Journal as string
+     */
     public String getJournal() {
         return journal;
     }
 
+    /**
+     * Returns miscellaneous extra information of reference.
+     * @return Note as string
+     */
     public String getNote() {
         return note;
     }
 
+    /**
+     * Returns issue number of reference (if applicable).
+     * @return Issue number as string
+     */
     public String getNumber() {
         return number;
     }
 
+    /**
+     * Returns conference sponsor related to reference (if applicable)
+     * @return Organization as string
+     */
     public String getOrganization() {
         return organization;
     }
 
+    /**
+     * Returns series of references where the reference is published in.
+     * @return Series as string
+     */
     public String getSeries() {
         return series;
     }
 
+    /**
+     * Returns volume of reference.
+     * @return Volume as string
+     */
     public String getVolume() {
         return volume;
     }
 
+    /**
+     * Returns tags releted to reference.
+     * @return List of tags
+     */
     public List<Tag> getTags() {
         if (tags == null) {
             tags = new ArrayList<Tag>();
@@ -228,8 +300,117 @@ public abstract class Reference {
         return tags;
     }
 
+    /**
+     * Returns unique id of reference used in database.
+     * @return Id as Long
+     */
     public Long getId() {
         return id;
+    }
+    
+        /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @param publisher the publisher to set
+     */
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    /**
+     * @param month the month to set
+     */
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    /**
+     * @param journal the journal to set
+     */
+    public void setJournal(String journal) {
+        this.journal = journal;
+    }
+
+    /**
+     * @param volume the volume to set
+     */
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    /**
+     * @param number the number to set
+     */
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    /**
+     * @param series the series to set
+     */
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    /**
+     * @param edition the edition to set
+     */
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    /**
+     * @param editor the editor to set
+     */
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    /**
+     * @param inproceedingsBookTitle the inproceedingsBookTitle to set
+     */
+    public void setInproceedingsBookTitle(String inproceedingsBookTitle) {
+        this.inproceedingsBookTitle = inproceedingsBookTitle;
+    }
+
+    /**
+     * @param organization the organization to set
+     */
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    /**
+     * @param pages the pages to set
+     */
+    public void setPages(String pages) {
+        this.pages = pages;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @param note the note to set
+     */
+    public void setNote(String note) {
+        this.note = note;
     }
 
     protected boolean isSet(String parameter) {

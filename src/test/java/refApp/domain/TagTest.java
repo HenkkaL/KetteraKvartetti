@@ -1,6 +1,8 @@
 
 package refApp.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,5 +49,5 @@ public class TagTest {
     public void testAuthorToString() {
         assertEquals("Java", tag.toString());
     }
-    
+
 }

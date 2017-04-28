@@ -148,4 +148,5 @@ public class ReferenceServiceTest {
         Tag tag = refServ.getTagRepository().findByName("eka tagi").get(0);
         assertEquals(tag.getName(), "eka tagi");
     }
+    
 }

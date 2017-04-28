@@ -104,6 +104,18 @@ public class ArticleTest {
     }
 
     @Test
+    public void setJournalTest() {
+        art.setJournal("journal test");
+        assertEquals("journal test", art.getJournal());
+    }
+
+    @Test
+    public void setNumberTest() {
+        art.setNumber("2");
+        assertEquals("2", art.getNumber());
+    }
+
+    @Test
     public void testArticleToString() {
         String expected = "@article{ReferenceId,\n"
                 + "author = {Author Surname},\n"
@@ -123,7 +135,7 @@ public class ArticleTest {
     public void testArticleWithNothing() {
         List<Author> authors2 = new ArrayList<Author>();
         authors2.add(new Author(""));
-        Article test = new Article("",authors2 , "", "", "", "", "", "", "", "", null);
+        Article test = new Article("", authors2, "", "", "", "", "", "", "", "", null);
         String expected = "@article{\n}\n";
         assertEquals(expected, test.toString());
     }

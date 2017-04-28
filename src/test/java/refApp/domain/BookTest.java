@@ -114,6 +114,60 @@ public class BookTest {
     }
 
     @Test
+    public void setTitleTest() {
+        book.setTitle("title test");
+        assertEquals("title test", book.getTitle());
+    }
+
+    @Test
+    public void setPublisherTest() {
+        book.setPublisher("publisher test");
+        assertEquals("publisher test", book.getPublisher());
+    }
+
+    @Test
+    public void setYearTest() {
+        book.setYear("2017");
+        assertEquals("2017", book.getYear());
+    }
+
+    @Test
+    public void setMonthTest() {
+        book.setMonth("12");
+        assertEquals("12", book.getMonth());
+    }
+
+    @Test
+    public void setVolumeTest() {
+        book.setVolume("1");
+        assertEquals("1", book.getVolume());
+    }
+
+    @Test
+    public void setSeriesTest() {
+        book.setSeries("series test");
+        assertEquals("series test", book.getSeries());
+    }
+
+    @Test
+    public void setEditionTest() {
+        book.setEdition("edition test");
+        assertEquals("edition test", book.getEdition());
+    }
+
+    @Test
+    public void setAddressTest() {
+        book.setAddress("address test");
+        assertEquals("address test", book.getAddress());
+    }
+
+    @Test
+    public void setNoteTest() {
+        book.setNote("note test");
+        assertEquals("note test", book.getNote());
+    }
+
+    @Test
     public void testBookToString() {
         String expected = "@book{TK01,\n"
                 + "author = {Teppo Kirjailija},\n"
@@ -156,5 +210,26 @@ public class BookTest {
         Book test = new Book(null, authors, "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", null);
         String noText = "";
         assertEquals(false, test.isSet(noText));
+    }
+
+    @Test
+    public void testGetTagsForHtmlWithExtraSpace() {
+        List<Tag> tags = new ArrayList<>();
+        String tag1 = "tag1 ";
+        String tag2 = " tag2";
+        String tag3 = "tag3";
+        String space = " ";
+        tags.add(new Tag(tag1));
+        tags.add(new Tag(tag2));
+        tags.add(new Tag(tag3));
+        Book test = new Book("", authors, "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", tags);
+        String expected = tag1.trim() + space + tag2.trim() + space + tag3.trim();
+        assertEquals(expected, test.getTagsForHtml());
+    }
+
+    @Test
+    public void testGetTagsWithNull() {
+        Book test = new Book("", authors, "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", null);
+        assertNotNull(test.getTags());
     }
 }
