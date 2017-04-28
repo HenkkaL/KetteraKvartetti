@@ -6,7 +6,7 @@ Scenario: user can add a new inproceedings reference with minimum metadata
     And correct author "Tero Test" is given
     And correct year "1234" is given
     And correct book_title "Book title" is given
-    And form is submitted
+    And inproceedings reference form is submitted
     Then page has content "Listataan kaikki viitteet"
 
 Scenario: user can add a new inproceedings reference with maximum metadata
@@ -26,46 +26,37 @@ Scenario: user can add a new inproceedings reference with maximum metadata
     And correct editor "Editor" is given
     And correct volume_number "2" is given
     And correct organisation "Org" is given
-    And form is submitted
-    Then page has content "Listataan kaikki viitteet"
-
-Scenario: user fails to give inproceedings referenceId 
-#    Given add new "inproceedings" is selected
-#    When correct referencId "testi" is given
-#    And correct title "Test inpro" is given
-#    And correct author "Tero Test" is given
-#    And correct year "1234" is given
-#    And correct book_title "Book title" is given
-#    And form is submitted
-#    Then page has content "Lisää uusi viite"
-    
+    And inproceedings reference form is submitted
+    Then page has content "Listataan kaikki viitteet"   
 
 Scenario: user fails to give inproceedings title
-#    Given add new "inproceedings" is selected
-#    When correct referencId "testi" is given
-#    And correct title "Test inpro" is given
-#    And correct author "Tero Test" is given
-#    And correct year "1234" is given
-#    And correct book_title "Book title" is given
-#    And form is submitted
-#    Then page has content "Lisää uusi viite"
+    Given add new "inproceedings" is selected
+    When correct author "Tero Test" is given
+    And correct year "1234" is given
+    And correct book_title "Book title" is given
+    And inproceedings reference form is submitted
+    Then page has content "Lisää uusi viite"
 
 Scenario: user fails to give inproceedings author
-#    Given add new "inproceedings" is selected
-#    When correct referencId "testi" is given
-#    And correct title "Test inpro" is given
-#    And correct author "Tero Test" is given
-#    And correct year "1234" is given
-#    And correct book_title "Book title" is given
-#    And form is submitted
-#    Then page has content "Lisää uusi viite"
+    Given add new "inproceedings" is selected
+    When correct title "Test inpro" is given
+    And correct year "1234" is given
+    And correct book_title "Book title" is given
+    And inproceedings reference form is submitted
+    Then page has content "Lisää uusi viite"
 
 Scenario: user fails to give inproceedings year
-#    Given add new "inproceedings" is selected
-#    When correct referencId "testi" is given
-#    And correct title "Test inpro" is given
-#    And correct author "Tero Test" is given
-#    And correct year "1234" is given
-#    And correct book_title "Book title" is given
-#    And form is submitted
-#    Then page has content "Lisää uusi viite"
+    Given add new "inproceedings" is selected
+    When correct title "Test inpro" is given
+    And correct author "Tero Test" is given
+    And correct book_title "Book title" is given
+    And inproceedings reference form is submitted
+    Then page has content "Lisää uusi viite"
+
+Scenario: user fails to give inproceedings book title
+    Given add new "inproceedings" is selected
+    When correct title "Test inpro" is given
+    And correct author "Tero Test" is given
+    And correct year "1234" is given
+    And inproceedings reference form is submitted
+    Then page has content "Lisää uusi viite"
