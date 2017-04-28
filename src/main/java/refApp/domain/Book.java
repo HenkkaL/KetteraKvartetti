@@ -18,7 +18,7 @@ public class Book extends Reference {
      * Constructs a book with all the possible fields.
      *
      * @param title Title of a the book
-     * @param author Author of the book
+     * @param authors Authors for book
      * @param publisher Publisher of the book
      * @param year The year of publication
      * @param month The month of publication
@@ -32,8 +32,8 @@ public class Book extends Reference {
      * @param referenceId Reference id for the book
      * @param tags Tags for reference
      */
-    public Book(String title, Author author, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId, List<Tag> tags) {
-        super(title, author, publisher, year, month, edition, volume, series, address, note, referenceId, tags);
+    public Book(String title, List <Author> authors, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId, List<Tag> tags) {
+        super(title, authors, publisher, year, month, edition, volume, series, address, note, referenceId, tags);
     }
 
     /**
@@ -48,7 +48,7 @@ public class Book extends Reference {
     @Override
     public String toString() {
         return "@book{"+ this.printReferenceId() 
-                + this.printValue("author", this.getAuthor().getName()) 
+                + this.printValue("author", this.getAuthors().get(0).getName()) 
                 + this.printValue("title", this.getTitle())
                 + this.printValue("year", this.getYear())
                 + this.printValue("month", this.getMonth())

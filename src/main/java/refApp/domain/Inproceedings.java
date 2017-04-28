@@ -15,7 +15,7 @@ public class Inproceedings extends Reference {
      * Constructs an inproceedings with all the possible fields.
      *
      * @param title Inproceedings title
-     * @param author Name(s) of the author(s)
+     * @param authors Authors for inproceedings
      * @param bookTitle The title of the book, if only part of it is being cited
      * @param year Publication year
      * @param month Publication month
@@ -30,8 +30,8 @@ public class Inproceedings extends Reference {
      * @param referenceId Reference id for the publication
      * @param tags Tags for reference
      */
-    public Inproceedings(String title, Author author, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
-        super(title, author, bookTitle, year, month, editor, volume, series, pages, organization, publisher, address, note, referenceId, tags);
+    public Inproceedings(String title, List <Author> authors, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
+        super(title, authors, bookTitle, year, month, editor, volume, series, pages, organization, publisher, address, note, referenceId, tags);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Inproceedings extends Reference {
     @Override
     public String toString() {
         return "@Inproceedings{" + this.printReferenceId() 
-                + this.printValue("author", this.getAuthor().getName()) 
+                + this.printValue("author", this.getAuthors().get(0).getName()) 
                 + this.printValue("title", this.getTitle())
                 + this.printValue("booktitle", this.getInproceedingsBookTitle())
                 + this.printValue("editor", this.getEditor())

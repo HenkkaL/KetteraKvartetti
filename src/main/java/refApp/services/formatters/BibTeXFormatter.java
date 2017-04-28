@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import refApp.domain.Author;
 import refApp.domain.Reference;
 import refApp.domain.Tag;
 import refApp.repositories.ReferenceRepository;
@@ -21,7 +22,7 @@ public class BibTeXFormatter implements Formatter {
     private final CharacterMapper characterMapper;
 
     /**
-     * Constructs a new BibTeXFormatter
+     * Constructs a new BibTeXFormatter.
      */
     public BibTeXFormatter() {
         this.characterMapper = new BibTeXCharacterMapper();
@@ -74,7 +75,7 @@ public class BibTeXFormatter implements Formatter {
     }
 
     /**
-     * Uses a FileWriter to write references to a downloadable file
+     * Uses a FileWriter to write references to a downloadable file.
      *
      */
     public void writeReferencesToFile(List<Reference> ref) throws IOException {
@@ -87,7 +88,7 @@ public class BibTeXFormatter implements Formatter {
     }
 
     /**
-     * Generates id for reference
+     * Generates id for reference.
      *
      * @param params Reference parameters
      * @param referenceRepository Repository for references
@@ -121,7 +122,7 @@ public class BibTeXFormatter implements Formatter {
     }
 
     /**
-     * Adds tags for reference
+     * Adds tags for reference.
      *
      * @param params Reference parameters
      * @return List of tags
@@ -130,14 +131,27 @@ public class BibTeXFormatter implements Formatter {
         List<Tag> tags = new ArrayList();
 
         for (Map.Entry<String, String> param : params.entrySet()) {
-            if(param.getKey().startsWith("tag")){
-            tags.add(new Tag(param.getValue()));
+            if (param.getKey().startsWith("tag")) {
+                tags.add(new Tag(param.getValue()));
             }
         }
-//        params.entrySet().stream().filter((param) -> (param.getKey().startsWith("tag"))).forEach((param) -> {
-//            tags.add(new Tag(param.getValue()));
-//        });
-
         return tags;
+    }
+
+    /**
+     * Adds authors for reference.
+     *
+     * @param params Reference parameters
+     * @return List of authors
+     */
+    public List<Author> addAuthors(Map<String, String> params) {
+        List<Author> authors = new ArrayList();
+
+        for (Map.Entry<String, String> param : params.entrySet()) {
+            if (param.getKey().startsWith("author")) {
+                authors.add(new Author(param.getValue()));
+            }
+        }
+        return authors;
     }
 }

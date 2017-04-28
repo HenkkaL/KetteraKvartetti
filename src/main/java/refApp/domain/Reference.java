@@ -16,7 +16,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OrderColumn;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -28,9 +28,9 @@ public abstract class Reference {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     protected String title;
-    @ManyToOne
-    @JoinColumn
-    protected Author author;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
+    protected List<Author> authors;
     protected String publisher;
     protected String year;
     protected String month;
@@ -47,6 +47,7 @@ public abstract class Reference {
     protected String note;
     protected String referenceId;
     @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
     protected List<Tag> tags;
 
     /**
@@ -63,10 +64,10 @@ public abstract class Reference {
 
     }
 
-    public Reference(String title, Author author, String publisher, String year, String month, String journal, String volume, String number, String series, String edition, String editor, String inproceedingsBookTitle, String organization, String pages, String address, String note, String referenceId, List<Tag> tags) {
+    public Reference(String title, List<Author> authors, String publisher, String year, String month, String journal, String volume, String number, String series, String edition, String editor, String inproceedingsBookTitle, String organization, String pages, String address, String note, String referenceId, List<Tag> tags) {
 
         this.title = title;
-        this.author = author;
+        this.authors = authors;
         this.publisher = publisher;
         this.year = year;
         this.month = month;
@@ -89,7 +90,7 @@ public abstract class Reference {
      * Constructor model for a book reference.
      *
      * @param title A book title
-     * @param author Name(s) of the author(s)
+     * @param authors Authors for reference
      * @param publisher The publishers name
      * @param year Publication year
      * @param month Publication month
@@ -101,15 +102,15 @@ public abstract class Reference {
      * @param referenceId Reference id for the publication
      * @param tags Tags for reference
      */
-    public Reference(String title, Author author, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId, List<Tag> tags) {
-        this(title, author, publisher, year, month, null, volume, null, series, edition, null, null, null, null, address, note, referenceId, tags);
+    public Reference(String title, List<Author> authors, String publisher, String year, String month, String edition, String volume, String series, String address, String note, String referenceId, List<Tag> tags) {
+        this(title, authors, publisher, year, month, null, volume, null, series, edition, null, null, null, null, address, note, referenceId, tags);
     }
 
     /**
      * Constructor model for an article reference.
      *
      * @param title Article title
-     * @param author Name(s) of the author(s)
+     * @param authors Authors for reference
      * @param journal The journal or magazine the work was published in
      * @param year Publication year
      * @param month Publication month
@@ -121,15 +122,15 @@ public abstract class Reference {
      * @param referenceId Reference id for the article
      * @param tags Tags for reference
      */
-    public Reference(String title, Author author, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId, List<Tag> tags) {
-        this(title, author, null, year, month, journal, volume, number, null, null, null, null, null, pages, null, note, referenceId, tags);
+    public Reference(String title, List<Author> authors, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId, List<Tag> tags) {
+        this(title, authors, null, year, month, journal, volume, number, null, null, null, null, null, pages, null, note, referenceId, tags);
     }
 
     /**
      * Constructor model for an inproceedings reference.
      *
      * @param title Inproceedings title
-     * @param author Name(s) of the author(s)
+     * @param authors Authors for reference
      * @param inproceedingsBookTitle The title of the book, if only part of it
      * is being cited
      * @param year Publication year
@@ -145,12 +146,15 @@ public abstract class Reference {
      * @param referenceId Reference id for the publication
      * @param tags Reference tags
      */
-    public Reference(String title, Author author, String inproceedingsBookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
-        this(title, author, publisher, year, month, null, volume, null, series, null, editor, inproceedingsBookTitle, organization, pages, address, note, referenceId, tags);
+    public Reference(String title, List<Author> authors, String inproceedingsBookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
+        this(title, authors, publisher, year, month, null, volume, null, series, null, editor, inproceedingsBookTitle, organization, pages, address, note, referenceId, tags);
     }
 
-    public Author getAuthor() {
-        return author;
+    public List<Author> getAuthors() {
+        if (authors == null) {
+            authors = new ArrayList<Author>();
+        }
+        return authors;
     }
 
     public String getTitle() {
@@ -233,7 +237,7 @@ public abstract class Reference {
     }
 
     protected String getAuthorAndTitle() {
-        return this.author + ". " + this.title + ". ";
+        return this.authors.get(0) + ". " + this.title + ". ";
     }
 
     protected String getAttributeWithComma(String parameter) {
@@ -247,7 +251,7 @@ public abstract class Reference {
     protected String getAttributeWithCharacter(String parameter, char character) {
         return parameter + character + " ";
     }
-    
+
     protected String printValue(String attribute, String value) {
         String ret = "";
         if (this.isSet(value)) {
@@ -255,14 +259,14 @@ public abstract class Reference {
         }
         return ret;
     }
-   
+
     protected String printReferenceId() {
         String ret = "";
         if (this.isSet(this.getReferenceId())) {
-            ret = this.getReferenceId()+ ",";
+            ret = this.getReferenceId() + ",";
         }
         return ret;
-    }         
+    }
 
     public String getTagsForHtml() {
         StringBuilder builder = new StringBuilder();

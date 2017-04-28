@@ -15,7 +15,7 @@ public class Article extends Reference {
      * Constructs an article with all the possible fields.
      *
      * @param title Title of article
-     * @param author Author(s) of article
+     * @param authors Authors for article
      * @param journal The journal or magazine the work was published in
      * @param year Publication year
      * @param month Publication month
@@ -27,8 +27,8 @@ public class Article extends Reference {
      * @param referenceId Reference id for the article
      * @param tags Tags for reference
      */
-    public Article(String title, Author author, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId, List<Tag> tags) {
-        super(title, author, journal, year, month, volume, number, pages, note, referenceId, tags);
+    public Article(String title, List <Author> authors, String journal, String year, String month, String volume, String number, String pages, String note, String referenceId, List<Tag> tags) {
+        super(title, authors, journal, year, month, volume, number, pages, note, referenceId, tags);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Article extends Reference {
     @Override
     public String toString() {
         return "@article{" + this.printReferenceId() 
-                + this.printValue("author", this.getAuthor().getName()) 
+                + this.printValue("author", this.getAuthors().get(0).getName()) 
                 + this.printValue("title", this.getTitle())
                 + this.printValue("journal", this.getJournal())
                 + this.printValue("volume", this.getVolume())

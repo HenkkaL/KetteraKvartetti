@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package refApp.services;
 
 import java.util.ArrayList;
@@ -127,17 +122,21 @@ public class ReferenceServiceTest {
         refServ.addReference(params);
         Inproceedings inpro = (Inproceedings) refServ.getReferenceRepo().findByTitle("Inproceedings Title").get(0);
         assertEquals("Inproceedings Title", inpro.getTitle());
-//        assertEquals(inpro.getTags().get(0).toString(), "eka tagi");
+//       assertEquals(inpro.getTags().get(0).toString(), "eka tagi");
 //        assertEquals(inpro.getTags().get(1).toString(), "toka tagi");
 //        assertEquals(inpro.getTags().get(2).toString(), "kolmas tagi");
     }
-    
+
     @Test
     public void testAuthorRepository() {
-        Author author = new Author("test author");
-        refServ.saveAuthor(author);
-        author = refServ.getAuthorRepository().findByName("test author").get(0);
-        assertEquals(author.getName(), "test author");
+        List<Author> authors = new ArrayList<>();
+        authors.add(new Author("Author Surname"));
+        authors.add(new Author("Firstname Author"));
+        authors.add(new Author("author3"));
+        refServ.saveAuthors(authors);
+        Author author = refServ.getAuthorRepository().findByName("Author Surname").get(0);
+        System.out.println(author);
+        assertEquals(author.getName(), "Author Surname");
     }
 
     @Test

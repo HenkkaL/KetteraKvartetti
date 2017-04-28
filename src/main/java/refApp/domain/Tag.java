@@ -2,6 +2,7 @@ package refApp.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,14 +16,13 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  */
 @Entity
 public class Tag extends AbstractPersistable<Long> {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @ManyToMany(fetch=FetchType.EAGER, mappedBy = "tags")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
     private List<Reference> references;
-    
 
     /**
      * Constructs tag with tag name
@@ -31,13 +31,14 @@ public class Tag extends AbstractPersistable<Long> {
      */
     public Tag(String name) {
         this.name = name.trim();
+        this.references = new ArrayList<>();
     }
 
     /**
      * A constructor needed by the database.
      */
     public Tag() {
-        
+
     }
 
     /**
@@ -67,7 +68,17 @@ public class Tag extends AbstractPersistable<Long> {
         return references;
     }
 
-    
+    /**
+     * Adds reference to tag
+     *
+     * @param reference Reference
+     */
+    public void addReference(Reference reference) {
+        if (reference != null) {
+            this.references.add(reference);
+        }
+    }
+
     /**
      *
      * @return tag name in string format
