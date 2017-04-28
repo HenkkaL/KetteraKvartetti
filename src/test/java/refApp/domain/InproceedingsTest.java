@@ -119,6 +119,30 @@ public class InproceedingsTest {
     }
     
     @Test
+    public void setEditorTest() {
+        inpro.setEditor("editor test");
+        assertEquals("editor test", inpro.getEditor());
+    }
+
+    @Test
+    public void setInproceedingsBookTitleTest() {
+        inpro.setInproceedingsBookTitle("inproceedingsBookTitle test");
+        assertEquals("inproceedingsBookTitle test", inpro.getInproceedingsBookTitle());
+    }
+
+    @Test
+    public void setOrganizationTest() {
+        inpro.setOrganization("organization test");
+        assertEquals("organization test", inpro.getOrganization());
+    }
+
+    @Test
+    public void setPagesTest() {
+        inpro.setPages("1-2");
+        assertEquals("1-2", inpro.getPages());
+    }
+    
+    @Test
     public void testInproToString() {
         String expected = "@Inproceedings{ReferenceId,\n"
                 + "author = {Author Surname},\n"

@@ -95,6 +95,18 @@ public class ArticleTest {
     public void constructorSetsCorrectReferenceId() {
         assertEquals("ReferenceId", art.getReferenceId());
     }  
+    
+    @Test
+    public void setJournalTest() {
+        art.setJournal("journal test");
+        assertEquals("journal test", art.getJournal());
+    }
+
+    @Test
+    public void setNumberTest() {
+        art.setNumber("2");
+        assertEquals("2", art.getNumber());
+    }    
 
     @Test
     public void testArticleToString() {

@@ -227,6 +227,118 @@ public abstract class Reference {
     public Long getId() {
         return id;
     }
+    
+        /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @param author the author to set
+     */
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    /**
+     * @param publisher the publisher to set
+     */
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    /**
+     * @param month the month to set
+     */
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    /**
+     * @param journal the journal to set
+     */
+    public void setJournal(String journal) {
+        this.journal = journal;
+    }
+
+    /**
+     * @param volume the volume to set
+     */
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    /**
+     * @param number the number to set
+     */
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    /**
+     * @param series the series to set
+     */
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    /**
+     * @param edition the edition to set
+     */
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    /**
+     * @param editor the editor to set
+     */
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    /**
+     * @param inproceedingsBookTitle the inproceedingsBookTitle to set
+     */
+    public void setInproceedingsBookTitle(String inproceedingsBookTitle) {
+        this.inproceedingsBookTitle = inproceedingsBookTitle;
+    }
+
+    /**
+     * @param organization the organization to set
+     */
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    /**
+     * @param pages the pages to set
+     */
+    public void setPages(String pages) {
+        this.pages = pages;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @param note the note to set
+     */
+    public void setNote(String note) {
+        this.note = note;
+    }
 
     protected boolean isSet(String parameter) {
         return (parameter != null & parameter.length() > 0);
