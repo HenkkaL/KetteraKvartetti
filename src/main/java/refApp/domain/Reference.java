@@ -455,14 +455,17 @@ public abstract class Reference {
      * @return the reference's tags as a string.
      */
     public String getTagsForHtml() {
-        StringBuilder builder = new StringBuilder();
-        int i;
-        for (i = 0; i < tags.size() - 1; i++) {
-            builder.append(tags.get(i).toString());
-            builder.append(" ");
+        if (tags.size() > 0) {
+            StringBuilder builder = new StringBuilder();
+            int i;
+            for (i = 0; i < tags.size() - 1; i++) {
+                builder.append(tags.get(i).toString());
+                builder.append(" ");
+            }
+            builder.append(tags.get(i));
+            return builder.toString();
         }
-        builder.append(tags.get(i));
-        return builder.toString();
+        return "";
     }
     
     /**
@@ -471,13 +474,16 @@ public abstract class Reference {
      * @return the reference's authors as a string.
      */
     public String getAuthorsForHtml() {
-        StringBuilder builder = new StringBuilder();
-        int i;
-        for (i = 0; i < authors.size() - 1; i++) {
-            builder.append(authors.get(i).toString());
-            builder.append(" and ");
+        if (authors.size() > 0) {
+            StringBuilder builder = new StringBuilder();
+            int i;
+            for (i = 0; i < authors.size() - 1; i++) {
+                builder.append(authors.get(i).toString());
+                builder.append(" and ");
+            }
+            builder.append(authors.get(i));
+            return builder.toString();
         }
-        builder.append(authors.get(i));
-        return builder.toString();
+        return "";
     }
 }
