@@ -1,6 +1,6 @@
 language: java
 after_success:
-- ./gradlew jacocoTestReport coveralls
+  - ./gradlew jacocoTestReport coveralls
 deploy:
   provider: heroku
   api_key:
@@ -8,15 +8,3 @@ deploy:
   app: kettera-kvartetti
   on:
     repo: HenkkaL/KetteraKvartetti
-
-services:
-  - memcached
-  - postgresql
-
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-
-script:
-  - echo $DATABASE_URL
-  - echo $JDBC_DATABASE_URL
-  - ./gradlew build
