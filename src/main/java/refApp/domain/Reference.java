@@ -417,7 +417,7 @@ public abstract class Reference {
     }
 
     protected String getAuthorAndTitle() {
-        return this.authors.get(0) + ". " + this.title + ". ";
+        return getAuthorsForHtml() + ". " + this.title + ". ";
     }
 
     protected String getAttributeWithComma(String parameter) {
@@ -448,12 +448,41 @@ public abstract class Reference {
         return ret;
     }
 
+    /**
+     * Get the reference's tags as a preformatted string for html-page.
+     * 
+     * @return the reference's tags as a string.
+     */
     public String getTagsForHtml() {
-        StringBuilder builder = new StringBuilder();
-        for (Tag tag : tags) {
-            builder.append(tag);
-            builder.append(" ");
+        if (tags.size() > 0) {
+            StringBuilder builder = new StringBuilder();
+            int i;
+            for (i = 0; i < tags.size() - 1; i++) {
+                builder.append(tags.get(i).toString());
+                builder.append(" ");
+            }
+            builder.append(tags.get(i));
+            return builder.toString();
         }
-        return builder.toString().trim();
+        return "";
+    }
+    
+    /**
+     * Get the reference's authors as a preformatted string for html-page.
+     * 
+     * @return the reference's authors as a string.
+     */
+    public String getAuthorsForHtml() {
+        if (authors.size() > 0) {
+            StringBuilder builder = new StringBuilder();
+            int i;
+            for (i = 0; i < authors.size() - 1; i++) {
+                builder.append(authors.get(i).toString());
+                builder.append(" and ");
+            }
+            builder.append(authors.get(i));
+            return builder.toString();
+        }
+        return "";
     }
 }

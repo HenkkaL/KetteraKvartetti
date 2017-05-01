@@ -4,3 +4,4 @@ gradle.properties
 .gradle/
 /Testeri/build/
 /Testeri/.nb-gradle/
+*.log
