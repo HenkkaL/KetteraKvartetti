@@ -44,8 +44,8 @@ public class InproceedingsTest {
 
         authors = new ArrayList<>();
         authors.add(new Author("Author Surname"));
-        authors.add(new Author("Firstname Author"));
-        authors.add(new Author("author3"));
+        authors.add(new Author("Author 2"));
+        authors.add(new Author("Author 3"));
 
         inpro = new Inproceedings("Inpro Title", authors, "Book Title", "2017", "03",
                 "Editor", "vol.1", "series", "1-5", "Organization", "Publisher", "Address", "Note", "ReferenceId", tags);
@@ -183,7 +183,7 @@ public class InproceedingsTest {
 
     @Test
     public void testInproGetPrettyString() {
-        String expected = "Author Surname. Inpro Title. In Book Title, pages 1-5. Publisher, 2017.";
+        String expected = "Author Surname and Author 2 and Author 3. Inpro Title. In Book Title, pages 1-5. Publisher, 2017.";
         assertEquals(expected, inpro.getPrettyString());
     }
 
@@ -191,7 +191,7 @@ public class InproceedingsTest {
     public void testInproGetPrettyStringNoPagesNoPublisher() {
         inpro = new Inproceedings("Inpro Title", authors, "Book Title", "2017", "03",
                 "Editor", "vol.1", "series", "", "Organization", "", "Address", "Note", "ReferenceId", null);
-        String expected = "Author Surname. Inpro Title. In Book Title. 2017.";
+        String expected = "Author Surname and Author 2 and Author 3. Inpro Title. In Book Title. 2017.";
         assertEquals(expected, inpro.getPrettyString());
     }
 

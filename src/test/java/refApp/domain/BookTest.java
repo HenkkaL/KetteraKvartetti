@@ -36,8 +36,8 @@ public class BookTest {
 
         authors = new ArrayList<>();
         authors.add(new Author("Teppo Kirjailija"));
-        authors.add(new Author("Firstname Author"));
-        authors.add(new Author("author3"));
+        authors.add(new Author("Author 2"));
+        authors.add(new Author("Author 3"));
 
         book = new Book("Eka Kirja", authors, "Tammi", "2001", "12", "Edition", "1", "Series", "Address", "Satunnaista", "TK01", tags);
 
@@ -194,14 +194,14 @@ public class BookTest {
 
     @Test
     public void testBookGetPrettyString() {
-        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, Address, 2001.";
+        String expected = "Teppo Kirjailija and Author 2 and Author 3. Eka Kirja. Tammi, Address, 2001.";
         assertEquals(expected, book.getPrettyString());
     }
 
     @Test
     public void testBookGetPrettyStringWithNoAddress() {
         Book test = new Book("Eka Kirja", authors, "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", null);
-        String expected = "Teppo Kirjailija. Eka Kirja. Tammi, 2001.";
+        String expected = "Teppo Kirjailija and Author 2 and Author 3. Eka Kirja. Tammi, 2001.";
         assertEquals(expected, test.getPrettyString());
     }
 

@@ -44,8 +44,8 @@ public class ArticleTest {
 
         authors = new ArrayList<>();
         authors.add(new Author("Author Surname"));
-        authors.add(new Author("Firstname Author"));
-        authors.add(new Author("author3"));
+        authors.add(new Author("Author 2"));
+        authors.add(new Author("Author 3"));
         art = new Article("Article Title", authors, "Journal", "2017", "03", "5", "3", "2-3", "Note", "ReferenceId", tags);
     }
 
@@ -142,28 +142,28 @@ public class ArticleTest {
 
     @Test
     public void testArticleGetPrettyString() {
-        String expected = "Author Surname. Article Title. Journal, 5(3):2-3, 2017.";
+        String expected = "Author Surname and Author 2 and Author 3. Article Title. Journal, 5(3):2-3, 2017.";
         assertEquals(expected, art.getPrettyString());
     }
 
     @Test
     public void testArticleGetPrettyStringWithNoNumber() {
         Article test = new Article("Article Title", art.getAuthors(), "Journal", "2017", "03", "5", "", "2-3", "Note", "ReferenceId", null);
-        String expected = "Author Surname. Article Title. Journal, 5:2-3, 2017.";
+        String expected = "Author Surname and Author 2 and Author 3. Article Title. Journal, 5:2-3, 2017.";
         assertEquals(expected, test.getPrettyString());
     }
 
     @Test
     public void testArticleGetPrettyStringWithNoNumberNoPages() {
         Article test = new Article("Article Title", art.getAuthors(), "Journal", "2017", "03", "5", "", "", "Note", "ReferenceId", null);
-        String expected = "Author Surname. Article Title. Journal, 5, 2017.";
+        String expected = "Author Surname and Author 2 and Author 3. Article Title. Journal, 5, 2017.";
         assertEquals(expected, test.getPrettyString());
     }
 
     @Test
     public void testArticleGetPrettyStringWithNoVolumeNoPages() {
         Article test = new Article("Article Title", art.getAuthors(), "Journal", "2017", "03", "", "", "", "Note", "ReferenceId", null);
-        String expected = "Author Surname. Article Title. Journal, 2017.";
+        String expected = "Author Surname and Author 2 and Author 3. Article Title. Journal, 2017.";
         assertEquals(expected, test.getPrettyString());
     }
 
