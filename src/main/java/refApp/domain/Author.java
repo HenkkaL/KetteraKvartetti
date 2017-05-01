@@ -1,7 +1,9 @@
 package refApp.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,11 +16,9 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * Class for author
  */
 @Entity
-public class Author extends AbstractPersistable<Long> {
+public class Author implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String name;
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors")
     private List<Reference> references;
@@ -84,5 +84,5 @@ public class Author extends AbstractPersistable<Long> {
     @Override
     public String toString() {
         return this.getName();
-    }
+    }    
 }

@@ -1,5 +1,6 @@
 package refApp.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,11 +16,9 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * Class for tagging references
  */
 @Entity
-public class Tag extends AbstractPersistable<Long> {
+public class Tag implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String name;
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
     private List<Reference> references;

@@ -1,5 +1,6 @@
 package refApp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,6 +115,7 @@ public class ReferenceService {
 
     /**
      * Deletes reference from reference repository.
+     *
      * @param ref Reference to be deleted
      */
     public void deleteReference(Reference ref) {

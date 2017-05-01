@@ -134,7 +134,7 @@ public class ReferenceServiceTest {
         authors.add(new Author("Firstname Author"));
         authors.add(new Author("author3"));
         refServ.saveAuthors(authors);
-        Author author = refServ.getAuthorRepository().findByName("Author Surname").get(0);
+        Author author = refServ.getAuthorRepository().findByName("Author Surname");
         System.out.println(author);
         assertEquals(author.getName(), "Author Surname");
     }
@@ -145,7 +145,7 @@ public class ReferenceServiceTest {
         tags.add(new Tag("eka tagi"));
         tags.add(new Tag("toka tagi"));
         refServ.saveTags(tags);
-        Tag tag = refServ.getTagRepository().findByName("eka tagi").get(0);
+        Tag tag = refServ.getTagRepository().findByName("eka tagi");
         assertEquals(tag.getName(), "eka tagi");
     }
     
