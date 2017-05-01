@@ -1,8 +1,6 @@
 
 package refApp.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -35,19 +33,19 @@ public class TagTest {
 
     @Test
     public void constructorSetsNameCorrectly() {
-        assertEquals("Java", tag.getName());
+        assertEquals("java", tag.getName());
     }
     
     @Test
-    public void testAuthorSetName() {
-        String expected = "Python"; 
-        tag.setName(expected);
-        assertEquals(expected, tag.getName());
+    public void testTagSetName() {
+        String s = "Python"; 
+        tag.setName(s);
+        assertEquals("python", tag.getName());
     }
     
     @Test
-    public void testAuthorToString() {
-        assertEquals("Java", tag.toString());
+    public void testTagToString() {
+        assertEquals("java", tag.toString());
     }
 
 }

@@ -29,7 +29,7 @@ public class Tag implements Serializable {
      * @param name
      */
     public Tag(String name) {
-        this.name = name.trim();
+        this.name = name.trim().toLowerCase();
         this.references = new ArrayList<>();
     }
 
@@ -54,7 +54,7 @@ public class Tag implements Serializable {
      * @param name
      */
     public void setName(String name) {
-        this.name = name.trim();
+        this.name = name.trim().toLowerCase();
     }
 
     /**
