@@ -45,7 +45,8 @@
                 <td th:text="${reference.getPrettyString()}">string</td>
                 <td th:text="${reference.getTagsForHtml()}">tags</td>
                 <td>
-                    <form th:action="@{/delete/reference.referenceId}" method="POST" id="form">
+                    <form action="/delete/" method="POST" id="form">
+                        <input type="hidden" id="referenceId" name="referenceId" th:value="${reference.referenceId}"/>
                         <input type="submit" id="submit" name="submit" value="poista"/>
                     </form>
                 </td>
