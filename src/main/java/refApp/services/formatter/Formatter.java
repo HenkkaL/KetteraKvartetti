@@ -1,5 +1,5 @@
 
-package refApp.services;
+package refApp.services.formatter;
 
 import java.util.List;
 import java.util.Map;

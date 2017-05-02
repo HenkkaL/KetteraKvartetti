@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package refApp.services;
+package refApp.services.formatter;
 
 import java.util.HashMap;
 import java.util.Map;

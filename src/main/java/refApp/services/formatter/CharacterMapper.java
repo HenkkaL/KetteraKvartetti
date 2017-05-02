@@ -1,5 +1,5 @@
 
-package refApp.services;
+package refApp.services.formatter;
 
 import org.springframework.stereotype.Component;
 
