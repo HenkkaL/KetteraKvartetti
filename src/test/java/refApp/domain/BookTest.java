@@ -232,24 +232,23 @@ public class BookTest {
         Book test = new Book("", authors, "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", null);
         assertNotNull(test.getTags());
     }
-    
+
     @Test
     public void testGetTagsHTMLWithEmptyList() {
         Book test = new Book("Test Title", new ArrayList<Author>(), "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", new ArrayList<Tag>());
         assertEquals("", test.getTagsForHtml());
     }
-    
+
     @Test
     public void testGetAuthorsHTMLWithEmptyList() {
         Book test = new Book("Test Title", new ArrayList<Author>(), "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", new ArrayList<Tag>());
         assertEquals("", test.getAuthorsForHtml());
-    }   
-    
+    }
+
     @Test
     public void testNullAuthorList() {
         Book test = new Book("Test Title", null, "Tammi", "2001", "12", "", "1", "Series", "", "Satunnaista", "TK01", new ArrayList<Tag>());
         assertEquals(0, test.getAuthors().size());
     }
-    
-   
+
 }

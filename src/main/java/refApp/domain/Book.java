@@ -60,6 +60,11 @@ public class Book extends Reference {
                 + "\n}\n";
     }
 
+    /**
+     * Get a printable "pretty" string of the books attributes.
+     *
+     * @return the String
+     */
     @Override
     public String getPrettyString() {
         StringBuilder builder = new StringBuilder(super.getAuthorAndTitle());

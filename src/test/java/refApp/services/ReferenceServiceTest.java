@@ -45,7 +45,6 @@ public class ReferenceServiceTest {
 
     @Before
     public void setUp() {
-//        refServ = new ReferenceService();
         params = new HashMap<String, String>();
     }
 
@@ -122,9 +121,6 @@ public class ReferenceServiceTest {
         refServ.addReference(params);
         Inproceedings inpro = (Inproceedings) refServ.getReferenceRepo().findByTitle("Inproceedings Title").get(0);
         assertEquals("Inproceedings Title", inpro.getTitle());
-//       assertEquals(inpro.getTags().get(0).toString(), "eka tagi");
-//        assertEquals(inpro.getTags().get(1).toString(), "toka tagi");
-//        assertEquals(inpro.getTags().get(2).toString(), "kolmas tagi");
     }
 
     @Test
@@ -148,5 +144,4 @@ public class ReferenceServiceTest {
         Tag tag = refServ.getTagRepository().findByName("eka tagi");
         assertEquals(tag.getName(), "eka tagi");
     }
-    
 }

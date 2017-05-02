@@ -7,6 +7,7 @@ import refApp.domain.Author;
  *
  * @author kasimiraula
  */
-public interface AuthorRepository extends JpaRepository<Author, Long>{
+public interface AuthorRepository extends JpaRepository<Author, Long> {
+
     Author findByName(String name);
 }

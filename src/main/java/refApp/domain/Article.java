@@ -37,7 +37,6 @@ public class Article extends Reference {
     Article() {
     }
 
-
     /**
      * Method for generating article-type reference metadata into bibtex syntax
      */       
@@ -56,6 +55,11 @@ public class Article extends Reference {
                 + "\n}\n";
     }
 
+    /**
+     * Get a printable "pretty" string of the articles attributes.
+     *
+     * @return the String
+     */
     @Override
     public String getPrettyString() {
         StringBuilder builder = new StringBuilder(super.getAuthorAndTitle());
