@@ -23,7 +23,7 @@ import refApp.domain.Book;
 import refApp.domain.Inproceedings;
 import refApp.domain.Tag;
 import refApp.services.ReferenceService;
-import refApp.services.formatter.BibTeXFormatter;
+import refApp.services.formatters.BibTeXFormatter;
 
 @Controller
 public class ReferenceController {

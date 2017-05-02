@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package refApp.services.formatter;
+package refApp.services.formatters;
 
+import refApp.services.formatters.BibTeXFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

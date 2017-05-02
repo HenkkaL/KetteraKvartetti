@@ -1,6 +1,6 @@
 package refApp.services;
 
-import refApp.services.formatter.BibTeXFormatter;
+import refApp.services.formatters.BibTeXFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

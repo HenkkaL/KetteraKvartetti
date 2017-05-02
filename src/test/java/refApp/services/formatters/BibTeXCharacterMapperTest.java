@@ -1,6 +1,7 @@
 
-package refApp.services.formatter;
+package refApp.services.formatters;
 
+import refApp.services.formatters.BibTeXCharacterMapper;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;

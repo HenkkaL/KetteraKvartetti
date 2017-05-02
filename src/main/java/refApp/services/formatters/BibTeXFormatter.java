@@ -1,6 +1,6 @@
-package refApp.services.formatter;
+package refApp.services.formatters;
 
-import refApp.services.formatter.BibTeXCharacterMapper;
+import refApp.services.formatters.BibTeXCharacterMapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
