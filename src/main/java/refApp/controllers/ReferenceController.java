@@ -37,13 +37,13 @@ public class ReferenceController {
         this.referenceService.addReference(params);
         return "redirect:/list_all";
     }
-    
+
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam Map<String, String> params) {
         String refId = params.get("referenceId");
         this.referenceService.deleteReference(refId);
         return "redirect:/list_all";
-    }    
+    }
 
     @RequestMapping(value = "/list_all")
     public String listAll(Model model) {
@@ -61,7 +61,7 @@ public class ReferenceController {
         if (!downloadname.trim().equals("")) {
             filename = downloadname;
         }
-        
+
         headers.add("Content-Disposition", "attachment; filename=" + filename + ".bib");
         return new ResponseEntity<>(convertToBytes(), headers, HttpStatus.CREATED);
     }

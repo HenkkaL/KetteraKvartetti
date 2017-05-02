@@ -37,7 +37,6 @@ public class ReferenceService {
      * @param params user given values for a reference
      */
     public void addReference(Map<String, String> params) {
-        System.out.println(params);
         Formatter formatter = new BibTeXFormatter();
         String id = formatter.generateId(params, referenceRepository);
         List<Tag> tags = formatter.addTags(params);
@@ -68,7 +67,6 @@ public class ReferenceService {
     }
     
     public void deleteReference(String refId) {
-        System.out.println("Testitulostus Reference id: " + refId);   
         Reference temp = this.referenceRepository.findByReferenceId(refId);
         this.referenceRepository.delete(temp);
     }
