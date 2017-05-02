@@ -23,13 +23,16 @@ import refApp.domain.Book;
 import refApp.domain.Inproceedings;
 import refApp.domain.Tag;
 import refApp.services.ReferenceService;
-import refApp.services.formatters.BibTeXFormatter;
+import refApp.services.BibTeXFormatter;
 
 @Controller
 public class ReferenceController {
 
     @Autowired
     private ReferenceService referenceService;
+    
+    @Autowired
+    private BibTeXFormatter formatter;
 
 //    @Autowired
 //    private ReferenceRepository referenceRepository;
@@ -74,7 +77,7 @@ public class ReferenceController {
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public ResponseEntity<byte[]> downloadFile() throws IOException {
-        new BibTeXFormatter().writeReferencesToFile(this.referenceService.getReferenceRepo().findAll());
+        formatter.writeReferencesToFile(this.referenceService.getReferenceRepo().findAll());
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("text/bib"));
         headers.add("Content-Disposition", "attachment; filename= sigproc.bib");

@@ -14,8 +14,6 @@ import refApp.domain.Tag;
 import refApp.repositories.AuthorRepository;
 import refApp.repositories.ReferenceRepository;
 import refApp.repositories.TagRepository;
-import refApp.services.formatters.BibTeXFormatter;
-import refApp.services.formatters.Formatter;
 
 /**
  * Service class for references.
@@ -31,6 +29,9 @@ public class ReferenceService {
 
     @Autowired
     private TagRepository tagRepository;
+    
+    @Autowired
+    private BibTeXFormatter formatter;
 
     /**
      * Method for adding a reference.
@@ -39,7 +40,6 @@ public class ReferenceService {
      */
     public void addReference(Map<String, String> params) {
         System.out.println(params);
-        Formatter formatter = new BibTeXFormatter();
         String id = formatter.generateId(params, referenceRepository);
         List<Tag> tags = formatter.addTags(params);
         List<Author> authors = formatter.addAuthors(params);

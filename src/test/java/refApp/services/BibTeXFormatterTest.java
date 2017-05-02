@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package refApp.services.formatters;
+package refApp.services;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,22 +11,31 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import refApp.domain.Tag;
 
 /**
  *
  * @author pqkallio
  */
+
+@ContextConfiguration
+@RunWith(SpringJUnit4ClassRunner.class)
 public class BibTeXFormatterTest {
-    private Formatter formatter;
+    
+    @Autowired
+    private BibTeXFormatter formatter;
     
     public BibTeXFormatterTest() {
     }
     
-    @Before
-    public void setUp() {
-        this.formatter = new BibTeXFormatter();
-    }
+//    @Before
+//    public void setUp() {
+//        this.formatter = new BibTeXFormatter();
+//    }
     
     @Test
     public void nullForNull() {

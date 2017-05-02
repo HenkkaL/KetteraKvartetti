@@ -1,11 +1,16 @@
 
-package refApp.services.formatters;
+package refApp.services;
+
+import org.springframework.stereotype.Component;
 
 /**
  * A Character mapper interface
  * 
  * @author pqkallio
  */
+
+
+
 public interface CharacterMapper {
     /**
      * Get the string mapped for a given character.

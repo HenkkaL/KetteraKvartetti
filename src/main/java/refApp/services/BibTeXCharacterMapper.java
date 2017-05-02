@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package refApp.services.formatters;
+package refApp.services;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * A helper class to replace characters to BibTeX form, designed to support
@@ -14,6 +16,7 @@ import java.util.Map;
  * 
  * @author pqkallio
  */
+@Service
 public class BibTeXCharacterMapper implements CharacterMapper {
     private Map<Character, String> mapper;
     
