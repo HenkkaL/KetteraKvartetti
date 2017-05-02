@@ -68,6 +68,11 @@ public class ReferenceService {
         saveTags(ref.getTags());
         this.referenceRepository.save(ref);
     }
+    
+    public void deleteReference(String refId) {
+        Reference temp = this.referenceRepository.findByReferenceId(refId);
+        this.referenceRepository.delete(temp);
+    }
 
     /**
      * Saves authors related to reference to author repository.

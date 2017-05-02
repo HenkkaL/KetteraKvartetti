@@ -16,16 +16,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderColumn;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "reference_type")
-public abstract class Reference {
+public abstract class Reference extends AbstractPersistable<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
     protected String title;
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
@@ -48,13 +45,6 @@ public abstract class Reference {
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
     protected List<Tag> tags;
-
-    /**
-     * Get a printable "pretty" string of the references attributes.
-     *
-     * @return the String
-     */
-    public abstract String getPrettyString();
 
     /**
      * Constructor model with all possible fields used in references.
@@ -150,7 +140,15 @@ public abstract class Reference {
     }
 
     /**
+     * Get a printable "pretty" string of the references attributes.
+     *
+     * @return the String
+     */
+    public abstract String getPrettyString();
+
+    /**
      * Returns authors.
+     *
      * @return List of authors
      */
     public List<Author> getAuthors() {
@@ -162,6 +160,7 @@ public abstract class Reference {
 
     /**
      * Returns title of Reference.
+     *
      * @return Title as String
      */
     public String getTitle() {
@@ -170,6 +169,7 @@ public abstract class Reference {
 
     /**
      * Returns Publisher of reference.
+     *
      * @return Publisher as string
      */
     public String getPublisher() {
@@ -178,6 +178,7 @@ public abstract class Reference {
 
     /**
      * Returns publication year of reference.
+     *
      * @return Year as string
      */
     public String getYear() {
@@ -185,7 +186,8 @@ public abstract class Reference {
     }
 
     /**
-     * Returns publishers address. 
+     * Returns publishers address.
+     *
      * @return Address as string
      */
     public String getAddress() {
@@ -194,6 +196,7 @@ public abstract class Reference {
 
     /**
      * Returns pages referenced.
+     *
      * @return Pages as string
      */
     public String getPages() {
@@ -202,6 +205,7 @@ public abstract class Reference {
 
     /**
      * Returns reference id of reference.
+     *
      * @return Id as string
      */
     public String getReferenceId() {
@@ -210,14 +214,16 @@ public abstract class Reference {
 
     /**
      * Returns publication month of reference.
+     *
      * @return Month as string
      */
     public String getMonth() {
         return month;
     }
 
-    /** 
+    /**
      * Returns edition of reference.
+     *
      * @return Edition as string
      */
     public String getEdition() {
@@ -226,6 +232,7 @@ public abstract class Reference {
 
     /**
      * Returns editor of reference.
+     *
      * @return Editor as string
      */
     public String getEditor() {
@@ -234,6 +241,7 @@ public abstract class Reference {
 
     /**
      * Returns inproceedings book title of reference (only in inproceedings).
+     *
      * @return Inproceedings book title as string
      */
     public String getInproceedingsBookTitle() {
@@ -242,6 +250,7 @@ public abstract class Reference {
 
     /**
      * Returns journal where the reference is published.
+     *
      * @return Journal as string
      */
     public String getJournal() {
@@ -250,6 +259,7 @@ public abstract class Reference {
 
     /**
      * Returns miscellaneous extra information of reference.
+     *
      * @return Note as string
      */
     public String getNote() {
@@ -258,6 +268,7 @@ public abstract class Reference {
 
     /**
      * Returns issue number of reference (if applicable).
+     *
      * @return Issue number as string
      */
     public String getNumber() {
@@ -266,6 +277,7 @@ public abstract class Reference {
 
     /**
      * Returns conference sponsor related to reference (if applicable)
+     *
      * @return Organization as string
      */
     public String getOrganization() {
@@ -274,6 +286,7 @@ public abstract class Reference {
 
     /**
      * Returns series of references where the reference is published in.
+     *
      * @return Series as string
      */
     public String getSeries() {
@@ -282,6 +295,7 @@ public abstract class Reference {
 
     /**
      * Returns volume of reference.
+     *
      * @return Volume as string
      */
     public String getVolume() {
@@ -290,6 +304,7 @@ public abstract class Reference {
 
     /**
      * Returns tags releted to reference.
+     *
      * @return List of tags
      */
     public List<Tag> getTags() {
@@ -301,13 +316,13 @@ public abstract class Reference {
 
     /**
      * Returns unique id of reference used in database.
+     *
      * @return Id as Long
      */
-    public Long getId() {
-        return id;
-    }
-    
-        /**
+//    public Long getId() {
+//        return id;
+//    }
+    /**
      * @param title the title to set
      */
     public void setTitle(String title) {
@@ -450,7 +465,7 @@ public abstract class Reference {
 
     /**
      * Get the reference's tags as a preformatted string for html-page.
-     * 
+     *
      * @return the reference's tags as a string.
      */
     public String getTagsForHtml() {
@@ -466,10 +481,10 @@ public abstract class Reference {
         }
         return "";
     }
-    
+
     /**
      * Get the reference's authors as a preformatted string for html-page.
-     * 
+     *
      * @return the reference's authors as a string.
      */
     public String getAuthorsForHtml() {

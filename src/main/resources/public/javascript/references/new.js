@@ -1,18 +1,18 @@
 var AUTHOR_ID = 1;
 var TAG_ID = 0;
 
-$(document).ready(function() {
+$(document).ready(function () {
     setVisibleAttributes();
 
-    $("#type").change(function() {
+    $("#type").change(function () {
         setVisibleAttributes();
     });
-    
-    $("input").focus(function() {
+
+    $("input").focus(function () {
         this.setCustomValidity("");
     });
-    
-    $("#input_tag").on('input', function() {
+
+    $("#input_tag").on('input', function () {
         var inputLen = $(this).val().length;
         if (inputLen > 0) {
             $("#add_tag_button").prop("disabled", false);
@@ -20,10 +20,10 @@ $(document).ready(function() {
             $("#add_tag_button").prop("disabled", true);
         }
     });
-    
-    $("form").submit(function(event) {
+
+    $("form").submit(function (event) {
         var selectedType = $("#type").val();
-        
+
         if (selectedType === "article" || selectedType === "inproceedings") {
             var pagesOk = checkPages(selectedType);
             if (!pagesOk) {
@@ -57,7 +57,8 @@ function addAuthorField() {
     var authorTable = $("#author_table");
     var newAuthorRow = createNewAuthorRow();
     authorTable.append(newAuthorRow);
-};
+}
+;
 
 function createNewAuthorRow() {
     AUTHOR_ID++;
@@ -84,8 +85,8 @@ function createElement(elementType) {
 
 function setVisibleAttributes() {
     var selectedType = $("#type").val();
-    
-    switch(selectedType) {
+
+    switch (selectedType) {
         case "book":
             showHideHide(".book_attr", ".article_attr", ".inproc_attr");
             setRequiredAttrs(".book_req", ".article_req", ".inproc_req");
@@ -99,54 +100,60 @@ function setVisibleAttributes() {
             setRequiredAttrs(".article_req", ".inproc_req", ".book_req");
             break;
     }
-};
+}
+;
 
 function showHideHide(showThis, hideThis, hideThisAsWell) {
-    $(hideThis).each(function() {
+    $(hideThis).each(function () {
         $(this).hide();
     });
-    $(hideThisAsWell).each(function() {
+    $(hideThisAsWell).each(function () {
         $(this).hide();
     });
-    $(showThis).each(function() {
+    $(showThis).each(function () {
         $(this).show();
     });
-};
+}
+;
 
 function setRequiredFields(fields, isRequired) {
-    $.each(fields, function(key, val) {
+    $.each(fields, function (key, val) {
         val.required = isRequired;
     });
-};
+}
+;
 
 function setRequiredAttrs(req, notReq, notReqEither) {
     setInputs(req, notReq, notReqEither);
     setLabels(req, notReq, notReqEither);
-};
+}
+;
 
 function setInputs(req, notReq, notReqEither) {
-    $("input" + notReq).each(function() {
+    $("input" + notReq).each(function () {
         $(this).prop('required', false);
     });
-    $("input" + notReqEither).each(function() {
+    $("input" + notReqEither).each(function () {
         $(this).prop('required', false);
     });
-    $("input" + req).each(function() {
+    $("input" + req).each(function () {
         $(this).prop('required', true);
     });
-};
+}
+;
 
 function setLabels(req, notReq, notReqEither) {
-    $("label" + notReq).each(function() {
+    $("label" + notReq).each(function () {
         $(this).css('font-weight', 'normal');
     });
-    $("label" + notReqEither).each(function() {
+    $("label" + notReqEither).each(function () {
         $(this).css('font-weight', 'normal');
     });
-    $("label" + req).each(function() {
+    $("label" + req).each(function () {
         $(this).css('font-weight', 'bold');
     });
-};
+}
+;
 
 function checkPages() {
     var pagesStart = $("#pages_start").val();
@@ -163,6 +170,7 @@ function checkPages() {
             check = false;
         }
     }
-    
+
     return check;
-};
+}
+;

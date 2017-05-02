@@ -30,7 +30,7 @@ public class Inproceedings extends Reference {
      * @param referenceId Reference id for the publication
      * @param tags Tags for reference
      */
-    public Inproceedings(String title, List <Author> authors, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
+    public Inproceedings(String title, List<Author> authors, String bookTitle, String year, String month, String editor, String volume, String series, String pages, String organization, String publisher, String address, String note, String referenceId, List<Tag> tags) {
         super(title, authors, bookTitle, year, month, editor, volume, series, pages, organization, publisher, address, note, referenceId, tags);
     }
 
@@ -38,19 +38,20 @@ public class Inproceedings extends Reference {
      * A constructor needed by the database.
      */
     Inproceedings() {
-    }        
+    }
 
     /**
-     * Method for generating inproceedings-type reference metadata into bibtex syntax
-     */       
+     * Method for generating inproceedings-type reference metadata into bibtex
+     * syntax
+     */
     @Override
     public String toString() {
-        return "@Inproceedings{" + this.printReferenceId() 
-                + this.printValue("author", this.getAuthors().get(0).getName()) 
+        return "@Inproceedings{" + this.printReferenceId()
+                + this.printValue("author", this.getAuthors().get(0).getName())
                 + this.printValue("title", this.getTitle())
                 + this.printValue("booktitle", this.getInproceedingsBookTitle())
                 + this.printValue("editor", this.getEditor())
-                + this.printValue("volume", this.getVolume()) 
+                + this.printValue("volume", this.getVolume())
                 + this.printValue("series", this.getSeries())
                 + this.printValue("pages", this.getPages())
                 + this.printValue("address", this.getAddress())
@@ -62,6 +63,11 @@ public class Inproceedings extends Reference {
                 + "\n}\n";
     }
 
+    /**
+     * Get a printable "pretty" string of the inproceedings attributes.
+     *
+     * @return the String
+     */
     @Override
     public String getPrettyString() {
         StringBuilder builder = new StringBuilder(super.getAuthorAndTitle());
@@ -79,5 +85,4 @@ public class Inproceedings extends Reference {
 
         return builder.toString().trim();
     }
-
 }

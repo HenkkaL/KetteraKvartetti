@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package refApp.services.formatters;
 
 import java.util.HashMap;
@@ -12,13 +7,14 @@ import org.springframework.stereotype.Service;
 /**
  * A helper class to replace characters to BibTeX form, designed to support
  * nordic alphabets.
- * 
+ *
  * @author pqkallio
  */
 @Service
 public class BibTeXCharacterMapper implements CharacterMapper {
+
     private Map<Character, String> mapper;
-    
+
     /**
      * Create new BibTeXCharacterMapper
      */
@@ -26,10 +22,10 @@ public class BibTeXCharacterMapper implements CharacterMapper {
         this.mapper = new HashMap<>();
         initMapper();
     }
-    
+
     /**
      * Get the string required by the BibTeX form mapped for a given character.
-     * 
+     *
      * @param c the character
      * @return the string mapped for the character
      */
@@ -38,7 +34,7 @@ public class BibTeXCharacterMapper implements CharacterMapper {
         if (mapper.containsKey(c)) {
             return mapper.get(c);
         }
-        
+
         return null;
     }
 
@@ -48,7 +44,7 @@ public class BibTeXCharacterMapper implements CharacterMapper {
     private void initMapper() {
         insertCharactersToMapper(65, 90);
         insertCharactersToMapper(97, 122);
-        
+
         mapper.put('ä', "{\\\"a}");
         mapper.put('ö', "{\\\"o}");
         mapper.put('ü', "{\\\"u}");
@@ -61,13 +57,13 @@ public class BibTeXCharacterMapper implements CharacterMapper {
 
     /**
      * A helper method to map a range of characters.
-     * 
+     *
      * @param startIndex the index of the first character
      * @param endIndex the index of the last character
      */
     private void insertCharactersToMapper(int startIndex, int endIndex) {
         for (int i = startIndex; i <= endIndex; i++) {
-            char c = (char)i;
+            char c = (char) i;
             mapper.put(c, Character.toString(c));
         }
     }

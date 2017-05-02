@@ -5,3 +5,4 @@ gradle.properties
 /Testeri/build/
 /Testeri/.nb-gradle/
 *.log
+*.DS_store
