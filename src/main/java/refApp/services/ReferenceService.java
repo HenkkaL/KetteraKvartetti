@@ -32,7 +32,7 @@ public class ReferenceService {
     @Autowired
     private TagRepository tagRepository;
 
-    private ReferenceFactory referenceFactory = new ReferenceFactory();
+    private final ReferenceFactory referenceFactory = new ReferenceFactory();
     
     /**
      * Method for adding a reference.
@@ -44,8 +44,12 @@ public class ReferenceService {
         String id = formatter.generateId(params, referenceRepository);
         List<Tag> tags = formatter.addTags(params);
         List<Author> authors = formatter.addAuthors(params);
-        Reference reference = referenceFactory.create(params.get("type"), params, id, tags, authors);
-        saveReference(reference);
+        try {
+            Reference reference = referenceFactory.create(params.get("type"), params, id, tags, authors);
+            saveReference(reference);
+        } catch (Exception e) {
+            // Exception handling here
+        }
     }
 
     /**
