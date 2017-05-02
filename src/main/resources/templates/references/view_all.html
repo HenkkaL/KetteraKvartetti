@@ -25,7 +25,14 @@
 
     <body>
         <div th:replace="fragments/navigation_fragment"></div>
-        <h1>Listataan kaikki viitteet</h1>
+        <h1>Listataan kaikki viitteet:</h1>
+        <p>Valitse haluamasi tiedostot ja paina lataa</p>
+
+        <form th:action="@{/download}" method="GET" id="form">
+            <input type="text" id="downloadname" name="downloadname" placeholder="tiedostonimi"/>
+            <input type="submit" id="submit" name="submit" value="Lataa"/>
+        </form>
+        <br/>
         <table>
             <tr>
                 <th>Tunnus</th>

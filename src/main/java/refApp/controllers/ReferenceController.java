@@ -45,17 +45,21 @@ public class ReferenceController {
     }
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public ResponseEntity<byte[]> downloadFile() throws IOException {
+    public ResponseEntity<byte[]> downloadFile(@RequestParam String downloadname) throws IOException {
         new BibTeXFormatter().writeReferencesToFile(this.referenceService.getReferenceRepo().findAll());
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("text/bib"));
-        headers.add("Content-Disposition", "attachment; filename= sigproc.bib");
 
+        String filename = "sigproc";
+        if (!downloadname.trim().equals("")) {
+            filename = downloadname;
+        }
+        
+        headers.add("Content-Disposition", "attachment; filename=" + filename + ".bib");
         return new ResponseEntity<>(convertToBytes(), headers, HttpStatus.CREATED);
     }
 
     private byte[] convertToBytes() throws IOException {
         return Files.readAllBytes(Paths.get("src/main/resources/downloadables/sigproc.bib"));
-
     }
 }
