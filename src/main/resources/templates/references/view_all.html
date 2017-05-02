@@ -21,6 +21,7 @@
                 background-color: #dddddd;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     </head>
 
     <body>
@@ -31,17 +32,27 @@
         <form th:action="@{/download}" method="GET" id="form">
             <input type="text" id="downloadname" name="downloadname" value="sigproc"/>
             <input type="submit" id="download" name="download" value="Lataa"/>
-        </form>
         <br/>
         <table>
             <tr>
+                <th>Valitse kaikki: 
+                    <!--<form>-->
+                        <input type="checkbox" id="select_all" name="select_all" />
+                    <!--</form>-->
+                </th>
                 <th>Tunnus</th>
                 <th>Tyyppi</th>
                 <th>Viite</th>
                 <th>Tunnisteet</th>
-                <th></th>
+                <!--<th></th>-->
             </tr>
             <tr th:each="reference : ${references}">
+                <td>
+                    <!--<form>-->
+                        <input type="checkbox" th:name="id + ${reference.id}" 
+                               th:id="${reference.id}" th:value="${reference.id}" class="checkbox" />
+                    <!--</form>-->
+                </td>
                 <td th:text="${reference.referenceId}">reference id</td>
                 <td th:switch="${reference.class.toString()}">
                     <span th:case="'class refApp.domain.Book'">Kirja</span>
@@ -52,12 +63,14 @@
                 <td th:text="${reference.getPrettyString()}">string</td>
                 <td th:text="${reference.getTagsForHtml()}">tags</td>
                 <td>
-                    <form action="/delete/" method="POST" id="form">
+<!--                    <form action="/delete/" method="POST">
                         <input type="hidden" id="referenceId" name="referenceId" th:value="${reference.referenceId}"/>
                         <input type="submit" id="submit" name="submit" value="poista"/>
-                    </form>
+                    </form>-->
                 </td>
             </tr>
         </table>
+        </form>
+        <script th:src="@{/javascript/references/view_all.js}"></script>
     </body>
 </html>
