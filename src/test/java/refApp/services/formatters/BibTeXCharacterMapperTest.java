@@ -1,21 +1,28 @@
 
 package refApp.services.formatters;
 
-import org.junit.Before;
+import refApp.services.formatters.BibTeXCharacterMapper;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class BibTeXCharacterMapperTest {
-    private CharacterMapper mapper;
+   
+    @Autowired
+    private BibTeXCharacterMapper mapper;
     
     public BibTeXCharacterMapperTest() {
     }
     
-    @Before
-    public void setUp() {
-        this.mapper = new BibTeXCharacterMapper();
-    }
+//    @Before
+//    public void setUp() {
+//        this.mapper = new BibTeXCharacterMapper();
+//    }
     
     @Test
     public void nullIsReturnedIfCantBeMapped() {

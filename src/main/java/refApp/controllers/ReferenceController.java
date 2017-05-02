@@ -22,6 +22,9 @@ public class ReferenceController {
 
     @Autowired
     private ReferenceService referenceService;
+    
+    @Autowired
+    private BibTeXFormatter formatter;
 
     public ReferenceController() {
     }
@@ -53,7 +56,7 @@ public class ReferenceController {
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public ResponseEntity<byte[]> downloadFile(@RequestParam String downloadname) throws IOException {
-        new BibTeXFormatter().writeReferencesToFile(this.referenceService.getReferenceRepo().findAll());
+        formatter.writeReferencesToFile(this.referenceService.getReferenceRepo().findAll());
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("text/bib"));
 

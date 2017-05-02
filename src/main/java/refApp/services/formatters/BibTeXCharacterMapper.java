@@ -2,6 +2,7 @@ package refApp.services.formatters;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.stereotype.Service;
 
 /**
  * A helper class to replace characters to BibTeX form, designed to support
@@ -9,6 +10,7 @@ import java.util.Map;
  *
  * @author pqkallio
  */
+@Service
 public class BibTeXCharacterMapper implements CharacterMapper {
 
     private Map<Character, String> mapper;

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import refApp.domain.Author;
 import refApp.domain.Reference;
 import refApp.domain.Tag;
@@ -16,17 +18,13 @@ import refApp.repositories.ReferenceRepository;
  *
  * @author pqkallio
  */
+@Service
 public class BibTeXFormatter implements Formatter {
 
     private final static String PAGE_DELIMITER = "--";
-    private final CharacterMapper characterMapper;
 
-    /**
-     * Constructs a new BibTeXFormatter.
-     */
-    public BibTeXFormatter() {
-        this.characterMapper = new BibTeXCharacterMapper();
-    }
+    @Autowired
+    private CharacterMapper characterMapper;
 
     /**
      * Formats a String object to another String that can be inserted into a
@@ -154,4 +152,5 @@ public class BibTeXFormatter implements Formatter {
         }
         return authors;
     }
+
 }

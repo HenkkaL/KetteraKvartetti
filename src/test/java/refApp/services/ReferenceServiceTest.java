@@ -30,6 +30,7 @@ public class ReferenceServiceTest {
 
     @Autowired
     ReferenceService refServ;
+    
     Map<String, String> params;
 
     public ReferenceServiceTest() {

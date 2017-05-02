@@ -1,5 +1,7 @@
 package refApp.services;
 
+import refApp.services.formatters.BibTeXFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,6 @@ import refApp.domain.Tag;
 import refApp.repositories.AuthorRepository;
 import refApp.repositories.ReferenceRepository;
 import refApp.repositories.TagRepository;
-import refApp.services.formatters.BibTeXFormatter;
-import refApp.services.formatters.Formatter;
 
 /**
  * Service class for references.
@@ -30,6 +30,9 @@ public class ReferenceService {
 
     @Autowired
     private TagRepository tagRepository;
+    
+    @Autowired
+    private BibTeXFormatter formatter;
 
     /**
      * Method for adding a reference.
@@ -37,7 +40,7 @@ public class ReferenceService {
      * @param params user given values for a reference
      */
     public void addReference(Map<String, String> params) {
-        Formatter formatter = new BibTeXFormatter();
+        System.out.println(params);
         String id = formatter.generateId(params, referenceRepository);
         List<Tag> tags = formatter.addTags(params);
         List<Author> authors = formatter.addAuthors(params);

@@ -1,10 +1,14 @@
 package refApp.services.formatters;
 
+
 /**
  * A Character mapper interface
  *
  * @author pqkallio
  */
+
+
+
 public interface CharacterMapper {
 
     /**
