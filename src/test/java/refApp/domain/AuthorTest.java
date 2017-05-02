@@ -9,10 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Raine Rantanen
- */
 public class AuthorTest {
 
     Author author;
@@ -42,19 +38,19 @@ public class AuthorTest {
         // TODO review the generated test code and remove the default call to fail.
         assertEquals("Kent Beck", author.getName());
     }
-    
+
     @Test
     public void testAuthorSetName() {
-        String expected = "Test Name"; 
+        String expected = "Test Name";
         author.setName(expected);
         assertEquals(expected, author.getName());
     }
-    
+
     @Test
     public void testAuthorToString() {
         assertEquals("Kent Beck", author.toString());
     }
-    
+
     @Test
     public void testAddReference() {
         List<Author> authors = new ArrayList<Author>();
@@ -64,7 +60,7 @@ public class AuthorTest {
         test.addReference(ref);
         assertEquals(1, test.getReferences().size());
     }
-    
+
     @Test
     public void testAddNullReference() {
         List<Author> authors = new ArrayList<Author>();
@@ -75,7 +71,7 @@ public class AuthorTest {
         test.addReference(null);
         assertEquals(1, test.getReferences().size());
     }
-    
+
     @Test
     public void getNullReferenceList() {
         Author test = new Author();
