@@ -1,5 +1,7 @@
 package refApp.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -51,6 +53,33 @@ public class AuthorTest {
     @Test
     public void testAuthorToString() {
         assertEquals("Kent Beck", author.toString());
+    }
+    
+    @Test
+    public void testAddReference() {
+        List<Author> authors = new ArrayList<Author>();
+        authors.add(author);
+        Author test = new Author("Test Author");
+        Reference ref = new Book("Eka Kirja", authors, "Tammi", "2001", "12", "Edition", "1", "Series", "Address", "Satunnaista", "TK01", null);
+        test.addReference(ref);
+        assertEquals(1, test.getReferences().size());
+    }
+    
+    @Test
+    public void testAddNullReference() {
+        List<Author> authors = new ArrayList<Author>();
+        authors.add(author);
+        Author test = new Author("Test Author");
+        Reference ref = new Book("Eka Kirja", authors, "Tammi", "2001", "12", "Edition", "1", "Series", "Address", "Satunnaista", "TK01", null);
+        test.addReference(ref);
+        test.addReference(null);
+        assertEquals(1, test.getReferences().size());
+    }
+    
+    @Test
+    public void getNullReferenceList() {
+        Author test = new Author();
+        assertEquals(0, test.getReferences().size());
     }
 
 }
