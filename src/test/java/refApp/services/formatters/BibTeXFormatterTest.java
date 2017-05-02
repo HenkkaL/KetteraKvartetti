@@ -5,7 +5,6 @@
  */
 package refApp.services.formatters;
 
-import refApp.services.formatters.BibTeXFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,12 +32,6 @@ public class BibTeXFormatterTest {
     
     public BibTeXFormatterTest() {
     }
-    
-//    @Before
-//    public void setUp() {
-//        this.mapper = new BibTeXCharacterMapper();
-//        this.formatter = new BibTeXFormatter(mapper);
-//    }
     
     @Test
     public void nullForNull() {

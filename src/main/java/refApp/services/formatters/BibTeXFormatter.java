@@ -1,6 +1,5 @@
 package refApp.services.formatters;
 
-import refApp.services.formatters.BibTeXCharacterMapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,26 +18,13 @@ import refApp.repositories.ReferenceRepository;
  *
  * @author pqkallio
  */
-
 @Service
 public class BibTeXFormatter implements Formatter {
 
     private final static String PAGE_DELIMITER = "--";
-    
+
     @Autowired
     private CharacterMapper characterMapper;
-
-      
-    /**
-     * Constructor that manually sets CharacterMapper, used by unit tests only.
-     * 
-     * @param mapper used CharacterMapper
-     * 
-     */ 
-    public BibTeXFormatter(CharacterMapper mapper) {
-        this.characterMapper = mapper;  
-    }
-   
 
     /**
      * Formats a String object to another String that can be inserted into a
@@ -166,5 +152,5 @@ public class BibTeXFormatter implements Formatter {
         }
         return authors;
     }
-  
+
 }

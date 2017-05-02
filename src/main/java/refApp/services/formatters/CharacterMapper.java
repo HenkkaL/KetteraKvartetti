@@ -1,7 +1,6 @@
 
 package refApp.services.formatters;
 
-import org.springframework.stereotype.Component;
 
 /**
  * A Character mapper interface

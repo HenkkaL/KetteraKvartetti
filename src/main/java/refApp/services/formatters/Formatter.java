@@ -3,7 +3,6 @@ package refApp.services.formatters;
 
 import java.util.List;
 import java.util.Map;
-import org.springframework.stereotype.Component;
 import refApp.domain.Author;
 import refApp.domain.Tag;
 import refApp.repositories.ReferenceRepository;
