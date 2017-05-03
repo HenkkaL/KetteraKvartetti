@@ -46,13 +46,13 @@ public class Stepdefs {
     //       this.addReferenceId(referenceId);
     //   }
     
-    @When("^user selects the download link$")
-    public void select_download() {
-        WebElement element = driver.findElement(By.partialLinkText("Lataa"));
-        System.out.println("Testitulostus: " + element.toString());
-        element.click();
-        
-    }
+//    @When("^user selects the download link$")
+//    public void select_download() {
+//        WebElement element = driver.findElement(By.partialLinkText("Lataa"));
+//        System.out.println("Testitulostus: " + element.toString());
+//        element.click();
+//        
+//    }
     
     
     //Testimetodien testimetodi
@@ -166,9 +166,9 @@ public class Stepdefs {
         pageHasContent(content);
     }
     
-    @Then ("bibtex file is downloaded")
-    public void check_downloaded_file() {
-    }
+//    @Then ("bibtex file is downloaded")
+//    public void check_downloaded_file() {
+//    }
 
     @After
     public void tearDown() {
