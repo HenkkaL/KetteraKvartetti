@@ -85,6 +85,7 @@ function createElement(elementType) {
 
 function setVisibleAttributes() {
     var selectedType = $("#type").val();
+    console.log(selectedType);
 
     switch (selectedType) {
         case "book":
