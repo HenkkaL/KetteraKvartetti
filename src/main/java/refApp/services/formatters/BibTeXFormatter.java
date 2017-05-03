@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import refApp.domain.Author;
 import refApp.domain.Reference;
 import refApp.domain.Tag;
@@ -78,11 +80,13 @@ public class BibTeXFormatter implements Formatter {
      * Uses a FileWriter to write references to a downloadable file.
      *
      */
-    public void writeReferencesToFile(List<Reference> ref) throws IOException {
+    public void writeSelectedReferencesToFile(List<Reference> allReferences, Set<Long> selectedReferences) throws IOException {
         FileWriter fw = new FileWriter(new File("src/main/resources/downloadables/sigproc.bib"));
-        for (Reference r : ref) {
-            fw.write(formatString(r.toString()));
-            fw.write("\n");
+        for (Reference r : allReferences) {
+            if (selectedReferences.contains(r.getId())) {
+                fw.write(formatString(r.toString()));
+                fw.write("\n");
+            }
         }
         fw.close();
     }

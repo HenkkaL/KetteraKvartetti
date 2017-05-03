@@ -3,7 +3,10 @@ package refApp.controllers;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -60,21 +63,29 @@ public class ReferenceController {
     }
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public ResponseEntity<byte[]> downloadFile(@RequestParam String downloadname) throws IOException {
-        new BibTeXFormatter().writeReferencesToFile(this.referenceService.getReferenceRepo().findAll());
+    public ResponseEntity<byte[]> downloadFile(@RequestParam Map<String, String> params) throws IOException {
+        String filename = "sigproc";
+        if (!params.get("downloadname").trim().equals("")) {
+            filename = params.get("downloadname");
+        }
+        new BibTeXFormatter().writeSelectedReferencesToFile(this.referenceService.getReferenceRepo().findAll(), selectIdsFromMap(params));
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("text/bib"));
-
-        String filename = "sigproc";
-        if (!downloadname.trim().equals("")) {
-            filename = downloadname;
-        }
-
         headers.add("Content-Disposition", "attachment; filename=" + filename + ".bib");
         return new ResponseEntity<>(convertToBytes(), headers, HttpStatus.CREATED);
     }
 
     private byte[] convertToBytes() throws IOException {
         return Files.readAllBytes(Paths.get("src/main/resources/downloadables/sigproc.bib"));
+    }
+
+    private Set<Long> selectIdsFromMap(Map<String, String> values) {
+        Set<Long> ret = new HashSet();
+        for (String value : values.keySet()) {
+            if (value.startsWith("id")) {
+                ret.add(Long.parseLong(values.get(value)));
+            }
+        }
+        return ret;
     }
 }
