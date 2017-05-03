@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Referenz-o-matic 3000</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link th:href="@{/css/references/new.css}" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        
+    </head>
+    <body>
+        <div th:replace="fragments/navigation_fragment"></div>
+        <h1>Muokkaa viitettä</h1>
+        <h3>Lihavoidut kentät ovat pakollisia</h3>
+        <form th:action="@{/new}" method="POST" id="form">
+        <div>
+            <table>
+                <tr>
+                    <td><label for="type">Viitteen tyyppi</label></td>
+                    <td><select id="type" name="type">
+                            <option value="book"> Kirja </option>
+                            <option value="article"> Artikkeli </option>
+                            <option value="inproceedings"> Julkaisu </option>
+                        </select>   </td>
+                </tr>
+                <tr class="book_attr inproc_attr article_attr book_req inproc_req article_req">
+                    <td><label class="book_req inproc_req article_req" for="title">Nimi</label></td>
+                    <td><input type="text" class="book_req inproc_req article_req" id="title" name="title" required="required" th:value="${reference.title}/></td>
+                </tr>
+            </table>
+            <table id="author_table">
+                <tr class="book_attr inproc_attr article_attr">
+                    <td><label class="book_req inproc_req article_req" for="author">Tekijä</label></td>
+                    <td><input type="text" class="book_req inproc_req article_req" id="author" name="author" required="required" th:value="${reference.author}" /></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td></td>
+                    <td><button onclick="addAuthorField()" type="button">Lisää tekijä</button></td>
+                </tr>
+            </table>
+            <table>
+                <tr class="book_attr inproc_attr article_attr">
+                    <td><label class="book_req inproc_req article_req" for="year">Julkaisuvuosi</label></td>
+                    <td><input type="number" class="book_req inproc_req article_req" id="year" name="year" min="1000" required="required" /></td>
+                </tr>
+                <tr class="book_attr article_attr inproc_attr">
+                    <td><label for="month">Julkaisukuukausi</label></td>
+                    <td><input type="number" id="month" name="month" min="1" max="12" /></td>
+                </tr>
+                <tr class="book_attr inproc_attr">
+                    <td><label class="book_req" for="publisher">Julkaisija</label></td>
+                    <td><input type="text" class="book_req" id="publisher" name="publisher" required="required" /></td>
+                </tr>
+                <tr class="book_attr">
+                    <td><label for="edition">Painos</label></td>
+                    <td><input type="text" id="edition" name="edition"/></td>
+                </tr>
+                <tr class="book_attr article_attr inproc_attr">
+                    <td><label class="article_req" for="volume">Osa (jos osa sarjaa)</label></td>
+                    <td><input type="number" class="article_req" id="volume" name="volume"/></td>
+                </tr>
+                <tr class="book_attr inproc_attr">
+                    <td><label for="series">Sarjan nimi</label></td>
+                    <td><input type="text" id="series" name="series"/></td>
+                </tr>
+                <tr class="book_attr inproc_attr">
+                    <td><label for="address">Osoite</label></td>
+                    <td><input type="text" id="address" name="address"/></td>
+                </tr>
+                <tr class="book_attr inproc_attr article_attr">
+                    <td><label for="note">Muita tietoja</label></td>
+                    <td><input type="text" id="note" name="note"/></td>
+                </tr>
+                <tr class="article_attr">
+                    <td><label class="article_req" for="journal">Julkaisu</label></td>
+                    <td><input type="text" class="article_req" id="journal" name="journal" required="required"/></td>
+                </tr>
+                <tr class="article_attr">
+                    <td><label for="number">Numero</label></td>
+                    <td><input type="number" id="number" name="number" min="1"/></td>
+                </tr>
+                <tr class="article_attr inproc_attr">
+                    <td><label for="pages_start">Sivut</label></td>
+                    <td><input class="page_input" type="number" id="pages_start" name="pages_start" min="1"/> - <input class="page_input" type="number" id="pages_end" name="pages_end" min="1"/></td>
+                </tr>
+                <tr class="inproc_attr">
+                    <td><label class="inproc_req" for="book_title">Teoksen nimi</label></td>
+                    <td><input type="text" class="inproc_req" id="book_title" name="book_title" required="required"/></td>
+                </tr>
+                <tr class="inproc_attr">
+                    <td><label for="editor">Toimittaja</label></td>
+                    <td><input type="text" id="editor" name="editor" /></td>
+                </tr>
+                <tr class="inproc_attr">
+                    <td><label for="volume_number">Osa / numero</label></td>
+                    <td><input type="number" id="volume_number" name="volume_number" min="1"/></td>
+                </tr>
+                <tr class="inproc_attr">
+                    <td><label for="organization">Organisaatio</label></td>
+                    <td><input type="text" id="organization" name="organization" /></td>
+                </tr>
+                <tr class="article_attr book_attr inproc_attr">
+                    <td><label for="input_tag">Lisättävä tunniste</label></td>
+                    <td><input type="text" id="input_tag" name="input_tag" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="add_tag_button" type="button" onclick="addTag()" disabled="disabled">Lisää tunniste</button></td>
+                </tr>
+            </table>
+            <h4>Tunnisteet</h4>
+            <ul id="tag_list"></ul>
+            <div id="tag_inputs" style="display: none;"></div>
+            <table>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" id="submit" name="submit" value="Tallenna"/></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+        <script th:src="@{/javascript/references/new.js}"></script>
+    </body>
+</html>

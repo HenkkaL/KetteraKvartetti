@@ -60,7 +60,8 @@
                     <span th:case="'class refApp.domain.Inproceedings'">Julkaisu</span>
                     <span th:case="*">Ei määritetty</span>
                 </td>
-                <td th:text="${reference.getPrettyString()}">string</td>
+                <!--<td><a th:href="@{/reference?(referenceId=${reference.referenceId})}" th:text="${reference.getPrettyString()}">string</a></td>-->
+                <td><a th:href="@{'/references/' + ${reference.id}}" th:text="${reference.getPrettyString()}">string</a></td>
                 <td th:text="${reference.getTagsForHtml()}">tags</td>
                 <td>
 <!--                    <form action="/delete/" method="POST">
