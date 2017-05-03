@@ -43,7 +43,7 @@ public class Article extends Reference {
     @Override
     public String toString() {
         return "@article{" + this.printReferenceId() 
-                + this.printValue("author", this.getAuthors().get(0).getName()) 
+                + this.printValue("author", printAuthorNames()) 
                 + this.printValue("title", this.getTitle())
                 + this.printValue("journal", this.getJournal())
                 + this.printValue("volume", this.getVolume())

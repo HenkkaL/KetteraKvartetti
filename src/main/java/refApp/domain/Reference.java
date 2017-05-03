@@ -5,6 +5,7 @@ package refApp.domain;
  */
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -499,5 +500,13 @@ public abstract class Reference extends AbstractPersistable<Long> {
             return builder.toString();
         }
         return "";
+    }
+    
+    protected String printAuthorNames (){
+       StringJoiner authorNames = new StringJoiner(" and ");
+       for(Author author:authors){
+       authorNames.add(author.getName());
+       }
+       return authorNames.toString();
     }
 }

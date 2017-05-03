@@ -47,7 +47,7 @@ public class Inproceedings extends Reference {
     @Override
     public String toString() {
         return "@Inproceedings{" + this.printReferenceId()
-                + this.printValue("author", this.getAuthors().get(0).getName())
+                + this.printValue("author", printAuthorNames())
                 + this.printValue("title", this.getTitle())
                 + this.printValue("booktitle", this.getInproceedingsBookTitle())
                 + this.printValue("editor", this.getEditor())

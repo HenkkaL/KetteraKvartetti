@@ -170,7 +170,7 @@ public class BookTest {
     @Test
     public void testBookToString() {
         String expected = "@book{TK01,\n"
-                + "author = {Teppo Kirjailija},\n"
+                + "author = {Teppo Kirjailija and Author 2 and Author 3},\n"
                 + "title = {Eka Kirja},\n"
                 + "year = {2001},\n"
                 + "month = {12},\n"

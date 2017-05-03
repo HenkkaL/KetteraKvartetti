@@ -113,7 +113,7 @@ public class ArticleTest {
     @Test
     public void testArticleToString() {
         String expected = "@article{ReferenceId,\n"
-                + "author = {Author Surname},\n"
+                + "author = {Author Surname and Author 2 and Author 3},\n"
                 + "title = {Article Title},\n"
                 + "journal = {Journal},\n"
                 + "volume = {5},\n"

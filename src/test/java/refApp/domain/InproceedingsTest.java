@@ -147,7 +147,7 @@ public class InproceedingsTest {
     @Test
     public void testInproToString() {
         String expected = "@Inproceedings{ReferenceId,\n"
-                + "author = {Author Surname},\n"
+                + "author = {Author Surname and Author 2 and Author 3},\n"
                 + "title = {Inpro Title},\n"
                 + "booktitle = {Book Title},\n"
                 + "editor = {Editor},\n"
@@ -168,7 +168,7 @@ public class InproceedingsTest {
     public void testInproPrintMethodsWithEmptyString() {
         Inproceedings test = new Inproceedings("Title", authors, "", "2017", "", "", "", "", "", "", "", "", "", "ReferenceId", null);
         String expected = "@Inproceedings{ReferenceId,\n"
-                + "author = {Author Surname},\n"
+                + "author = {Author Surname and Author 2 and Author 3},\n"
                 + "title = {Title},\n"
                 + "year = {2017},\n"
                 + "}\n"
