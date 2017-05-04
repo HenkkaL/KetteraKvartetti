@@ -49,8 +49,8 @@ Tämä on helppo. Käyttäisimme Mavenia.
 
 
 Ketterä kvartetti:
-Kasimir Aula
-Eero Kalaja
-Petri Kallio
-Henrik Lyra
+Kasimir Aula,
+Eero Kalaja,
+Petri Kallio,
+Henrik Lyra,
 Raine Rantanen
