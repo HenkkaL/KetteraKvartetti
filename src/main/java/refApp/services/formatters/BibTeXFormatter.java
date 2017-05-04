@@ -153,7 +153,12 @@ public class BibTeXFormatter implements Formatter {
 
         for (Map.Entry<String, String> param : params.entrySet()) {
             if (param.getKey().startsWith("author")) {
-                authors.add(new Author(param.getValue()));
+                if (param.getValue() != null) {
+                    String authorName = param.getValue().trim();
+                    if (authorName.length() > 0) {
+                        authors.add(new Author(authorName));
+                    }
+                }
             }
         }
         return authors;

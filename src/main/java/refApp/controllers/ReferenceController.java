@@ -43,10 +43,15 @@ public class ReferenceController {
     }
     
     @RequestMapping(value = "/references/{referenceId}", method = RequestMethod.GET)
-    public String update(@PathVariable ("referenceId") Long refId, Model model) {
-        System.out.println("Testitulostus " + refId);
+    public String edit(@PathVariable ("referenceId") Long refId, Model model) {
         model.addAttribute("reference", this.referenceService.getReferenceRepo().findOne(refId));
         return "references/reference";
+    }
+    
+    @RequestMapping(value = "/references/{referenceId}", method = RequestMethod.POST)
+    public String update(@PathVariable ("referenceId") Long refId, @RequestParam Map<String, String> params) {
+        referenceService.updateReference(refId, params);
+        return "redirect:/list_all";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)

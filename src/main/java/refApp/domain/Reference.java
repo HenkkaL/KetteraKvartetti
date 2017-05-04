@@ -147,6 +147,14 @@ public abstract class Reference extends AbstractPersistable<Long> {
      */
     public abstract String getPrettyString();
 
+    public void setReferenceId(String referenceId) {
+        this.referenceId = referenceId;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
     /**
      * Returns authors.
      *

@@ -75,6 +75,21 @@ public class ReferenceControllerTest {
         )              
                 .andExpect(redirectedUrl("/list_all"));
     }
+    
+    @Test
+    public void editOk() throws Exception {
+        mockMvc.perform(post("/new")
+                .param("type", "book")
+                .param("name", "Random book")
+                .param("author", "Beck")
+                .param("year", "1999")
+                .param("publisher", "AW")
+                .param("pages_start", "1")
+                .param("pages_end", "10")
+                .param("address", "Oregon")
+        );
+        mockMvc.perform(get("/references/2")).andExpect(model().attributeExists("reference"));
+    }
 
     @Test
     public void listAllStatusOk() throws Exception {

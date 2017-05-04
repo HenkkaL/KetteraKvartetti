@@ -23,7 +23,16 @@ $(document).ready(function () {
 
     $("form").submit(function (event) {
         var selectedType = $("#type").val();
-
+        var yearInput = $("#year").val();
+        var currentYear = new Date().getFullYear();
+        
+        if (yearInput > currentYear || yearInput < 0) {
+            $("#year")[0].setCustomValidity("Vuoden tulee olla nollan ja nykyisen vuoden välillä.");
+            event.preventDefault();
+        } else {
+            $("#year")[0].setCustomValidity("");
+        }
+        
         if (selectedType === "article" || selectedType === "inproceedings") {
             var pagesOk = checkPages(selectedType);
             if (!pagesOk) {

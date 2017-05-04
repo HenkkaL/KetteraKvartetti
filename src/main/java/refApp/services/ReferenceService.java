@@ -70,6 +70,29 @@ public class ReferenceService {
         Reference temp = this.referenceRepository.findByReferenceId(refId);
         this.referenceRepository.delete(temp);
     }
+    
+    public void updateReference(Long refId, Map<String, String> params) {
+        Formatter formatter = new BibTeXFormatter();
+        String id = formatter.generateId(params, referenceRepository);
+        Reference temp = this.referenceRepository.findOne(refId);
+        temp.setAddress(params.get("address"));
+        temp.setEdition(params.get("edition"));
+        temp.setInproceedingsBookTitle(params.get("book_title"));
+        temp.setJournal(params.get("journal"));
+        temp.setMonth(params.get("month"));
+        temp.setNote(params.get("note"));
+        temp.setNumber(params.get("number"));
+        temp.setOrganization(params.get("organization"));
+        temp.setPublisher(params.get("publisher"));
+        temp.setSeries(params.get("series"));
+        temp.setTitle(params.get("title"));
+        temp.setVolume(params.get("volume"));
+        temp.setYear(params.get("year"));
+        temp.setReferenceId(id);
+        List<Author> authors = formatter.addAuthors(params);
+        temp.setAuthors(authors);
+        saveReference(temp);
+    }
 
     /**
      * Saves authors related to reference to author repository.

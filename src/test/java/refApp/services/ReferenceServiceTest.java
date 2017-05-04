@@ -18,6 +18,7 @@ import refApp.domain.Article;
 import refApp.domain.Author;
 import refApp.domain.Book;
 import refApp.domain.Inproceedings;
+import refApp.domain.Reference;
 import refApp.domain.Tag;
 
 /**
@@ -94,6 +95,54 @@ public class ReferenceServiceTest {
         Book book = (Book) refServ.getReferenceRepo().findByTitle("Book Title").get(0);
         assertEquals("Book Title", book.getTitle());
         assertEquals(book.getTags().get(0).toString(), "turha tagi");
+    }
+    
+    @Test
+    public void testDeleteReferenceBook() {
+        params.put("type", "book");
+        params.put("title", "Book Title");
+        params.put("author", "Author Name");
+        params.put("publisher", "Publisher");
+        params.put("year", "2017");
+        params.put("month", "03");
+        params.put("edition", "Edt");
+        params.put("volume", "Vol");
+        params.put("series", "Series");
+        params.put("address", "Book Address");
+        params.put("reference_id", "RefId");
+        params.put("tag55", "turha tagi");
+        refServ.addReference(params);
+        Book book = (Book) refServ.getReferenceRepo().findByTitle("Book Title").get(0);
+        assertEquals("Book Title", book.getTitle());
+        refServ.deleteReference(book.getReferenceId());
+        List<Reference> books = refServ.getReferenceRepo().findByTitle("Book Title");
+        assertEquals(0, books.size());
+    }
+    
+    @Test
+    public void testUpdateReferenceBook() {
+        params.put("type", "book");
+        params.put("title", "Book Title");
+        params.put("author", "Author Name");
+        params.put("publisher", "Publisher");
+        params.put("year", "2017");
+        params.put("month", "03");
+        params.put("edition", "Edt");
+        params.put("volume", "Vol");
+        params.put("series", "Series");
+        params.put("address", "Book Address");
+        params.put("reference_id", "RefId");
+        params.put("tag55", "turha tagi");
+        refServ.addReference(params);
+        Book book = (Book) refServ.getReferenceRepo().findByTitle("Book Title").get(0);
+        assertEquals("Book Title", book.getTitle());
+        params.put("title", "Changed Title");
+        refServ.updateReference(book.getId(), params);
+        List<Reference> books = refServ.getReferenceRepo().findByTitle("Book Title");
+        assertEquals(0, books.size());
+        books = refServ.getReferenceRepo().findByTitle("Changed Title");
+        assertEquals(1, books.size());
+        assertEquals("Changed Title", books.get(0).getTitle());
     }
 
     @Test
