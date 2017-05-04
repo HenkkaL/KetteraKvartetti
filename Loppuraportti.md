@@ -9,22 +9,22 @@ Miniprojekti lähti erinomaisesti käyntiin. Ensimmäisen asiakastapaamisen jäl
 Jokainen sprintti onnistui miltei täydellisesti vastaamaan asetettuihin haasteisiin. Vain neljäs eli viimeinen sprintti jäi hieman ”vajaaksi”. Tämä sprintti oli muita lyhyempi, joten se sekoitti ryhmän rytmin. Jokaisella sprintillä oli myös omat leimalliset haasteensa, jotka hallitsivat aina kyseisen sprintin keskustelua.
 
 
-### Gradle, Selenium ja integraatiohelvetti
+### Sprintti 1: Gradle, Selenium ja integraatiohelvetti
 
 Tämän piti olla pikku juttu. Gradle ja Selenium eivät kuitenkaan lähteneet vaivatta toimimaan yhdessä.  Integraatioyritykset rokottivat paljon ensimmäisen sprintin työaikaa, eivätkä johtaneet toivottuun lopputulokseen. Vasta sprintin lopussa, kiitos Matti Luukkaisen konsultaation, syntyi ajatus erillisestä testausohjelmasta. Tämä ohjelma ohjelman sisällä ei valmistunut sprintin loppuun mennessä, mutta sai kuitenkin asian liikkumaan eteenpäin.
  
 
-### Ongelmallinen Selenium
+### Sprintti 2: Ongelmallinen Selenium
 
 Toinen sprintti oli vaivattomin. Selenium-projekti Cucumber-testeineen eteni jälkijunassa, sillä asian kanssa oli otettu velkaa ensimmäisessä sprintissä. Tämä tarkoitti sitä, että edelleen osa ryhmän voimavaroista oli sidottu toteuttamaan erillistä testiohjelmaa. Ilman tätä velkaa, olisi sprintti ollut vaivattomuudessaan jopa tylsä. 
 
 
-### Tietokanta pystyyn ja tuotanto Herokuun
+### Sprintti 3: Tietokanta pystyyn ja tuotanto Herokuun
 
 Tuotannon vieminen Herokun palvelimelle sisälsi odotetusti omat haasteensa. Tätä osattiin odottaa, ja etukäteen oli valmistauduttu siihen, että kolmannesta sprintistä tulee haastava. Ensinnäkin projektille piti luoda kaksi ympäristöä: tuotantoa ja testausta varten. Lokaalina toimivan version vieminen palvelimelle aiheutti viilailua. Tietokannan pystytys ja käyttöönotto vaati omat konfiguraationsa. Versio, jossa ei ollut ennen Herokua ja tietokantaa mitään vikaa, vaati nyt pientä säätöä sieltä ja täältä. Tämä vei aikaa, mutta ei pysäyttänyt liikettä. Sprintin lopussa Travisin buildi hajosi, vaikka ohjelma toimi.
 
 
-### Travis ei buildaa!
+### Sprintti 4: Travis ei buildaa!
 
 Neljäs sprintti oli tynkä ja siksi kiireinen. Viikko oli muita lyhyempi alkaen torstain asiakastapaamisesta ja päättyen jo keskiviikkona demoon. Lisäksi viikolle sattui vappu, joka rokotti yhden arkipäivän pois. Toiminta oli suoraviivaista ja jalostunutta aikaisempien viikkojen kokemuksista. Travis saatiin buildaamaan hiomalla hieman sovelluksen testejä. Heroku vaati omansa, sillä sekin vaati ajoittaista tietokannan uudelleenajamista. Demotilaisuuden jälkeen selvisi, että Travis tukee oletusarvoisesti javan versiota seitsemän, käyttämämme kahdeksan sijasta. Lyhyt viikko aiheutti kuitenkin sen, että yksi story jäi kesken. Toisaalta, Travis buildasi, badget loistivat vihreinä ja ohjelma pyöri Herokussa. Tällaista ohjelmaa kelpasi demota. 
 
