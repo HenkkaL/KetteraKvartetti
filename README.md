@@ -16,3 +16,5 @@
 
 [Cucumbertestaus](Cucumbertestit.md)
 
+[Loppuraportti](Loppuraportti.md)
+
