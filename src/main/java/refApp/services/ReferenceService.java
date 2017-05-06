@@ -10,6 +10,7 @@ import refApp.domain.Book;
 import refApp.domain.Inproceedings;
 import refApp.domain.Reference;
 import refApp.domain.Tag;
+import refApp.domain.factories.ReferenceFactory;
 import refApp.repositories.AuthorRepository;
 import refApp.repositories.ReferenceRepository;
 import refApp.repositories.TagRepository;
@@ -31,6 +32,8 @@ public class ReferenceService {
     @Autowired
     private TagRepository tagRepository;
 
+    private final ReferenceFactory referenceFactory = new ReferenceFactory();
+    
     /**
      * Method for adding a reference.
      *
@@ -41,17 +44,11 @@ public class ReferenceService {
         String id = formatter.generateId(params, referenceRepository);
         List<Tag> tags = formatter.addTags(params);
         List<Author> authors = formatter.addAuthors(params);
-
-        switch (params.get("type")) {
-            case "article":
-                saveReference(new Article(params.get("title"), authors, params.get("journal"), params.get("year"), params.get("month"), params.get("volume"), params.get("number"), params.get("pages_start").length() > 0 ? formPageNo(params.get("pages_start"), params.get("pages_end")) : "", params.get("note"), id, tags));
-                break;
-            case "book":
-                saveReference(new Book(params.get("title"), authors, params.get("publisher"), params.get("year"), params.get("month"), params.get("edition"), params.get("volume"), params.get("series"), params.get("address"), params.get("note"), id, tags));
-                break;
-            case "inproceedings":
-                saveReference(new Inproceedings(params.get("title"), authors, params.get("book_title"), params.get("year"), params.get("month"), params.get("editor"), params.get("volume"), params.get("series"), params.get("pages_start").length() > 0 ? formPageNo(params.get("pages_start"), params.get("pages_end")) : "", params.get("organization"), params.get("publisher"), params.get("address"), params.get("note"), id, tags));
-                break;
+        try {
+            Reference reference = referenceFactory.create(params.get("type"), params, id, tags, authors);
+            saveReference(reference);
+        } catch (Exception e) {
+            // Exception handling here
         }
     }
 
@@ -148,7 +145,4 @@ public class ReferenceService {
         referenceRepository.delete(ref);
     }
 
-    private String formPageNo(String start, String end) {
-        return start + "-" + end;
-    }
 }
